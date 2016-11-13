@@ -21,7 +21,7 @@ public:
 
 public:
 	bool initApp();
-	void doEvent(SDL_Event* event);
+	void doEvent(SDL_Event* sdlevent);
 	void doLoop();
 	void doRender();
 	void doCleanup();

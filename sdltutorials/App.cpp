@@ -67,7 +67,10 @@ bool App::initApp(){
 	return true;
 }
 
-void App::doEvent(SDL_Event * event){
+void App::doEvent(SDL_Event* sdlevent){
+	if(sdlevent->type==SDL_QUIT){
+		isRunning = false;
+	}
 }
 
 void App::doLoop(){
@@ -77,4 +80,7 @@ void App::doRender(){
 }
 
 void App::doCleanup(){
+	SDL_FreeSurface(screen);
+	SDL_DestroyWindow(window);
+	SDL_Quit();
 }
