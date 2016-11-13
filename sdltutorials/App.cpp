@@ -22,9 +22,20 @@ int App::executeApp(){
 		return -1;
 	}
 
+	//Special element
+	SDL_Surface* sYoshi = Surface::doLoad("./data/images/yoshi.bmp");
+	Animation animYoshi;
+	animYoshi.setNbFrames(8);
+	animYoshi.oscillate = false;
+
 	//Main execution loop
 	SDL_Event sdlevent;
 	while(isRunning){
+		//Yoshi elt
+		animYoshi.doAnimate();
+		Surface::doDraw(sYoshi, 0, animYoshi.getCurrentFrame()*64, 64, 64, screen, 0, 0);
+
+		//General loop
 		while(SDL_PollEvent(&sdlevent)){
 			doEvent(&sdlevent);
 		}
@@ -79,6 +90,7 @@ void App::doLoop(){
 }
 
 void App::doRender(){
+	SDL_UpdateWindowSurface(window);
 }
 
 void App::doCleanup(){

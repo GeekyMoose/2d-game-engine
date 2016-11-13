@@ -5,6 +5,8 @@
 #include <SDL.h>
 
 #include "EventManager.h"
+#include "Animation.h"
+#include "Surface.h"
 
 #define WINDOWS_TITLE "sdltutorials"
 

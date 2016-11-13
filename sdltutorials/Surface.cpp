@@ -21,7 +21,7 @@ bool Surface::doDraw(SDL_Surface * src, SDL_Surface* dest, int x, int y){
 	return true;
 }
 
-bool Surface::doDraw(SDL_Surface * src, int x, int y, SDL_Surface * dest, int x2, int y2){
+bool Surface::doDraw(SDL_Surface* src, int x, int y, int w, int h, SDL_Surface* dest, int x2, int y2){
 	if(src==NULL||dest==NULL){
 		return false;
 	}
@@ -30,6 +30,8 @@ bool Surface::doDraw(SDL_Surface * src, int x, int y, SDL_Surface * dest, int x2
 	SDL_Rect srcRect;
 	srcRect.x = x;
 	srcRect.y = y;
+	srcRect.w = w;
+	srcRect.h = h;
 	SDL_Rect destRect;
 	destRect.x = x2;
 	destRect.y = y2;
