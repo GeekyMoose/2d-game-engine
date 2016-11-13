@@ -38,6 +38,10 @@ int App::executeApp(){
 }
 
 bool App::initApp(){
+	//Switch app running status (Can be init one time, then is running)
+	if(isRunning){ return false; }
+	isRunning = true;
+
 	//Init SDL
 	if(SDL_Init(SDL_INIT_EVERYTHING)<0){
 		clog<<"[ERR] :: Unable to init App. SDL_Error: "<<SDL_GetError()<<endl;
@@ -68,9 +72,7 @@ bool App::initApp(){
 }
 
 void App::doEvent(SDL_Event* sdlevent){
-	if(sdlevent->type==SDL_QUIT){
-		isRunning = false;
-	}
+	EventManager::onEvent(sdlevent);
 }
 
 void App::doLoop(){
@@ -83,4 +85,9 @@ void App::doCleanup(){
 	SDL_FreeSurface(screen);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
+}
+
+//Event Manager implementation
+void App::onExit(){
+	isRunning = false;
 }

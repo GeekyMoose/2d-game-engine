@@ -4,9 +4,11 @@
 #include <ostream>
 #include <SDL.h>
 
+#include "EventManager.h"
+
 #define WINDOWS_TITLE "sdltutorials"
 
-class App{
+class App : public EventManager{
 private:
 	bool isRunning;
 	int screen_width;
@@ -25,4 +27,7 @@ public:
 	void doLoop();
 	void doRender();
 	void doCleanup();
+
+public:
+	void onExit();
 };
