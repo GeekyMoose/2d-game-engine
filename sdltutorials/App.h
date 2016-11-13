@@ -1,12 +1,28 @@
 #pragma once
 
-#include <SDL.h>
+#include <iostream>
 #include <ostream>
+#include <SDL.h>
 
-class CApp{
+#define WINDOWS_TITLE "sdltutorials"
+
+class App{
+private:
+	bool isRunning;
+	int screen_width;
+	int screen_height;
+	SDL_Window* window;
+	SDL_Surface* screen;
 public:
-	CApp();
-	~CApp();
+	App();
+	~App();
 
-	int runApp();
+	int executeApp();
+
+public:
+	bool initApp();
+	void doEvent(SDL_Event* event);
+	void doLoop();
+	void doRender();
+	void doCleanup();
 };

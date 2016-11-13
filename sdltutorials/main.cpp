@@ -1,7 +1,8 @@
 #include "main.h"
-#include "App.h"
 
-int main(int argc, char* argv){
-	CApp app;
-	return app.runApp();
+using namespace std;
+
+int main(int argc, char *argv[]){
+	App app;
+	return app.executeApp();
 }
