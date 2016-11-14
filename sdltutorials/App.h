@@ -7,10 +7,7 @@
 #include "EventManager.h"
 #include "Surface.h"
 #include "Entity.h"
-
-#define WINDOWS_TITLE "sdltutorials"
-#define SCREEN_WIDTH 640
-#define SCREEN_HEIGHT 480
+#include "constants.h"
 
 class App : public EventManager{
 private:
