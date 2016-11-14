@@ -39,3 +39,9 @@ bool Surface::doDraw(SDL_Surface* src, int x, int y, int w, int h, SDL_Surface* 
 	SDL_BlitSurface(src, &srcRect, dest, &destRect);
 	return true;;
 }
+
+bool Surface::transparent(SDL_Surface * dest, int r, int g, int b){
+	if(dest==NULL){ return false; }
+	int val = SDL_SetColorKey(dest, SDL_TRUE, SDL_MapRGB(dest->format, r, g, b));
+	return val==0 ? true : false; //Note: Returning val could be better
+}

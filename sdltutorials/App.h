@@ -5,10 +5,12 @@
 #include <SDL.h>
 
 #include "EventManager.h"
-#include "Animation.h"
 #include "Surface.h"
+#include "Entity.h"
 
 #define WINDOWS_TITLE "sdltutorials"
+#define SCREEN_WIDTH 640
+#define SCREEN_HEIGHT 480
 
 class App : public EventManager{
 private:
@@ -17,6 +19,8 @@ private:
 	int screen_height;
 	SDL_Window* window;
 	SDL_Surface* screen;
+
+	Entity entity1; //TMP for test
 public:
 	App();
 	~App();

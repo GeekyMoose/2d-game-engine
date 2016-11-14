@@ -5,8 +5,8 @@ using namespace std;
 App::App(){
 	clog<<"[INFO] Create application."<<endl;
 	isRunning = false;
-	screen_width = 640;
-	screen_height = 480;
+	screen_width = SCREEN_WIDTH;
+	screen_height = SCREEN_HEIGHT;
 }
 
 App::~App(){
@@ -22,19 +22,9 @@ int App::executeApp(){
 		return -1;
 	}
 
-	//Special element
-	SDL_Surface* sYoshi = Surface::doLoad("./data/images/yoshi.bmp");
-	Animation animYoshi;
-	animYoshi.setNbFrames(8);
-	animYoshi.oscillate = false;
-
 	//Main execution loop
 	SDL_Event sdlevent;
 	while(isRunning){
-		//Yoshi elt
-		animYoshi.doAnimate();
-		Surface::doDraw(sYoshi, 0, animYoshi.getCurrentFrame()*64, 64, 64, screen, 0, 0);
-
 		//General loop
 		while(SDL_PollEvent(&sdlevent)){
 			doEvent(&sdlevent);
@@ -79,6 +69,12 @@ bool App::initApp(){
 	screen = SDL_GetWindowSurface(window);
 	SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0xFF, 0xFF, 0xFF));
 	SDL_UpdateWindowSurface(window);
+
+	//Special element
+	if(entity1.loadEntity("./data/images/yoshi.bmp", 64, 64, 8)==false){
+		return false;
+	}
+	Entity::listEntities.push_back(&entity1);
 	return true;
 }
 
@@ -87,13 +83,31 @@ void App::doEvent(SDL_Event* sdlevent){
 }
 
 void App::doLoop(){
+	//Loop on each Entity
+	for(int i = 0; i<Entity::listEntities.size(); i++){
+		if(!Entity::listEntities[i]) { continue; }
+		Entity::listEntities[i]->doLoop();
+	}
 }
 
 void App::doRender(){
+	//Render each Entity
+	for(int i = 0; i<Entity::listEntities.size(); i++){
+		if(!Entity::listEntities[i]) { continue; }
+		Entity::listEntities[i]->doRender(screen);
+	}
+	//General refresh
 	SDL_UpdateWindowSurface(window);
 }
 
 void App::doCleanup(){
+	//Cleanup each entity
+	for(int i = 0; i<Entity::listEntities.size(); i++){
+		if(!Entity::listEntities[i]) { continue; }
+		Entity::listEntities[i]->doCleanup();
+	}
+	Entity::listEntities.clear();
+	//Cleanup app
 	SDL_FreeSurface(screen);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
