@@ -14,7 +14,7 @@
 
 class Map{
 public:
-	SDL_Surface* surfaceTiles;
+	SDL_Surface* tilesSprites;
 private:
 	std::vector<Tile> listTiles;
 
