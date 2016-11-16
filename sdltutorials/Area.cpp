@@ -48,7 +48,7 @@ bool Area::loadArea(const char* file){
 }
 
 void Area::renderArea(SDL_Surface * dest, int cameraX, int cameraY){
-	//Actual map size in window
+	//Actual map size in window (In pixels)
 	int mapW = MAP_WIDTH * TILE_SIZE;
 	int mapH = MAP_HEIGHT * TILE_SIZE;
 
@@ -56,7 +56,15 @@ void Area::renderArea(SDL_Surface * dest, int cameraX, int cameraY){
 	int firstID = -cameraX/mapW;
 	firstID = firstID+((-cameraY/mapH) * areaSize);
 
-	//TODO
+	//Render the maps to display
+	//For the defined screen size (640*480), only 4 map need to be displayed
+	for(int i = 0; i<4; i++){
+		int id = firstID+((i/2) * areaSize)+(i%2);
+		if(id<0||id>listMap.size()) { continue; }
+		int x = ((id%areaSize) * mapW)+cameraX;
+		int y = ((id/areaSize) * mapH)+cameraY;
+		listMap[id].renderMap(dest, x, y);
+	}
 }
 
 void Area::cleanupArea(){
