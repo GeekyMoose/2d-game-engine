@@ -45,9 +45,9 @@ void Map::renderMap(SDL_Surface* dest, int mapX, int mapY){
 			int tx = mapX+(x*TILE_SIZE);
 			int ty = mapY+(y*TILE_SIZE);
 
-			//Recover part of sprite to draw from spritesheet
+			//Recover part of sprite to draw from sprite-sheet
 			int srcX = (listTiles[id].tileID % nbTilesW) * TILE_SIZE;
-			int srcY = (listTiles[id].tileID/nbTilesH) * TILE_SIZE;
+			int srcY = (listTiles[id].tileID/nbTilesW) * TILE_SIZE;
 
 			//Draw and go to next
 			Surface::doDraw(tilesSprites, srcX, srcY, TILE_SIZE, TILE_SIZE, dest, tx, ty);
