@@ -1,16 +1,17 @@
 #include "Map.h"
+using namespace std;
 
 Map::Map(){
 	tilesSprites = NULL;
 }
 
-Map::~Map(){
-}
-
 bool Map::loadMap(const char * file){
 	listTiles.clear();
 	FILE* filehandler = fopen(file, "r");
-	if(filehandler==NULL){ return false; }
+	if(filehandler==NULL){
+		clog<<"[ERR] Unable to open file '"<<file<<"'..."<<endl;
+		return false;
+	}
 	
 	//Recover data from file
 	for(int y = 0; y<MAP_HEIGHT; y++){

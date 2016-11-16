@@ -4,6 +4,3 @@ Tile::Tile(){
 	tileID = 0;
 	typeID = TILE_TYPE_NONE;
 }
-
-Tile::~Tile(){
-}

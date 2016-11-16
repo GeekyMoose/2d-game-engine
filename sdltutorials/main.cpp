@@ -4,5 +4,7 @@ using namespace std;
 
 int main(int argc, char *argv[]){
 	App app;
-	return app.executeApp();
+	app.executeApp();
+	return 0;
+	//return app.executeApp();
 }

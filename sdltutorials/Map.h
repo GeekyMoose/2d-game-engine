@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL.h>
 #include <vector>
+#include <iostream>
 
 #include "Tile.h"
 #include "Surface.h"
@@ -34,7 +35,6 @@ public:
 	// Constructors
 	//--------------------------------------------------------------------------
 	Map();
-	~Map();
 
 public:
 	//--------------------------------------------------------------------------

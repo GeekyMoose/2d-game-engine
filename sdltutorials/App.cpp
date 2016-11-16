@@ -82,10 +82,13 @@ bool App::initApp(){
 	}
 	Entity::listEntities.push_back(&entity1);
 	//Load map
-	if(Area::areaControl.loadArea("./data/maps/1.area")==false){
+	if(Area::areaControl.loadArea("./data/maps/area1.area")==false){
+		clog<<"[ERR] :: Unable to load the area (./data/maps/area1.area)."<<endl;
+		cerr<<"Unable to init App..."<<endl;
 		return false;
 	}
 	//TODO End temporary loading elements ----------
+
 	return true;
 }
 

@@ -1,4 +1,5 @@
 #include "Area.h"
+using namespace std;
 
 Area Area::areaControl;
 
@@ -14,13 +15,17 @@ bool Area::loadArea(const char* file){
 
 	//Open file and check error
 	FILE* filehandler = fopen(file, "r");
-	if(filehandler==NULL){ return false; }
+	if(filehandler==NULL){
+		clog<<"[ERR] Unable to open file '"<<file<<"'"<<endl;
+		return false;
+	}
 
 	//Recover the tileset (spritesheet)
 	char tilesetFile[255];
 	fscanf(filehandler, "%s\n", tilesetFile);
 	tilesSprites = Surface::doLoad(tilesetFile);
 	if(tilesSprites==NULL){
+		clog<<"[ERR] Unable to load the spritesheet '"<<tilesetFile<<"'"<<endl;
 		fclose(filehandler);
 		return false; 
 	}
@@ -35,6 +40,7 @@ bool Area::loadArea(const char* file){
 			fscanf(filehandler, "%s ", mapFile);
 			Map tmpMap;
 			if(tmpMap.loadMap(mapFile)==false){
+				clog<<"[ERR] Unable to load map '"<<mapFile<<"'"<<endl;
 				fclose(filehandler);
 				return false;
 			}
