@@ -19,15 +19,14 @@ public:
 public:
 	std::vector<Map> listMap; //List map in this area
 private:
-	int areaSize; //Asume always square, so size 3 means 3x3 maps
-	SDL_Surface* tilesSprites; //Spritesheet with all tiles images (sprites)
+	int areaSize; //Assume always square, so size 3 means 3x3 maps
+	SDL_Surface* tilesSprites; //Sprite-sheet with all tiles images (sprites)
 
 public:
 	//--------------------------------------------------------------------------
-	// Constructors - Desctructors
+	// Constructors
 	//--------------------------------------------------------------------------
 	Area();
-	~Area();
 
 	//--------------------------------------------------------------------------
 	// Body functions
@@ -45,7 +44,9 @@ public:
 	/**
 	 * \brief Render the Area on the destination
 	 * 
-	 * \todo DOCUMENTATION TO DO
+	 * \param dest Surface where to draw area
+	 * \param cameraX coordinate X of the camera on the area (In pixels)
+	 * \param cameraY coordinate Y of the camera on the area (In pixels)
 	 */
 	void renderArea(SDL_Surface* dest, int cameraX, int cameraY);
 

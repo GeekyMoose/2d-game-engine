@@ -7,9 +7,6 @@ Area::Area(){
 	areaSize = 0;
 }
 
-Area::~Area(){
-}
-
 bool Area::loadArea(const char* file){
 	listMap.clear();
 
@@ -20,12 +17,12 @@ bool Area::loadArea(const char* file){
 		return false;
 	}
 
-	//Recover the tileset (spritesheet)
-	char tilesetFile[255];
-	fscanf(filehandler, "%s\n", tilesetFile);
-	tilesSprites = Surface::doLoad(tilesetFile);
+	//Recover the tilesSpriteFile (sprite-sheet)
+	char tilesSpriteFile[255];
+	fscanf(filehandler, "%s\n", tilesSpriteFile);
+	tilesSprites = Surface::doLoad(tilesSpriteFile);
 	if(tilesSprites==NULL){
-		clog<<"[ERR] Unable to load the spritesheet '"<<tilesetFile<<"'"<<endl;
+		clog<<"[ERR] Unable to load the sprite-sheet '"<<tilesSpriteFile<<"'"<<endl;
 		fclose(filehandler);
 		return false; 
 	}
@@ -66,7 +63,7 @@ void Area::renderArea(SDL_Surface * dest, int cameraX, int cameraY){
 	//For the defined screen size (640*480), only 4 map need to be displayed
 	for(int i = 0; i<4; i++){
 		int id = firstID+((i/2) * areaSize)+(i%2);
-		if(id<0||id>listMap.size()) { continue; }
+		if(id<0||id>=listMap.size()) { continue; }
 		int x = ((id%areaSize) * mapW)+cameraX;
 		int y = ((id/areaSize) * mapH)+cameraY;
 		listMap[id].renderMap(dest, x, y);

@@ -26,7 +26,7 @@ class Map{
 	// Constants - Attributes
 	//--------------------------------------------------------------------------
 public:
-	SDL_Surface* tilesSprites; //Pointerto the tiles spritesheet for this map
+	SDL_Surface* tilesSprites; //Pointer to the tiles sprite-sheet for this map
 private:
 	std::vector<Tile> listTiles; //All tiles loaded in this map
 
