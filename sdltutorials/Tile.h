@@ -17,7 +17,7 @@ enum {
  */
 class Tile{
 public:
-	int tileID; //Id of the tile (For link with spritesheet position)
+	int tileID; //ID of the Frame in sprite-sheet
 	int typeID; //Type of tile, linked with enum
 
 public:
