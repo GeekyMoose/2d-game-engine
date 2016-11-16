@@ -1,18 +1,23 @@
 #include "App.h"
-
 using namespace std;
 
+
+//------------------------------------------------------------------------------
+// Constructors - Destructors
+//------------------------------------------------------------------------------
 App::App(){
 	clog<<"[INFO] Create application."<<endl;
 	isRunning = false;
-	screen_width = SCREEN_WIDTH;
-	screen_height = SCREEN_HEIGHT;
 }
 
 App::~App(){
 	clog<<"[INFO] Destroye application."<<endl;
 }
 
+
+//------------------------------------------------------------------------------
+// Body function (Initialization - Stop)
+//------------------------------------------------------------------------------
 int App::executeApp(){
 	clog<<"[INFO] Start running application..."<<endl;
 
@@ -55,8 +60,8 @@ bool App::initApp(){
 		WINDOWS_TITLE,
 		SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED,
-		screen_width,
-		screen_height,
+		SCREEN_WIDTH,
+		SCREEN_HEIGHT,
 		SDL_WINDOW_SHOWN
 	);
 	if(window==NULL){
@@ -70,6 +75,7 @@ bool App::initApp(){
 	SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0xFF, 0xFF, 0xFF));
 	SDL_UpdateWindowSurface(window);
 
+	//TODO Temporary
 	//Special element
 	if(entity1.loadEntity("./data/images/yoshi.bmp", 64, 64, 8)==false){
 		return false;
@@ -78,6 +84,23 @@ bool App::initApp(){
 	return true;
 }
 
+void App::doCleanup(){
+	//Cleanup each entity
+	for(int i = 0; i<Entity::listEntities.size(); i++){
+		if(!Entity::listEntities[i]) { continue; }
+		Entity::listEntities[i]->doCleanup();
+	}
+	Entity::listEntities.clear();
+	//Cleanup app
+	SDL_FreeSurface(screen);
+	SDL_DestroyWindow(window);
+	SDL_Quit();
+}
+
+
+//------------------------------------------------------------------------------
+// Body function (Execution)
+//------------------------------------------------------------------------------
 void App::doEvent(SDL_Event* sdlevent){
 	EventManager::onEvent(sdlevent);
 }
@@ -100,20 +123,10 @@ void App::doRender(){
 	SDL_UpdateWindowSurface(window);
 }
 
-void App::doCleanup(){
-	//Cleanup each entity
-	for(int i = 0; i<Entity::listEntities.size(); i++){
-		if(!Entity::listEntities[i]) { continue; }
-		Entity::listEntities[i]->doCleanup();
-	}
-	Entity::listEntities.clear();
-	//Cleanup app
-	SDL_FreeSurface(screen);
-	SDL_DestroyWindow(window);
-	SDL_Quit();
-}
 
-//Event Manager implementation
+//------------------------------------------------------------------------------
+// Override function (EventManager)
+//------------------------------------------------------------------------------
 void App::onExit(){
 	isRunning = false;
 }

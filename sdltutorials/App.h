@@ -8,29 +8,75 @@
 #include "Surface.h"
 #include "Entity.h"
 #include "constants.h"
+#include "Area.h"
+#include "Camera.h"
 
+
+/**
+ *
+ * \date Nov 14, 2016
+ *
+ * \brief Define an SDL application
+ * 
+ */
 class App : public EventManager{
 private:
+	//--------------------------------------------------------------------------
+	// Constants - Attributes
+	//--------------------------------------------------------------------------
 	bool isRunning;
-	int screen_width;
-	int screen_height;
-	SDL_Window* window;
-	SDL_Surface* screen;
+	SDL_Window* window; //SDL main windows
+	SDL_Surface* screen; //Surface from the windows
 
-	Entity entity1; //TMP for test
+	Entity entity1; //TODO TMP for test
+
 public:
+	//--------------------------------------------------------------------------
+	// Constructors - Destructors
+	//--------------------------------------------------------------------------
 	App();
 	~App();
 
+public:
+	//--------------------------------------------------------------------------
+	// Body function (Initialization - Stop)
+	//--------------------------------------------------------------------------
+
+	/**
+	 * \brief			Start running the application
+	 * \details			Must be not running. 
+	 *					This function will block till SDL exit.
+	 *					Call init, then loop till end, then call cleanup
+	 * 
+	 * \return			-1 if error, otherwise, return 0
+	 */
 	int executeApp();
 
-public:
+private:
+	/**
+	 * \brief			Initialize SDL and all elements for the application
+	 * \details			Do nothing if already running and return false.
+	 *					Load SDL module, return false if unable
+	 *
+	 * \return			True if successfully init, otherwise, return false
+	 */
 	bool initApp();
+
+	/**
+	 * \brief			Clean up all loaded memory and quit SDL
+	 */
+	void doCleanup();
+
+	//--------------------------------------------------------------------------
+	// Body function (Execution)
+	//--------------------------------------------------------------------------
 	void doEvent(SDL_Event* sdlevent);
 	void doLoop();
 	void doRender();
-	void doCleanup();
 
 public:
+	//--------------------------------------------------------------------------
+	// Override function (EventManager)
+	//--------------------------------------------------------------------------
 	void onExit();
 };
