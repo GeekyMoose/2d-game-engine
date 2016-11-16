@@ -5,7 +5,6 @@
 class Surface{
 public:
 	Surface();
-	~Surface();
 
 public:
 	static SDL_Surface* doLoad(const char* file);

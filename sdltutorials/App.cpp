@@ -3,7 +3,7 @@ using namespace std;
 
 
 //------------------------------------------------------------------------------
-// Constructors - Destructors
+// Constructors - Destructor
 //------------------------------------------------------------------------------
 App::App(){
 	clog<<"[INFO] Create application."<<endl;
@@ -11,7 +11,7 @@ App::App(){
 }
 
 App::~App(){
-	clog<<"[INFO] Destroye application."<<endl;
+	clog<<"[INFO] Destroys application."<<endl;
 }
 
 
@@ -19,18 +19,20 @@ App::~App(){
 // Body function (Initialization - Stop)
 //------------------------------------------------------------------------------
 int App::executeApp(){
+	//App should be already running
+	if(isRunning){ return false; }
 	clog<<"[INFO] Start running application..."<<endl;
 
 	//Initialize application
 	if(initApp()==false){
-		clog<<"[ERR] Unbale to run application (Init failed)..."<<endl;
+		clog<<"[ERR] Unable to run application (Init failed)..."<<endl;
 		return -1;
 	}
+	isRunning = true; //Here, actually start running
 
 	//Main execution loop
 	SDL_Event sdlevent;
 	while(isRunning){
-		//General loop
 		while(SDL_PollEvent(&sdlevent)){
 			doEvent(&sdlevent);
 		}
@@ -44,14 +46,9 @@ int App::executeApp(){
 }
 
 bool App::initApp(){
-	//Switch app running status (Can be init one time, then is running)
-	if(isRunning){ return false; }
-	isRunning = true;
-
 	//Init SDL
 	if(SDL_Init(SDL_INIT_EVERYTHING)<0){
-		clog<<"[ERR] :: Unable to init App. SDL_Error: "<<SDL_GetError()<<endl;
-		cerr<<"Unable to init App..."<<endl;
+		clog<<"[ERR] Unable to init App. SDL_Error: "<<SDL_GetError()<<endl;
 		return false;
 	}
 
@@ -66,7 +63,6 @@ bool App::initApp(){
 	);
 	if(window==NULL){
 		clog<<"[ERR] :: Unable to start window. SDL_Error: "<<SDL_GetError()<<endl;
-		cerr<<"Unable to init App..."<<endl;
 		return false;
 	}
 
@@ -75,20 +71,17 @@ bool App::initApp(){
 	SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0xFF, 0xFF, 0xFF));
 	SDL_UpdateWindowSurface(window);
 
-	//TODO Temporary loading element ----------
-	//Special element
+	//LOAD CONTENT
+	//Load entities
 	if(entity1.loadEntity("./data/images/yoshi.bmp", 64, 64, 8)==false){
 		return false;
 	}
 	Entity::listEntities.push_back(&entity1);
-	//Load map
+	//Load area
 	if(Area::areaControl.loadArea("./data/maps/area1.area")==false){
 		clog<<"[ERR] :: Unable to load the area (./data/maps/area1.area)."<<endl;
-		cerr<<"Unable to init App..."<<endl;
 		return false;
 	}
-	//TODO End temporary loading elements ----------
-
 	return true;
 }
 
@@ -99,9 +92,9 @@ void App::doCleanup(){
 		Entity::listEntities[i]->doCleanup();
 	}
 	Entity::listEntities.clear();
-	//Cleanup map
+	//Cleanup area
 	Area::areaControl.cleanupArea();
-	//Cleanup app
+	//Cleanup App
 	SDL_FreeSurface(screen);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
@@ -124,6 +117,8 @@ void App::doLoop(){
 }
 
 void App::doRender(){
+	//Refresh background to white
+	SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0xFF, 0xFF, 0xFF));
 	//Render Map
 	Area::areaControl.renderArea(screen, Camera::cameraControl.getX(), Camera::cameraControl.getY());
 	//Render each Entity
@@ -146,10 +141,10 @@ void App::onExit(){
 void App::onKeyDown(SDL_Keysym keysym){
 	switch(keysym.sym){
 		//Arrow keys
-		case SDL_SCANCODE_UP: Camera::cameraControl.moveCamera(0, 5); break;
-		case SDL_SCANCODE_DOWN: Camera::cameraControl.moveCamera(0, -5); break;
-		case SDL_SCANCODE_LEFT: Camera::cameraControl.moveCamera(5, 0); break;
-		case SDL_SCANCODE_RIGHT: Camera::cameraControl.moveCamera(-5, 0); break;
+		case SDLK_UP: Camera::cameraControl.moveCamera(0, 5); break;
+		case SDLK_DOWN: Camera::cameraControl.moveCamera(0, -5); break;
+		case SDLK_LEFT: Camera::cameraControl.moveCamera(5, 0); break;
+		case SDLK_RIGHT: Camera::cameraControl.moveCamera(-5, 0); break;
 		default: break;
 	}
 }
