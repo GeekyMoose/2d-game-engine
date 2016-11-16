@@ -75,12 +75,17 @@ bool App::initApp(){
 	SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0xFF, 0xFF, 0xFF));
 	SDL_UpdateWindowSurface(window);
 
-	//TODO Temporary
+	//TODO Temporary loading element ----------
 	//Special element
 	if(entity1.loadEntity("./data/images/yoshi.bmp", 64, 64, 8)==false){
 		return false;
 	}
 	Entity::listEntities.push_back(&entity1);
+	//Load map
+	if(Area::areaControl.loadArea("./data/maps/1.area")==false){
+		return false;
+	}
+	//TODO End temporary loading elements ----------
 	return true;
 }
 
@@ -91,6 +96,8 @@ void App::doCleanup(){
 		Entity::listEntities[i]->doCleanup();
 	}
 	Entity::listEntities.clear();
+	//Cleanup map
+	Area::areaControl.cleanupArea();
 	//Cleanup app
 	SDL_FreeSurface(screen);
 	SDL_DestroyWindow(window);
@@ -114,6 +121,8 @@ void App::doLoop(){
 }
 
 void App::doRender(){
+	//Render Map
+	Area::areaControl.renderArea(screen, Camera::cameraControl.getX(), Camera::cameraControl.getY());
 	//Render each Entity
 	for(int i = 0; i<Entity::listEntities.size(); i++){
 		if(!Entity::listEntities[i]) { continue; }
@@ -129,4 +138,15 @@ void App::doRender(){
 //------------------------------------------------------------------------------
 void App::onExit(){
 	isRunning = false;
+}
+
+void App::onKeyDown(SDL_Keysym keysym){
+	switch(keysym.sym){
+		//Arrow keys
+		case SDL_SCANCODE_UP: Camera::cameraControl.moveCamera(0, 5); break;
+		case SDL_SCANCODE_DOWN: Camera::cameraControl.moveCamera(0, -5); break;
+		case SDL_SCANCODE_LEFT: Camera::cameraControl.moveCamera(5, 0); break;
+		case SDL_SCANCODE_RIGHT: Camera::cameraControl.moveCamera(-5, 0); break;
+		default: break;
+	}
 }

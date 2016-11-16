@@ -6,8 +6,11 @@ EventManager::EventManager(){
 EventManager::~EventManager(){
 }
 
-void EventManager::onEvent(SDL_Event * sdlevent){
+void EventManager::onEvent(SDL_Event* sdlevent){
 	switch(sdlevent->type){
+		case SDL_KEYDOWN:
+			onKeyDown(sdlevent->key.keysym);
+			break;
 		case SDL_QUIT:
 			onExit();
 			break;
@@ -15,5 +18,3 @@ void EventManager::onEvent(SDL_Event * sdlevent){
 			break;
 	}
 }
-
-void EventManager::onExit(){}
