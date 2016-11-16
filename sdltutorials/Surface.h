@@ -2,6 +2,11 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
+
+/**
+ * \brief		Asset function to draw SDL surface on another surface
+ * \details		Set of static functions
+ */
 class Surface{
 public:
 	Surface();

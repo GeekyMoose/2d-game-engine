@@ -10,9 +10,6 @@ Entity::Entity(){
 	height = 0;
 }
 
-Entity::~Entity(){
-}
-
 bool Entity::loadEntity(const char* file, int w, int h, int nbFrames){
 	surfaceEntity = Surface::doLoad(file);
 	if(surfaceEntity==NULL){ return false; }

@@ -2,11 +2,10 @@
 #include <SDL.h>
 
 /**
+ * \brief	Class for SDL events management
  *
- * \date Nov 14, 2016
- *
- * \brief Class for SDL events management
- *
+ * \date	Nov 14, 2016
+ * \note	Based on SDL Tutorial (http://www.sdltutorials.com/sdl-events)
  */
 class EventManager{
 public:

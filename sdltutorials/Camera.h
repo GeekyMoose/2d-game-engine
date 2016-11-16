@@ -3,10 +3,12 @@
 
 #include "constants.h"
 
+
 enum{
 	TARGET_MODE_NORMAL = 0, //Position to the top left of the target
 	TARGET_MODE_CENTER //Center camera to the target
 };
+
 
 class Camera{
 	//--------------------------------------------------------------------------

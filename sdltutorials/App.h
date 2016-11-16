@@ -13,11 +13,10 @@
 
 
 /**
+ * \brief	Define an SDL application
  *
- * \date Nov 14, 2016
- *
- * \brief Define an SDL application
- * 
+ * \date	Nov 14, 2016
+ * \note	Based on SDL Tutorial (http://www.sdltutorials.com/sdl-tutorial-basics)
  */
 class App : public EventManager{
 private:

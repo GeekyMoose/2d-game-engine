@@ -118,7 +118,7 @@ void App::doLoop(){
 
 void App::doRender(){
 	//Refresh background to white
-	SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0xFF, 0xFF, 0xFF));
+	SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
 	//Render Map
 	Area::areaControl.renderArea(screen, Camera::cameraControl.getX(), Camera::cameraControl.getY());
 	//Render each Entity

@@ -2,13 +2,13 @@
 #include <iostream>
 #include "Map.h"
 
+
 /**
+ * \brief		Describe an Area
+ * \details		Area is composed by a set of Maps
  *
- * \date Nov 14, 2016
- *
- * \brief Describe an Area
- * \details Area is composed by a set of Maps
- *
+ * \date		Nov 14, 2016
+ * \note		Based on SDL Tutorial (http://www.sdltutorials.com/sdl-maps)
  */
 class Area{
 public:
@@ -33,25 +33,25 @@ public:
 	//--------------------------------------------------------------------------
 
 	/**
-	 * \brief Load an Area from file save
-	 * \warning unsafe result if invalid file format or data
+	 * \brief			Load an Area from file save
+	 * \warning			Unsafe result if invalid file format or data
 	 *
-	 * \param file File to load (Path + name + extension)
-	 * \return True if successfully loaded, otherwise, return false
+	 * \param file		File to load (Path + name + extension)
+	 * \return			True if successfully loaded, otherwise, return false
 	 */
 	bool loadArea(const char* file);
 
 	/**
-	 * \brief Render the Area on the destination
+	 * \brief			Render the Area on the destination
 	 * 
-	 * \param dest Surface where to draw area
-	 * \param cameraX coordinate X of the camera on the area (In pixels)
-	 * \param cameraY coordinate Y of the camera on the area (In pixels)
+	 * \param dest		Surface where to draw area
+	 * \param cameraX	coordinate X of the camera on the area (In pixels)
+	 * \param cameraY	coordinate Y of the camera on the area (In pixels)
 	 */
 	void renderArea(SDL_Surface* dest, int cameraX, int cameraY);
 
 	/***
-	 * \brief Cleanup this Area. Free allocated memory and reset values
+	 * \brief			Cleanup this Area. Free allocated memory and reset values
 	 *
 	 */
 	void cleanupArea();

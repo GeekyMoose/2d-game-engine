@@ -1,6 +1,5 @@
 #include "EventManager.h"
 
-
 void EventManager::onEvent(SDL_Event* sdlevent){
 	switch(sdlevent->type){
 		case SDL_KEYDOWN:

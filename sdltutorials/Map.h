@@ -14,12 +14,11 @@
 
 
 /**
+ * \brief		Describe a Map element
+ * \details		Map is composed by a set of Tiles
  *
- * \date Nov 14, 2016
- *
- * \brief Describe a Map element
- * \details Map is composed by a set of Tiles
- *
+ * \date		Nov 14, 2016
+ * \note		Based on SDL Tutorial (http://www.sdltutorials.com/sdl-maps)
  */
 class Map{
 	//--------------------------------------------------------------------------
@@ -42,20 +41,20 @@ public:
 	//--------------------------------------------------------------------------
 
 	/**
-	 * \brief Load a Map using file save
-	 * \warning unsafe result if invalid file format or data
+	 * \brief			Load a Map using file save
+	 * \warning			Unsafe result if invalid file format or data
 	 * 
-	 * \param File to load (Path + name + extension)
-	 * \return True if loaded successfully, otherwise, return false
+	 * \param file		File to load (Path + name + extension)
+	 * \return			True if loaded successfully, otherwise, return false
 	 */
 	bool loadMap(const char* file);
 
 	/**
-	 * \brief Render map on a surface
+	 * \brief			Render map on a surface
 	 * 
-	 * \param dest SDL_Surface destination where to render map
-	 * \param mapX X coordinate where to draw map on the dest
-	 * \param mapY Y coordinate where to draw map on the dest
+	 * \param dest		SDL_Surface destination where to render map
+	 * \param mapX		X coordinate where to draw map on the dest
+	 * \param mapY		Y coordinate where to draw map on the dest
 	 */
 	void renderMap(SDL_Surface* dest, int mapX, int mapY);
 };

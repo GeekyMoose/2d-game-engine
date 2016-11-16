@@ -8,12 +8,11 @@ enum {
 
 
 /**
+ * \brief		Describe a Tile element.
+ * \details		A tile the smallest component of a Map
  *
- * \date Nov 14, 2016
- *
- * \brief Describe a Tile element.
- * \details A tile the smallest component of a Map
- *
+ * \date		Nov 14, 2016
+ * \note		Based on SDL Tutorial (http://www.sdltutorials.com/sdl-maps)
  */
 class Tile{
 public:
