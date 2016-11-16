@@ -3,11 +3,9 @@
 Surface::Surface(){
 }
 
-Surface::~Surface(){
-}
-
 SDL_Surface* Surface::doLoad(const char* file){
-	return SDL_LoadBMP(file);
+	//return SDL_LoadBMP(file); //Old version
+	return IMG_Load(file);
 }
 
 bool Surface::doDraw(SDL_Surface * src, SDL_Surface* dest, int x, int y){
