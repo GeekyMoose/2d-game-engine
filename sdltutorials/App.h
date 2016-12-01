@@ -42,27 +42,28 @@ public:
 	//--------------------------------------------------------------------------
 
 	/**
-	 * \brief			Start running the application
-	 * \details			Must be not running. 
+	 * \brief			Start running the application.
+	 * \details			Must be not running already.
 	 *					This function will block till SDL exit.
-	 *					Call init, then loop till end, then call cleanup
+	 *					Call init, then loop till end, then call cleanup.
 	 * 
-	 * \return			-1 if error, otherwise, return 0
+	 * \return			-1 if error, otherwise, return 0.
 	 */
 	int executeApp();
 
 private:
 	/**
-	 * \brief			Initialize SDL and all elements for the application
+	 * \brief			Initialize SDL and all elements for the application.
 	 * \details			Do nothing if already running and return false.
-	 *					Load SDL module, return false if unable
+	 *					Load SDL module, return false if unable.
 	 *
-	 * \return			True if successfully init, otherwise, return false
+	 * \return			True if successfully init, otherwise, return false.
 	 */
 	bool initApp();
 
 	/**
-	 * \brief			Clean up all loaded memory and quit SDL
+	 * \brief			Clean up all loaded memory and quit SDL.
+	 *
 	 */
 	void doCleanup();
 

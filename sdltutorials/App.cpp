@@ -34,10 +34,10 @@ int App::executeApp(){
 	SDL_Event sdlevent;
 	while(isRunning){
 		while(SDL_PollEvent(&sdlevent)){
-			doEvent(&sdlevent);
+			doEvent(&sdlevent); //process event
 		}
-		doLoop();
-		doRender();
+		doLoop(); //Do all modification (Movement, animation etc)
+		doRender(); //Update display
 	}
 
 	//Stop application

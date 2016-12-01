@@ -27,14 +27,14 @@ bool Map::loadMap(const char * file){
 }
 
 void Map::renderMap(SDL_Surface* dest, int mapX, int mapY){
-	if(dest==NULL ||tilesSprites==NULL) { return; }
+	if(dest==NULL || tilesSprites==NULL) { return; }
 	
 	//Get nb of tiles in a row and in a column
 	int nbTilesW = tilesSprites->w/TILE_SIZE;
-	int nbTilesH = tilesSprites->h/TILE_SIZE;
-	int id = 0;
+	int nbTilesH = tilesSprites->h/TILE_SIZE; //Actually not used
 
 	//Draw each tile from the map
+	int id = 0;
 	for(int y = 0; y<MAP_HEIGHT; y++){
 		for(int x = 0; x<MAP_WIDTH; x++){
 			if(listTiles[id].typeID==TILE_TYPE_NONE){
@@ -47,7 +47,7 @@ void Map::renderMap(SDL_Surface* dest, int mapX, int mapY){
 
 			//Recover part of sprite to draw from sprite-sheet
 			int srcX = (listTiles[id].tileID % nbTilesW) * TILE_SIZE;
-			int srcY = (listTiles[id].tileID/nbTilesW) * TILE_SIZE;
+			int srcY = (listTiles[id].tileID / nbTilesW) * TILE_SIZE;
 
 			//Draw and go to next
 			Surface::doDraw(tilesSprites, srcX, srcY, TILE_SIZE, TILE_SIZE, dest, tx, ty);

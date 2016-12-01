@@ -33,25 +33,30 @@ public:
 	//--------------------------------------------------------------------------
 
 	/**
-	 * \brief			Load an Area from file save
-	 * \warning			Unsafe result if invalid file format or data
+	 * \brief			Load an Area from file save.
+	 * \warning			Unsafe result if invalid file format or data.
 	 *
-	 * \param file		File to load (Path + name + extension)
-	 * \return			True if successfully loaded, otherwise, return false
+	 * \param file		File to load (Path + name + extension).
+	 * \return			True if successfully loaded, otherwise, return false.
 	 */
 	bool loadArea(const char* file);
 
 	/**
-	 * \brief			Render the Area on the destination
+	 * \brief			Render the Area on the destination.
+	 * \warning			Camera coordinate different coordinates. Therefore they
+	 *					are often negative here. In camera coordinates:
+	 *					X axis direction is to the left.
+	 *					Y axis direction is up.
+	 *					However, display use 0.0 for the upper left corner.
 	 * 
-	 * \param dest		Surface where to draw area
-	 * \param cameraX	coordinate X of the camera on the area (In pixels)
-	 * \param cameraY	coordinate Y of the camera on the area (In pixels)
+	 * \param dest		Surface where to draw area.
+	 * \param cameraX	coordinate X of the camera on the area (In pixels).
+	 * \param cameraY	coordinate Y of the camera on the area (In pixels).
 	 */
 	void renderArea(SDL_Surface* dest, int cameraX, int cameraY);
 
 	/***
-	 * \brief			Cleanup this Area. Free allocated memory and reset values
+	 * \brief			Cleanup this Area. Free allocated memory and reset values.
 	 *
 	 */
 	void cleanupArea();

@@ -3,14 +3,11 @@
 Camera Camera::cameraControl;
 
 Camera::Camera(){
-	x = 0;
-	y = 0;
-	targetX = NULL;
-	targetY = NULL;
-	targetMode = TARGET_MODE_NORMAL;
-}
-
-Camera::~Camera(){
+	x			= 0;
+	y			= 0;
+	targetX		= NULL;
+	targetY		= NULL;
+	targetMode	= TARGET_MODE_NORMAL;
 }
 
 void Camera::moveCamera(int moveX, int moveY){

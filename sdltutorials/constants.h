@@ -1,4 +1,5 @@
 #pragma once
+//The general Application constants
 
 #define WINDOWS_TITLE "sdltutorials"
 
@@ -11,4 +12,4 @@
 
 //Screen size (In pixels)
 #define SCREEN_WIDTH 640
-#define SCREEN_HEIGHT 480
+#define SCREEN_HEIGHT 640

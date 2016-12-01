@@ -26,6 +26,7 @@ void Entity::doLoop(){
 
 void Entity::doRender(SDL_Surface * dest){
 	if(dest==NULL || surfaceEntity == NULL){ return;}
+	//Work only with sprite sheet with one column
 	Surface::doDraw(surfaceEntity, 0, animEntity.getCurrentFrame()*height, width, height, dest, 0, 0);
 }
 

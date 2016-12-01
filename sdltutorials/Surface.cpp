@@ -1,17 +1,12 @@
 #include "Surface.h"
 
-Surface::Surface(){
-}
-
 SDL_Surface* Surface::doLoad(const char* file){
 	//return SDL_LoadBMP(file); //Old version
 	return IMG_Load(file);
 }
 
 bool Surface::doDraw(SDL_Surface * src, SDL_Surface* dest, int x, int y){
-	if(dest==NULL||src==NULL){
-		return false;
-	}
+	if(dest==NULL||src==NULL){ return false; }
 	SDL_Rect rectDest;
 	rectDest.x = x;
 	rectDest.y = y;
@@ -20,9 +15,7 @@ bool Surface::doDraw(SDL_Surface * src, SDL_Surface* dest, int x, int y){
 }
 
 bool Surface::doDraw(SDL_Surface* src, int x, int y, int w, int h, SDL_Surface* dest, int x2, int y2){
-	if(src==NULL||dest==NULL){
-		return false;
-	}
+	if(src==NULL||dest==NULL){ return false; }
 
 	//Create the rect with position coordinates (Src and Dest)
 	SDL_Rect srcRect;

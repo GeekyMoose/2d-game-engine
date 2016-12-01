@@ -51,9 +51,15 @@ bool Area::loadArea(const char* file){
 }
 
 void Area::renderArea(SDL_Surface * dest, int cameraX, int cameraY){
-	//Actual map size in window (In pixels)
+	if(dest==NULL){ return; }
+
+	//Actual map size in window (In pixels) (Update: Can be calculated before)
 	int mapW = MAP_WIDTH * TILE_SIZE;
 	int mapH = MAP_HEIGHT * TILE_SIZE;
+
+	//Convert camera position to upper left corner position
+	cameraX += SCREEN_WIDTH/2;
+	cameraY += SCREEN_HEIGHT/2;
 
 	//Get the ID of the first map to display (Don't draw map outside the camera)
 	int firstID = -cameraX/mapW;

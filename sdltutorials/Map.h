@@ -27,7 +27,7 @@ class Map{
 public:
 	SDL_Surface* tilesSprites; //Pointer to the tiles sprite-sheet for this map
 private:
-	std::vector<Tile> listTiles; //All tiles loaded in this map
+	std::vector<Tile> listTiles; //All loaded tiles for this map
 
 public:
 	//--------------------------------------------------------------------------
@@ -41,20 +41,21 @@ public:
 	//--------------------------------------------------------------------------
 
 	/**
-	 * \brief			Load a Map using file save
-	 * \warning			Unsafe result if invalid file format or data
+	 * \brief			Load a Map using file save.
+	 * \warning			Unsafe result if invalid file format or data.
 	 * 
-	 * \param file		File to load (Path + name + extension)
-	 * \return			True if loaded successfully, otherwise, return false
+	 * \param file		File to load (Path + name + extension).
+	 * \return			True if loaded successfully, otherwise, return false.
 	 */
 	bool loadMap(const char* file);
 
 	/**
-	 * \brief			Render map on a surface
+	 * \brief			Render map on a surface.
+	 * \warning			Map must have been loaded successfully otherwise, do nothing.
 	 * 
-	 * \param dest		SDL_Surface destination where to render map
-	 * \param mapX		X coordinate where to draw map on the dest
-	 * \param mapY		Y coordinate where to draw map on the dest
+	 * \param dest		SDL_Surface destination where to render map.
+	 * \param mapX		X coordinate where to draw map on the dest.
+	 * \param mapY		Y coordinate where to draw map on the dest.
 	 */
 	void renderMap(SDL_Surface* dest, int mapX, int mapY);
 };

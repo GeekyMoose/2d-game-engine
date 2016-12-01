@@ -9,9 +9,6 @@ Animation::Animation(){
 	oscillate = false;
 }
 
-Animation::~Animation(){
-}
-
 void Animation::doAnimate(){
 	int currentTime = SDL_GetTicks();
 	if(currentTime - oldTime < animSpeed){
