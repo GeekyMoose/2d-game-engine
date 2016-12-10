@@ -1,13 +1,31 @@
 #include "Entity.h"
 
+//Singleton variable
 std::vector<Entity*> Entity::listEntities;
 
 Entity::Entity(){
-	surfaceEntity = NULL;
-	x = 0.0f;
-	y = 0.0f;
-	width = 0;
-	height = 0;
+	surfaceEntity	= NULL;
+	x				= 0.0f;
+	y				= 0.0f;
+	width			= 0;
+	height			= 0;
+	moveLeft		= false;
+	moveRight		= false;
+	type			= ENTITY_TYPE_GENERIC;
+	dead			= false;
+	flags			= ENTITY_FLAG_GRAVITY;
+	speedX			= 0;
+	speedY			= 0;
+	accelX			= 0;
+	accelY			= 0;
+	maxSpeedX		= 5;
+	maxSpeedY		= 5;
+	currentFrameCol	= 0;
+	currentFrameRow	= 0;
+	col_x			= 0;
+	col_y			= 0;
+	col_width		= 0;
+	col_height		= 0;
 }
 
 bool Entity::loadEntity(const char* file, int w, int h, int nbFrames){
@@ -21,16 +39,133 @@ bool Entity::loadEntity(const char* file, int w, int h, int nbFrames){
 }
 
 void Entity::doLoop(){
-	animEntity.doAnimate();
+	//Get current movement direction and set acceleration
+	if(moveLeft==false && moveRight==false){ stopMove(); }
+	if(moveLeft){ accelX = -0.5; }
+	else if(moveRight){ accelX = 0.5; }
+	if(flags & ENTITY_FLAG_GRAVITY){ accelY = 0.75f; }
+	//Change speed (Add acceleration to speed).
+	//getSpeedFactor gives the ratio to apply (See FPS class)
+	speedX += accelX*FPS::FPSControl.getSpeedFactor();
+	speedY += accelY*FPS::FPSControl.getSpeedFactor();
+	//Speed limiter
+	if(speedX>maxSpeedX){	speedX = maxSpeedX; }
+	if(speedX<-maxSpeedX){	speedX = -maxSpeedX; }
+	if(speedY>maxSpeedY){	speedY = maxSpeedY; }
+	if(speedY<-maxSpeedY){	speedY = -maxSpeedY; }
+	//Apply the movement
+	doAnimate();
+	doMove(speedX, speedY);
 }
 
 void Entity::doRender(SDL_Surface * dest){
 	if(dest==NULL || surfaceEntity == NULL){ return;}
 	//Work only with sprite sheet with one column
-	Surface::doDraw(surfaceEntity, 0, animEntity.getCurrentFrame()*height, width, height, dest, 0, 0);
+	Surface::doDraw(surfaceEntity, 
+					currentFrameCol*width, 
+					(currentFrameRow+animEntity.getCurrentFrame())*height, 
+					width, 
+					height, 
+					dest, 
+					x-Camera::cameraControl.getX(), 
+					y-Camera::cameraControl.getY());
 }
 
 void Entity::doCleanup(){
 	SDL_FreeSurface(surfaceEntity);
 	surfaceEntity = NULL;
+}
+
+void Entity::doAnimate(){
+	if(moveLeft){ currentFrameCol = 0; }
+	else if(moveRight){ currentFrameCol = 1; }
+	animEntity.doAnimate();
+}
+
+void Entity::doCollision(Entity * other){
+	//TODO
+}
+
+void Entity::doMove(float moveX, float moveY){
+	if(moveX == 0 && moveY == 0){ return; }
+	double newX = 0;
+	double newY = 0;
+
+	//Get the actual movement to do (Number of pixel for this movement)
+	moveX *= FPS::FPSControl.getSpeedFactor();
+	moveY *= FPS::FPSControl.getSpeedFactor();
+
+	//Define distance between 2 position to check
+	//SpeedFactor is always smaller than moveX (and moveY)
+	if(moveX != 0) {
+		if(moveX >= 0){ newX =  FPS::FPSControl.getSpeedFactor(); }
+		else{			newY = -FPS::FPSControl.getSpeedFactor(); }
+	}
+	if(moveY != 0) {
+		if(moveY >= 0){ newX =  FPS::FPSControl.getSpeedFactor(); }
+		else{			newY = -FPS::FPSControl.getSpeedFactor(); }
+	}
+
+	//Test each positions on the way till final position
+	//For ex, if go 4 pixel forward but wall at 2, should stop before pixel 2.
+	while(true) {
+		//If entity is a ghost, pass through walls
+		if(flags & ENTITY_FLAG_GHOST) {
+			posValid((int)(x+newX), (int)(y+newY));
+			x += newX;
+			y += newY;
+		}
+		//Then, normal movement
+		else{
+			if(posValid((int)(x+newX), (int)(y))){
+				x+=newX;
+			}
+			else{
+				speedX = 0;
+			}
+
+			if(posValid((int)(x), (int)(y+newY))) {
+				y+= newY;
+			}
+			else{
+				speedY = 0;
+			}
+		}
+
+		//Update reminding movement to do
+		moveX += -newX;
+		moveY += -newY;
+		if(newX > 0 && moveX <= 0) newX = 0;
+		if(newX < 0 && moveX >= 0) newX = 0;
+		if(newY > 0 && moveY <= 0) newY = 0;
+		if(newY < 0 && moveY >= 0) newY = 0;
+		if(moveX == 0) newX = 0;
+		if(moveY == 0) newY = 0;
+		if(moveX == 0 && moveY == 0){ break; }
+		if(newX  == 0 && newY == 0) { break; }
+	}
+}
+
+void Entity::stopMove(){
+	//TODO
+}
+
+bool Entity::collides(int oX, int oY, int oW, int oH){
+	//TODO
+	return false;
+}
+
+bool Entity::posValid(int newX, int newY){
+	//TODO
+	return false;
+}
+
+bool Entity::posValidTile(Tile * tile){
+	//TODO
+	return false;
+}
+
+bool Entity::posValidEntity(Entity * entity, int newX, int newY){
+	//TODO
+	return false;
 }

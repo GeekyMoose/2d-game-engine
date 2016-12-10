@@ -4,6 +4,31 @@
 
 #include "Animation.h"
 #include "Surface.h"
+#include "Tile.h"
+#include "EntityCollision.h"
+#include "FPS.h"
+#include "Camera.h"
+
+
+// -----------------------------------------------------------------------------
+// ENUM definitions
+// -----------------------------------------------------------------------------
+enum{
+	ENTITY_TYPE_GENERIC = 0,
+	ENTITY_TYPE_PLAYER
+};
+
+/**
+ * Enum that define the entity collision behavior
+ * In order to treat the flag as binary, the values
+ * must be binaries like 0, 10, 100, 1000
+ */
+enum{
+	ENTITY_FLAG_NONE	= 0,
+	ENTITY_FLAG_GRAVITY = 0x1,
+	ENTITY_FLAG_GHOST	= 0x2,
+	ENTITY_FLAG_MAPONLY	= 0x4
+};
 
 
 /**
@@ -15,21 +40,55 @@
  * \note		Based on SDL Tutorial (http://www.sdltutorials.com/sdl-entities).
  */
 class Entity{
+	// -------------------------------------------------------------------------
+	// Variables - Constants
+	// -------------------------------------------------------------------------
 public:
 	static std::vector<Entity*> listEntities; //List of all created entities
 protected:
-	Animation animEntity; //Animation for this entity
-	SDL_Surface* surfaceEntity; //Surface for this entity (A spritesheet)
+	Animation		animEntity; //Animation for this entity
+	SDL_Surface*	surfaceEntity; //Surface for this entity (A spritesheet)
 public:
-	float x;
-	float y;
-	int width;
-	int height;
+	float	x;
+	float	y;
+	int		width;
+	int		height;
+	bool	moveLeft;
+	bool	moveRight;
 
 public:
+	int		type; //Define type like Player or whatever (From enum)
+	bool	dead;
+	int		flags; //Define special behavior (From enum)
+
+protected:
+	float	speedX; //Current entity's speed
+	float	speedY;
+	float	accelX;
+	float	accelY;
+	float	maxSpeedX;
+	float	maxSpeedY;
+
+protected:
+	int		currentFrameCol;
+	int		currentFrameRow;
+
+protected:
+	int		col_x;
+	int		col_y;
+	int		col_width;
+	int		col_height;
+
+public:
+	// -------------------------------------------------------------------------
+	// Constructors - Initialization
+	// -------------------------------------------------------------------------
 	Entity();
 
 public:
+	// -------------------------------------------------------------------------
+	// Main Loop functions
+	// -------------------------------------------------------------------------
 
 	/**
 	 * \brief			Load entity from file.
@@ -60,5 +119,25 @@ public:
 	 * \details			Entity mustn't be used till another load.
 	 */
 	virtual void doCleanup();
-};
 
+	/**
+	 *
+	 */
+	virtual void doAnimate();
+
+	/**
+	 * \brief			Called when entity collide with another
+	 *
+	 * \param other		Entity the current one collide with
+	 */
+	virtual void doCollision(Entity* other);
+
+	void doMove(float moveX, float moveY);
+	void stopMove();
+	bool collides(int oX, int oY, int oW, int oH);
+
+private:
+	bool posValid(int newX, int newY);
+	bool posValidTile(Tile* tile);
+	bool posValidEntity(Entity* entity, int newX, int newY);
+};
