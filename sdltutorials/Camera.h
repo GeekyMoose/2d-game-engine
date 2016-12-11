@@ -17,8 +17,8 @@ class Camera{
 public:
 	static Camera cameraControl; //To access camera from anywhere
 private:
-	int x; //Camera position (in pixel)
-	int y;
+	int x; //Camera position (in pixel) Note: is actually the upperLeftCorner
+	int y; //Upper Left Corner Y
 	int* targetX; //To target an element (Null if not target)
 	int* targetY;
 public:

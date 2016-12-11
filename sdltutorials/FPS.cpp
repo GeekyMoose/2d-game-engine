@@ -18,7 +18,8 @@ void FPS::onLoop(){
 		fpsCounter	= 0;
 	}
 	//Update speedFactor and frames.
-	speedFactor = ((SDL_GetTicks()-lastTime)/1000.0f)*32.0f; //32.0 is arbitrary
+	//32 represents the nb of pixel to move in 1 second (Default general speed)
+	speedFactor = ((SDL_GetTicks()-lastTime)/1000.0f)*32.0f;
 	lastTime	= SDL_GetTicks();
 	fpsCounter++;
 }

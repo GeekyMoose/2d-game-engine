@@ -67,7 +67,7 @@ void Entity::doRender(SDL_Surface * dest){
 					width, 
 					height, 
 					dest, 
-					x-Camera::cameraControl.getX(), 
+					x-Camera::cameraControl.getX(), //Use upper left corner
 					y-Camera::cameraControl.getY());
 }
 
@@ -77,9 +77,10 @@ void Entity::doCleanup(){
 }
 
 void Entity::doAnimate(){
+	//Col 0 is the moveLeft animation, 1 is for right animation
 	if(moveLeft){ currentFrameCol = 0; }
 	else if(moveRight){ currentFrameCol = 1; }
-	animEntity.doAnimate();
+	animEntity.doAnimate(); //Process anim
 }
 
 void Entity::doCollision(Entity * other){

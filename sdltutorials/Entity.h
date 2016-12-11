@@ -64,9 +64,9 @@ public:
 protected:
 	float	speedX; //Current entity's speed
 	float	speedY;
-	float	accelX;
+	float	accelX; //Current acceleration
 	float	accelY;
-	float	maxSpeedX;
+	float	maxSpeedX; //Maximum possible speed
 	float	maxSpeedY;
 
 protected:

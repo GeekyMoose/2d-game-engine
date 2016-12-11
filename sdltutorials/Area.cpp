@@ -57,10 +57,6 @@ void Area::renderArea(SDL_Surface * dest, int cameraX, int cameraY){
 	int mapW = MAP_WIDTH * TILE_SIZE;
 	int mapH = MAP_HEIGHT * TILE_SIZE;
 
-	//Convert camera position to upper left corner position
-	cameraX += SCREEN_WIDTH/2;
-	cameraY += SCREEN_HEIGHT/2;
-
 	//Get the ID of the first map to display (Don't draw map outside the camera)
 	int firstID = -cameraX/mapW;
 	firstID = firstID+((-cameraY/mapH) * areaSize);
