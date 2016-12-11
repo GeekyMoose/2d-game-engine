@@ -152,8 +152,22 @@ void Entity::stopMove(){
 }
 
 bool Entity::collides(int oX, int oY, int oW, int oH){
-	//TODO
-	return false;
+	//Set all sides positions
+	int left1 = (int)x + col_x;
+	int left2 = oX;
+	int right1 = left1 + width - 1 - col_width; //-1 for true coordinate of the side
+	int right2 = oX + oW - 1;
+	int top1 = (int)y + col_y;
+	int top2 = oY;
+	int bottom1 = top1 + height - 1 - col_height;
+	int bottom2 = oY + oH - 1;
+
+	//Collision test
+	if(top1>bottom2){ return false; }
+	if(bottom1<top2){ return false; }
+	if(right1<left2){ return false; }
+	if(left1>right2){ return false; }
+	return true;
 }
 
 bool Entity::posValid(int newX, int newY){

@@ -49,8 +49,8 @@ protected:
 	Animation		animEntity; //Animation for this entity
 	SDL_Surface*	surfaceEntity; //Surface for this entity (A spritesheet)
 public:
-	float	x;
-	float	y;
+	float	x; //UpperLeftCorner X position of entity
+	float	y; //UpperLeftCorner Y position of entity
 	int		width;
 	int		height;
 	bool	moveLeft;
@@ -134,6 +134,18 @@ public:
 
 	void doMove(float moveX, float moveY);
 	void stopMove();
+
+	/**
+	 * \brief			Check whether collision append with element
+	 * \details			Use a simple check whether current rectangle bound
+	 *					intersect the given rectangle.
+	 *
+	 * \param oX		UpperLeftCorner X position of the element
+	 * \param oY		UpperLeftCorner Y position of the element
+	 * \param oW		Rectangle width of the element
+	 * \param oH		Rectangle height of the element
+	 * \return			True if collide, otherwise, return false
+	 */
 	bool collides(int oX, int oY, int oW, int oH);
 
 private:
