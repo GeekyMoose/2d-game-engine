@@ -119,6 +119,7 @@ void App::doEvent(SDL_Event* sdlevent){
 
 void App::doLoop(){
 	FPS::FPSControl.onLoop();
+	clog<<"FPS: " <<FPS::FPSControl.getFPS()<<endl;
 	//Loop on each Entity
 	for(int i = 0; i<Entity::listEntities.size(); i++){
 		if(!Entity::listEntities[i]) { continue; }

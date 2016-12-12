@@ -12,7 +12,7 @@ FPS::FPS(){
 
 void FPS::onLoop(){
 	//If one second since last refresh, update fps data
-	if(oldTime+1000>SDL_GetTicks()){
+	if(oldTime+1000<SDL_GetTicks()){
 		oldTime		= SDL_GetTicks();
 		nbFrames	= fpsCounter;
 		fpsCounter	= 0;

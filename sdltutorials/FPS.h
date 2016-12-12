@@ -14,7 +14,6 @@ private:
 
 public:
 	FPS();
-
 	void onLoop();
 
 public:

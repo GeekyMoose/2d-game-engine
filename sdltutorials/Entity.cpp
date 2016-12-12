@@ -40,9 +40,11 @@ bool Entity::loadEntity(const char* file, int w, int h, int nbFrames){
 
 void Entity::doLoop(){
 	//Get current movement direction and set acceleration
-	if(moveLeft==false && moveRight==false){ stopMove(); }
-	if(moveLeft){ accelX = -0.5; }
-	else if(moveRight){ accelX = 0.5; }
+	if(moveLeft==false && moveRight==false){
+		stopMove();
+	}
+	accelX = (moveLeft = true) ? -0.5 : accelX;
+	accelX = (moveRight = true) ? 0.5 : accelX;
 	if(flags & ENTITY_FLAG_GRAVITY){ accelY = 0.75f; }
 	//Change speed (Add acceleration to speed).
 	//getSpeedFactor gives the ratio to apply (See FPS class)
