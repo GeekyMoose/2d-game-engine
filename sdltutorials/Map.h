@@ -58,5 +58,21 @@ public:
 	 * \param mapY		Y coordinate where to draw map on the dest.
 	 */
 	void renderMap(SDL_Surface* dest, int mapX, int mapY);
+
+
+	//--------------------------------------------------------------------------
+	// Getters - Setters
+	//--------------------------------------------------------------------------
+
+	/**
+	 * \brief			Return a tile at specific position on the map
+	 * \details			Position is in pixel. Get the actual Tile at this pixel
+	 *					position or null if no tile here.
+	 *
+	 * \param posX		X position in pixel.
+	 * \param posY		Y position in pixel.
+	 * \return			The tile at position x,y or nullptr if no tile
+	 */
+	Tile* getTile(int posX, int posY);
 };
 

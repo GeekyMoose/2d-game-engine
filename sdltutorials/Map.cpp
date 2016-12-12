@@ -55,3 +55,11 @@ void Map::renderMap(SDL_Surface* dest, int mapX, int mapY){
 		}
 	}
 }
+
+Tile* Map::getTile(int posX, int posY){
+	int id = (posX/TILE_SIZE) + (MAP_WIDTH * (posY/TILE_SIZE));
+	if(id < 0 || id >= listTiles.size()) {
+		return nullptr;
+	}
+	return &listTiles[id];
+}
