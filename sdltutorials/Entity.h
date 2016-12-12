@@ -8,6 +8,7 @@
 #include "EntityCollision.h"
 #include "FPS.h"
 #include "Camera.h"
+#include "Area.h"
 
 
 // -----------------------------------------------------------------------------

@@ -76,3 +76,21 @@ void Area::cleanupArea(){
 	SDL_FreeSurface(tilesSprites);
 	listMap.clear();
 }
+
+Map* Area::getMap(int posX, int posY){
+	int mapPixelWidth = TILE_SIZE * MAP_WIDTH;
+	int mapPixelHeigh = TILE_SIZE * MAP_HEIGHT;
+	int id = (posX/mapPixelWidth) + (areaSize*(posY/mapPixelHeigh));
+	if(id<0 || id>= listMap.size()){ return nullptr; }
+	return &listMap[id];
+}
+
+Tile* Area::getTile(int posX, int posY){
+	int mapPixelWidth = TILE_SIZE * MAP_WIDTH;
+	int mapPixelHeigh = TILE_SIZE * MAP_HEIGHT;
+	Map* map = getMap(posX, posY);
+	if(map==nullptr){ return nullptr; }
+	posX = posX % mapPixelWidth;
+	posY = posY % mapPixelHeigh;
+	return map->getTile(posX, posY);
+}

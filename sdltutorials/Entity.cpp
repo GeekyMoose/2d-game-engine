@@ -171,16 +171,54 @@ bool Entity::collides(int oX, int oY, int oW, int oH){
 }
 
 bool Entity::posValid(int newX, int newY){
-	//TODO
-	return false;
+	bool isValid	= true;
+	int startX		= (newX + col_x) / TILE_SIZE;
+	int startY		= (newY + col_y) / TILE_SIZE;
+	int endX		= ((newX + col_x) + width - col_width - 1) / TILE_SIZE;
+	int endY		= ((newY + col_y) + height - col_height - 1) / TILE_SIZE;
+
+	for(int iY = startY; iY <= endY; iY++) {
+		for(int iX = startX; iX <= endX; iX++) {
+			Tile* tile = Area::areaControl.getTile(iX*TILE_SIZE, iY*TILE_SIZE);
+			if(posValidTile(tile) == false) {
+				isValid = false;
+			}
+		}
+	}
+	if((flags & ENTITY_FLAG_MAPONLY) == false) {
+		for(int i = 0; i < listEntities.size(); i++) {
+			if(posValidEntity(listEntities[i], newX, newY) == false) {
+				isValid = false;
+			}
+		}
+	}
+	return isValid;
 }
 
-bool Entity::posValidTile(Tile * tile){
-	//TODO
-	return false;
+bool Entity::posValidTile(Tile* tile){
+	if(tile == NULL){ return true; }
+	if(tile->typeID == TILE_TYPE_BLOCK) {
+		return false;
+	}
+	return true;
 }
 
 bool Entity::posValidEntity(Entity * entity, int newX, int newY){
-	//TODO
-	return false;
+	//If entity is not valid, return false
+	if(entity==NULL || this == entity || entity->dead == true){
+		return false;
+	}
+	//If entity doesn't collide with other entities, return false
+	if((entity->flags ^ ENTITY_FLAG_MAPONLY) == false){
+		return false;
+	}
+	//If collision happened, add in collision list
+	if(entity->collides(newX+col_x, newY+col_y, width-col_width-1, height-col_height-1)){
+		EntityCollision entityCol;
+		entityCol.entityA = this;
+		entityCol.entityB = entity;
+		EntityCollision::listEntityCollisions.push_back(entityCol);
+		return false;
+	}
+	return true;
 }
