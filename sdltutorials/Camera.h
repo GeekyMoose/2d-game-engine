@@ -17,10 +17,10 @@ class Camera{
 public:
 	static Camera cameraControl; //To access camera from anywhere
 private:
-	float x; //Camera position (in pixel) Note: is actually the upperLeftCorner
-	float y; //Upper Left Corner Y
-	float* targetX; //To target an element (Null if not target)
-	float* targetY;
+	float	x; //Camera position (in pixel) Note: is actually the upperLeftCorner
+	float	y; //Upper Left Corner Y
+	float*	targetX; //To target an element (Null if not target)
+	float*	targetY;
 public:
 	int targetMode;
 
@@ -35,26 +35,26 @@ public:
 	//--------------------------------------------------------------------------
 
 	/**
-	 * \brief Move the camera
+	 * \brief	Move the camera
 	 * 
-	 * \param moveX X coordinate translation
-	 * \param moveY Y coordinate translation
+	 * \param	moveX X coordinate translation
+	 * \param	moveY Y coordinate translation
 	 */
 	void moveCamera(int moveX, int moveY);
 
 	/**
-	 * \brief Return X camera position
+	 * \brief	Return X camera position
 	 * \details The returned value depend if a target is set and use the camera mode.
 	 *
-	 * \return Current X coordinate
+	 * \return	Current X coordinate
 	 */
 	int getX();
 
 	/**
-	* \brief Return Y camera position
-	* \details The returned value depend if a target is set and use the camera mode.
+	* \brief	Return Y camera position
+	* \details	The returned value depend if a target is set and use the camera mode.
 	*
-	* \return Current Y coordinate
+	* \return	Current Y coordinate
 	*/
 	int getY();
 

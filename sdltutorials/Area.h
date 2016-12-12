@@ -68,6 +68,23 @@ public:
 	//--------------------------------------------------------------------------
 	
 public:
+	/**
+	 * \brief			Returns the map that is under given position
+	 * \details			Position is the absolute pixel position in the screen.
+	 *
+	 * \param posX		X position
+	 * \param posY		Y position
+	 * \return			The Map under (x,y) position or NULL if no map
+	 */
 	Map* getMap(int posX, int posY);
+
+	/**
+	 * \brief			Returns the tile that is under given position
+	 * \details			Position is the absolute pixel position in the screen.
+	 *
+	 * \param posX		X position
+	 * \param posY		Y position
+	 * \return			The Tile under (x,y) position or NULL if no tile
+	 */
 	Tile* getTile(int posX, int posY);
 };

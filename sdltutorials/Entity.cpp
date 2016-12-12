@@ -43,8 +43,12 @@ void Entity::doLoop(){
 	if(moveLeft==false && moveRight==false){
 		stopMove();
 	}
-	accelX = (moveLeft = true) ? -0.5 : accelX;
-	accelX = (moveRight = true) ? 0.5 : accelX;
+	if(moveLeft==true){
+		accelX = -0.5;
+	}
+	else if(moveRight==true){
+		accelX = 0.5;
+	}
 	if(flags & ENTITY_FLAG_GRAVITY){ accelY = 0.75f; }
 	//Change speed (Add acceleration to speed).
 	//getSpeedFactor gives the ratio to apply (See FPS class)
@@ -80,8 +84,12 @@ void Entity::doCleanup(){
 
 void Entity::doAnimate(){
 	//Col 0 is the moveLeft animation, 1 is for right animation
-	if(moveLeft){ currentFrameCol = 0; }
-	else if(moveRight){ currentFrameCol = 1; }
+	if(moveLeft==true){
+		currentFrameCol = 0;
+	}
+	else if(moveRight==true){
+		currentFrameCol = 1;
+	}
 	animEntity.doAnimate(); //Process anim
 }
 
@@ -102,10 +110,10 @@ void Entity::doMove(float moveX, float moveY){
 	//SpeedFactor is always smaller than moveX (and moveY)
 	if(moveX != 0) {
 		if(moveX >= 0){ newX =  FPS::FPSControl.getSpeedFactor(); }
-		else{			newY = -FPS::FPSControl.getSpeedFactor(); }
+		else{			newX = -FPS::FPSControl.getSpeedFactor(); }
 	}
 	if(moveY != 0) {
-		if(moveY >= 0){ newX =  FPS::FPSControl.getSpeedFactor(); }
+		if(moveY >= 0){ newY =  FPS::FPSControl.getSpeedFactor(); }
 		else{			newY = -FPS::FPSControl.getSpeedFactor(); }
 	}
 
@@ -114,6 +122,7 @@ void Entity::doMove(float moveX, float moveY){
 	while(true) {
 		//If entity is a ghost, pass through walls
 		if(flags & ENTITY_FLAG_GHOST) {
+			//needed just to create collision event for other entities
 			posValid((int)(x+newX), (int)(y+newY));
 			x += newX;
 			y += newY;
@@ -138,19 +147,28 @@ void Entity::doMove(float moveX, float moveY){
 		//Update reminding movement to do
 		moveX += -newX;
 		moveY += -newY;
-		if(newX > 0 && moveX <= 0) newX = 0;
-		if(newX < 0 && moveX >= 0) newX = 0;
-		if(newY > 0 && moveY <= 0) newY = 0;
-		if(newY < 0 && moveY >= 0) newY = 0;
-		if(moveX == 0) newX = 0;
-		if(moveY == 0) newY = 0;
+		if(newX > 0 && moveX <= 0){ newX = 0; }
+		if(newX < 0 && moveX >= 0){ newX = 0; }
+		if(newY > 0 && moveY <= 0){ newY = 0; }
+		if(newY < 0 && moveY >= 0){ newY = 0; }
+		if(moveX == 0){ newX = 0; }
+		if(moveY == 0){ newY = 0; }
 		if(moveX == 0 && moveY == 0){ break; }
 		if(newX  == 0 && newY == 0) { break; }
 	}
 }
 
 void Entity::stopMove(){
-	//TODO
+	if(speedX > 0) {
+		accelX = -1;
+	}
+	if(speedX < 0) {
+		accelX = 1;
+	}
+	if(speedX < 2.0f && speedX > -2.0f) {
+		accelX = 0;
+		speedX = 0;
+	}
 }
 
 bool Entity::collides(int oX, int oY, int oW, int oH){
@@ -208,11 +226,11 @@ bool Entity::posValidTile(Tile* tile){
 bool Entity::posValidEntity(Entity * entity, int newX, int newY){
 	//If entity is not valid, return false
 	if(entity==NULL || this == entity || entity->dead == true){
-		return false;
+		return true;
 	}
 	//If entity doesn't collide with other entities, return false
 	if((entity->flags ^ ENTITY_FLAG_MAPONLY) == false){
-		return false;
+		return true;
 	}
 	//If collision happened, add in collision list
 	if(entity->collides(newX+col_x, newY+col_y, width-col_width-1, height-col_height-1)){

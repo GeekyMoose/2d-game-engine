@@ -76,12 +76,14 @@ bool App::initApp(){
 	if(player1.loadEntity("./data/images/yoshi.bmp", 64, 64, 8)==false){
 		return false;
 	}
+	/*
 	if(player2.loadEntity("./data/images/yoshi.bmp", 64, 64, 8)==false){
 		return false;
 	}
 	player2.x = 100;
+	*/
 	Entity::listEntities.push_back(&player1);
-	Entity::listEntities.push_back(&player2);
+	//Entity::listEntities.push_back(&player2);
 	//Set camera mode and target to players
 	Camera::cameraControl.targetMode = TARGET_MODE_CENTER;
 	Camera::cameraControl.setTarget(&player1.x, &player1.y);
@@ -118,13 +120,17 @@ void App::doEvent(SDL_Event* sdlevent){
 }
 
 void App::doLoop(){
-	FPS::FPSControl.onLoop();
-	clog<<"FPS: " <<FPS::FPSControl.getFPS()<<endl;
 	//Loop on each Entity
 	for(int i = 0; i<Entity::listEntities.size(); i++){
 		if(!Entity::listEntities[i]) { continue; }
 		Entity::listEntities[i]->doLoop();
 	}
+	//FPS management
+	FPS::FPSControl.onLoop();
+	char buffer[255];
+	sprintf(buffer, "%d", FPS::FPSControl.getFPS());
+	clog<<"FPS: " <<FPS::FPSControl.getFPS()<<endl;
+	SDL_SetWindowTitle(window, buffer); //Display FPS on title
 }
 
 void App::doRender(){
