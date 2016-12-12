@@ -73,7 +73,7 @@ bool App::initApp(){
 
 	//Create and load players
 	clog<<"[INFO] Load players"<<endl;
-	if(player1.loadEntity("./data/images/yoshi.bmp", 64, 64, 8)==false){
+	if(player1.loadEntity("./data/images/yoshi.png", 64, 64, 8)==false){
 		return false;
 	}
 	/*

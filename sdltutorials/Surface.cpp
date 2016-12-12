@@ -2,7 +2,13 @@
 
 SDL_Surface* Surface::doLoad(const char* file){
 	//return SDL_LoadBMP(file); //Old version
-	return IMG_Load(file);
+	//return IMG_Load(file);
+	auto toto = IMG_Load(file);
+	if(toto == NULL){
+		std::cout << "ERROR" <<std::endl;
+		while(true){}
+	}
+	return toto;
 }
 
 bool Surface::doDraw(SDL_Surface * src, SDL_Surface* dest, int x, int y){

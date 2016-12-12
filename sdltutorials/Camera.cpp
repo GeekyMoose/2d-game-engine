@@ -34,7 +34,7 @@ int Camera::getY(){
 	}
 	//Here, means target set, return position according to camera mode
 	if(targetMode==TARGET_MODE_CENTER){
-		return *targetX-(SCREEN_HEIGHT/2);
+		return *targetY-(SCREEN_HEIGHT/2);
 	}
 	return *targetY;
 }
