@@ -10,6 +10,7 @@
 #include "constants.h"
 #include "Area.h"
 #include "Camera.h"
+#include "Player.h"
 
 
 /**
@@ -26,8 +27,10 @@ private:
 	bool isRunning;
 	SDL_Window* window; //SDL main windows
 	SDL_Surface* screen; //Surface from the windows
-
-	Entity entity1; //TODO TMP for test
+	
+	//Create 2 players
+	Player player1;
+	Player player2;
 
 public:
 	//--------------------------------------------------------------------------
@@ -79,5 +82,6 @@ public:
 	// Override function (EventManager)
 	//--------------------------------------------------------------------------
 	void onKeyDown(SDL_Keysym keysym);
+	void onKeyUp(SDL_Keysym keysym);
 	void onExit();
 };

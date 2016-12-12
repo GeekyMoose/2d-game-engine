@@ -39,12 +39,12 @@ int Camera::getY(){
 	return *targetY;
 }
 
-void Camera::setPosition(int posX, int posY){
+void Camera::setPosition(float posX, float posY){
 	x = posX;
 	y = posY;
 }
 
-void Camera::setTarget(int *posX, int* posY){
+void Camera::setTarget(float *posX, float* posY){
 	targetX = posX;
 	targetY = posY;
 }

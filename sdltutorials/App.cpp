@@ -71,12 +71,21 @@ bool App::initApp(){
 	SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0xFF, 0xFF, 0xFF));
 	SDL_UpdateWindowSurface(window);
 
-	//LOAD CONTENT
-	//Load entities
-	if(entity1.loadEntity("./data/images/yoshi.bmp", 64, 64, 8)==false){
+	//Create and load players
+	clog<<"[INFO] Load players"<<endl;
+	if(player1.loadEntity("./data/images/yoshi.bmp", 64, 64, 8)==false){
 		return false;
 	}
-	Entity::listEntities.push_back(&entity1);
+	if(player2.loadEntity("./data/images/yoshi.bmp", 64, 64, 8)==false){
+		return false;
+	}
+	player2.x = 100;
+	Entity::listEntities.push_back(&player1);
+	Entity::listEntities.push_back(&player2);
+	//Set camera mode and target to players
+	Camera::cameraControl.targetMode = TARGET_MODE_CENTER;
+	Camera::cameraControl.setTarget(&player1.x, &player1.y);
+
 	//Load area
 	if(Area::areaControl.loadArea("./data/maps/area1.area")==false){
 		clog<<"[ERR] :: Unable to load the area (./data/maps/area1.area)."<<endl;
@@ -121,7 +130,7 @@ void App::doRender(){
 	//Refresh background to white
 	SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
 	//Render Map
-	Area::areaControl.renderArea(screen, Camera::cameraControl.getX(), Camera::cameraControl.getY());
+	Area::areaControl.renderArea(screen, -Camera::cameraControl.getX(), -Camera::cameraControl.getY());
 	//Render each Entity
 	for(int i = 0; i<Entity::listEntities.size(); i++){
 		if(!Entity::listEntities[i]) { continue; }
@@ -139,13 +148,20 @@ void App::onExit(){
 	isRunning = false;
 }
 
+void App::onKeyUp(SDL_Keysym keysym){
+	switch(keysym.sym){
+		//Arrow keys
+		case SDLK_LEFT: player1.moveLeft = false;
+		case SDLK_RIGHT: player1.moveRight = false;
+		default: break;
+	}
+}
+
 void App::onKeyDown(SDL_Keysym keysym){
 	switch(keysym.sym){
 		//Arrow keys
-		case SDLK_UP: Camera::cameraControl.moveCamera(0, 5); break;
-		case SDLK_DOWN: Camera::cameraControl.moveCamera(0, -5); break;
-		case SDLK_LEFT: Camera::cameraControl.moveCamera(5, 0); break;
-		case SDLK_RIGHT: Camera::cameraControl.moveCamera(-5, 0); break;
+		case SDLK_LEFT: player1.moveLeft = true;
+		case SDLK_RIGHT: player1.moveRight = true;
 		default: break;
 	}
 }

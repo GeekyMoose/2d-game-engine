@@ -18,6 +18,7 @@ public:
 	// -------------------------------------------------------------------------
 	// Pure virtual functions (To implement in child)
 	// -------------------------------------------------------------------------
-	virtual void onExit() = 0; 
+	virtual void onExit() = 0;
+	virtual void onKeyUp(SDL_Keysym) = 0;
 	virtual void onKeyDown(SDL_Keysym) = 0;
 };

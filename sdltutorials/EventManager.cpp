@@ -5,6 +5,9 @@ void EventManager::onEvent(SDL_Event* sdlevent){
 		case SDL_KEYDOWN:
 			onKeyDown(sdlevent->key.keysym);
 			break;
+		case SDL_KEYUP:
+			onKeyUp(sdlevent->key.keysym);
+			break;
 		case SDL_QUIT:
 			onExit();
 			break;
