@@ -76,12 +76,14 @@ bool App::initApp(){
 	if(player1.loadEntity("./data/images/yoshi.png", 64, 64, 8)==false){
 		return false;
 	}
+
 	/*
-	if(player2.loadEntity("./data/images/yoshi.bmp", 64, 64, 8)==false){
+	if(player2.loadEntity("./data/images/yoshi.png", 64, 64, 8)==false){
 		return false;
 	}
 	player2.x = 100;
 	*/
+
 	Entity::listEntities.push_back(&player1);
 	//Entity::listEntities.push_back(&player2);
 	//Set camera mode and target to players
@@ -125,6 +127,20 @@ void App::doLoop(){
 		if(!Entity::listEntities[i]) { continue; }
 		Entity::listEntities[i]->doLoop();
 	}
+
+	//Loop on each collision
+	for(int i=0; i<EntityCollision::listEntityCollisions.size(); i++){
+		Entity* entityA = EntityCollision::listEntityCollisions[i].entityA;
+		Entity* entityB = EntityCollision::listEntityCollisions[i].entityB;
+
+		if(entityA == NULL || entityB == NULL){ continue; }
+	
+		if(entityA->doCollision(entityB)){
+			entityB->doCollision(entityA);
+		}
+	}
+	EntityCollision::listEntityCollisions.clear();
+
 	//FPS management
 	FPS::FPSControl.onLoop();
 	char buffer[255];
@@ -160,6 +176,7 @@ void App::onKeyUp(SDL_Keysym keysym){
 		//Arrow keys
 		case SDLK_LEFT: player1.moveLeft = false;
 		case SDLK_RIGHT: player1.moveRight = false;
+		case SDLK_SPACE: player1.jump();
 		default: break;
 	}
 }

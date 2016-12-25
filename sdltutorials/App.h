@@ -81,7 +81,7 @@ public:
 	//--------------------------------------------------------------------------
 	// Override function (EventManager)
 	//--------------------------------------------------------------------------
-	void onKeyDown(SDL_Keysym keysym);
-	void onKeyUp(SDL_Keysym keysym);
+	void onKeyDown(SDL_Keysym);
+	void onKeyUp(SDL_Keysym);
 	void onExit();
 };

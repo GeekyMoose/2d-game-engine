@@ -80,6 +80,9 @@ protected:
 	int		col_width;
 	int		col_height;
 
+protected:
+	bool canJump;
+
 public:
 	// -------------------------------------------------------------------------
 	// Constructors - Initialization
@@ -131,7 +134,7 @@ public:
 	 *
 	 * \param other		Entity the current one collide with
 	 */
-	virtual void doCollision(Entity* other);
+	virtual bool doCollision(Entity* other);
 
 	void doMove(float moveX, float moveY);
 	void stopMove();
@@ -148,6 +151,8 @@ public:
 	 * \return			True if collide, otherwise, return false
 	 */
 	bool collides(int oX, int oY, int oW, int oH);
+
+	bool jump();
 
 private:
 	bool posValid(int newX, int newY);

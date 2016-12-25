@@ -18,14 +18,15 @@ Entity::Entity(){
 	speedY			= 0;
 	accelX			= 0;
 	accelY			= 0;
-	maxSpeedX		= 5;
-	maxSpeedY		= 5;
+	maxSpeedX		= 10;
+	maxSpeedY		= 10;
 	currentFrameCol	= 0;
 	currentFrameRow	= 0;
 	col_x			= 0;
 	col_y			= 0;
 	col_width		= 0;
 	col_height		= 0;
+	canJump			= false;
 }
 
 bool Entity::loadEntity(const char* file, int w, int h, int nbFrames){
@@ -93,8 +94,9 @@ void Entity::doAnimate(){
 	animEntity.doAnimate(); //Process anim
 }
 
-void Entity::doCollision(Entity * other){
-	//TODO
+bool Entity::doCollision(Entity * other){
+	jump();
+	return true;
 }
 
 void Entity::doMove(float moveX, float moveY){
@@ -140,6 +142,7 @@ void Entity::doMove(float moveX, float moveY){
 				y+= newY;
 			}
 			else{
+				if(moveY > 0){ canJump = true; }
 				speedY = 0;
 			}
 		}
@@ -187,6 +190,12 @@ bool Entity::collides(int oX, int oY, int oW, int oH){
 	if(bottom1<top2){ return false; }
 	if(right1<left2){ return false; }
 	if(left1>right2){ return false; }
+	return true;
+}
+
+bool Entity::jump(){
+	if(!canJump){ return false; }
+	speedY = -maxSpeedY;
 	return true;
 }
 
