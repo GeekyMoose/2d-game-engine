@@ -36,21 +36,24 @@ void Animation::doAnimate() {
     }
 }
 
-int Animation::getCurrentFrame() {
+int Animation::getCurrentFrame() const {
     return currentFrame;
 }
 
-void Animation::setNbFrames(int value) {
-    if(value<0) { return; }
-    nbFrames = value;
+void Animation::setNbFrames(const int value) {
+    if(value >= 0) {
+        this->nbFrames = value;
+    }
 }
 
-void Animation::setCurrentFrame(int frame) {
-    if(frame<0||frame>=nbFrames) { return; }
-    currentFrame = frame;
+void Animation::setCurrentFrame(const int frame) {
+    if(frame >= 0 && frame < this->nbFrames) {
+        currentFrame = frame;
+    }
 }
 
-void Animation::setAnimSpeed(int speed) {
-    if(speed<=0) { return; }
-    animSpeed = speed;
+void Animation::setAnimSpeed(const int speed) {
+    if(speed > 0) {
+        this->animSpeed = speed;
+    }
 }

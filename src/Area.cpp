@@ -1,7 +1,5 @@
 #include "Area.h"
 
-using namespace std;
-
 Area Area::areaControl;
 
 Area::Area() {
@@ -13,8 +11,8 @@ bool Area::loadArea(const char* file) {
 
     //Open file and check error
     FILE* filehandler = fopen(file, "r");
-    if(filehandler==NULL) {
-        clog<<"[ERR] Unable to open file '"<<file<<"'"<<endl;
+    if(filehandler == NULL) {
+        LOG_ERROR("Unable to open file");
         return false;
     }
 
@@ -22,8 +20,9 @@ bool Area::loadArea(const char* file) {
     char tilesSpriteFile[255];
     fscanf(filehandler, "%s\n", tilesSpriteFile);
     tilesSprites = Surface::doLoad(tilesSpriteFile);
+
     if(tilesSprites==NULL) {
-        clog<<"[ERR] Unable to load the sprite-sheet '"<<tilesSpriteFile<<"'"<<endl;
+        LOG_ERROR("Unable to load the sprite sheet");
         fclose(filehandler);
         return false; 
     }
@@ -37,11 +36,13 @@ bool Area::loadArea(const char* file) {
             char mapFile[255];
             fscanf(filehandler, "%s ", mapFile);
             Map tmpMap;
+
             if(tmpMap.loadMap(mapFile)==false) {
-                clog<<"[ERR] Unable to load map '"<<mapFile<<"'"<<endl;
+                LOG_ERROR("Unable to load the map");
                 fclose(filehandler);
                 return false;
             }
+
             tmpMap.tilesSprites = tilesSprites;
             listMap.push_back(tmpMap);
         }
@@ -66,7 +67,11 @@ void Area::renderArea(SDL_Surface * dest, int cameraX, int cameraY) {
     //For the defined screen size (640*480), only 4 map need to be displayed
     for(int i = 0; i<4; i++) {
         int id = firstID+((i/2) * areaSize)+(i%2);
-        if(id<0||id>=listMap.size()) { continue; }
+
+        if(id<0||id>=listMap.size()) {
+            continue;
+        }
+
         int x = ((id%areaSize) * mapW)+cameraX;
         int y = ((id/areaSize) * mapH)+cameraY;
         listMap[id].renderMap(dest, x, y);
@@ -82,7 +87,11 @@ Map* Area::getMap(int posX, int posY) {
     int mapPixelWidth = TILE_SIZE * MAP_WIDTH;
     int mapPixelHeigh = TILE_SIZE * MAP_HEIGHT;
     int id = (posX/mapPixelWidth) + (areaSize*(posY/mapPixelHeigh));
-    if(id<0 || id>= listMap.size()) { return nullptr; }
+
+    if(id<0 || id>= listMap.size()) {
+        return nullptr;
+    }
+
     return &listMap[id];
 }
 
@@ -90,7 +99,11 @@ Tile* Area::getTile(int posX, int posY) {
     int mapPixelWidth = TILE_SIZE * MAP_WIDTH;
     int mapPixelHeigh = TILE_SIZE * MAP_HEIGHT;
     Map* map = getMap(posX, posY);
-    if(map==nullptr) { return nullptr; }
+
+    if(map==nullptr) {
+        return nullptr;
+    }
+
     posX = posX % mapPixelWidth;
     posY = posY % mapPixelHeigh;
     return map->getTile(posX, posY);

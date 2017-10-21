@@ -3,6 +3,7 @@
 #include "Tile.h"
 #include "Surface.h"
 #include "constants.h"
+#include "helper/Logger.h"
 
 #include <SDL2/SDL.h>
 #include <vector>

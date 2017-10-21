@@ -38,9 +38,9 @@ class Animation {
         void doAnimate();
 
     public:
-        int getCurrentFrame();
-        void setNbFrames(int nbFrames);
-        void setCurrentFrame(int frame);
-        void setAnimSpeed(int speed);
+        int getCurrentFrame() const;
+        void setNbFrames(const int nbFrames);
+        void setCurrentFrame(const int frame);
+        void setAnimSpeed(const int speed);
 };
 

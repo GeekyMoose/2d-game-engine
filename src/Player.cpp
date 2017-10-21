@@ -1,11 +1,9 @@
 #include "Player.h"
 
-Player::Player() {
-}
-
 // -----------------------------------------------------------------------------
 // Entity functions override
 // -----------------------------------------------------------------------------
+
 void Player::doAnimate() {
     Entity::doAnimate();
     if(speedX==0){

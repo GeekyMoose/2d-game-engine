@@ -7,6 +7,7 @@
 #include "Area.h"
 #include "Camera.h"
 #include "Player.h"
+#include "helper/Logger.h"
 
 #include <iostream>
 #include <ostream>
@@ -26,9 +27,8 @@ class App : public EventManager {
         SDL_Window* window; //SDL main windows
         SDL_Surface* screen; //Surface from the windows
 
-        //Create 2 players
         Player player1;
-        Player player2;
+
 
     //--------------------------------------------------------------------------
     // Constructors - Destructor
@@ -36,6 +36,7 @@ class App : public EventManager {
     public:
         App();
         ~App();
+
 
     //--------------------------------------------------------------------------
     // Body function (Initialization - Stop)

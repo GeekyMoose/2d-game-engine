@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Map.h"
+#include "helper/Logger.h"
 
 #include <iostream>
 

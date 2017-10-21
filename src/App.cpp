@@ -1,17 +1,16 @@
 #include "App.h"
-using namespace std;
 
 
 //------------------------------------------------------------------------------
 // Constructors - Destructor
 //------------------------------------------------------------------------------
 App::App() {
-    clog<<"[INFO] Create application."<<endl;
+    LOG_INFO("Create application.");
     isRunning = false;
 }
 
 App::~App() {
-    clog<<"[INFO] Destroys application."<<endl;
+    LOG_INFO("Destroy application.");
 }
 
 
@@ -20,12 +19,14 @@ App::~App() {
 //------------------------------------------------------------------------------
 int App::executeApp() {
     //App should be already running
-    if(isRunning) { return false; }
-    clog<<"[INFO] Start running application..."<<endl;
+    if(isRunning) {
+        return false;
+    }
+    LOG_INFO("Start running application...");
 
     //Initialize application
-    if(initApp()==false) {
-        clog<<"[ERR] Unable to run application (Init failed)..."<<endl;
+    if(initApp() == false) {
+        LOG_ERROR("nable to run application (Init failed)...");
         return -1;
     }
     isRunning = true; //Here, actually start running
@@ -47,8 +48,8 @@ int App::executeApp() {
 
 bool App::initApp() {
     //Init SDL
-    if(SDL_Init(SDL_INIT_EVERYTHING)<0) {
-        clog<<"[ERR] Unable to init App. SDL_Error: "<<SDL_GetError()<<endl;
+    if(SDL_Init(SDL_INIT_EVERYTHING) < 0) {
+        LOG_ERROR(SDL_GetError());
         return false;
     }
 
@@ -62,7 +63,7 @@ bool App::initApp() {
         SDL_WINDOW_SHOWN
     );
     if(window==NULL) {
-        clog<<"[ERR] :: Unable to start window. SDL_Error: "<<SDL_GetError()<<endl;
+        LOG_ERROR(SDL_GetError());
         return false;
     }
 
@@ -72,27 +73,21 @@ bool App::initApp() {
     SDL_UpdateWindowSurface(window);
 
     //Create and load players
-    clog<<"[INFO] Load players"<<endl;
+    LOG_INFO("Load players");
     if(player1.loadEntity("./data/images/yoshi.png", 64, 64, 8)==false) {
         return false;
     }
 
-    /*
-    if(player2.loadEntity("./data/images/yoshi.png", 64, 64, 8)==false) {
-        return false;
-    }
-    player2.x = 100;
-    */
 
     Entity::listEntities.push_back(&player1);
-    //Entity::listEntities.push_back(&player2);
+
     //Set camera mode and target to players
     Camera::cameraControl.targetMode = TARGET_MODE_CENTER;
     Camera::cameraControl.setTarget(&player1.x, &player1.y);
 
     //Load area
     if(Area::areaControl.loadArea("./data/maps/area1.area")==false) {
-        clog<<"[ERR] :: Unable to load the area (./data/maps/area1.area)."<<endl;
+        LOG_ERROR(": Unable to load the area (./data/maps/area1.area).");
         return false;
     }
     return true;
@@ -133,8 +128,10 @@ void App::doLoop() {
         Entity* entityA = EntityCollision::listEntityCollisions[i].entityA;
         Entity* entityB = EntityCollision::listEntityCollisions[i].entityB;
 
-        if(entityA == NULL || entityB == NULL) { continue; }
-    
+        if(entityA == NULL || entityB == NULL) {
+            continue;
+        }
+
         if(entityA->doCollision(entityB)) {
             entityB->doCollision(entityA);
         }
@@ -145,7 +142,6 @@ void App::doLoop() {
     FPS::FPSControl.onLoop();
     char buffer[255];
     sprintf(buffer, "%d", FPS::FPSControl.getFPS());
-    clog<<"FPS: " <<FPS::FPSControl.getFPS()<<endl;
     SDL_SetWindowTitle(window, buffer); //Display FPS on title
 }
 

@@ -1,5 +1,4 @@
 #include "Map.h"
-using namespace std;
 
 Map::Map() {
     tilesSprites = NULL;
@@ -8,11 +7,12 @@ Map::Map() {
 bool Map::loadMap(const char * file) {
     listTiles.clear();
     FILE* filehandler = fopen(file, "r");
-    if(filehandler==NULL) {
-        clog<<"[ERR] Unable to open file '"<<file<<"'..."<<endl;
+
+    if(filehandler == NULL) {
+        LOG_ERROR("Unable to open file");
         return false;
     }
-    
+
     //Recover data from file
     for(int y = 0; y<MAP_HEIGHT; y++) {
         for(int x = 0; x<MAP_WIDTH; x++) {
@@ -27,8 +27,10 @@ bool Map::loadMap(const char * file) {
 }
 
 void Map::renderMap(SDL_Surface* dest, int mapX, int mapY) {
-    if(dest==NULL || tilesSprites==NULL) { return; }
-    
+    if(dest==NULL || tilesSprites==NULL) {
+        return;
+    }
+
     //Get nb of tiles in a row and in a column
     int nbTilesW = tilesSprites->w/TILE_SIZE;
     int nbTilesH = tilesSprites->h/TILE_SIZE; //Actually not used
