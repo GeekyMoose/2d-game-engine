@@ -1,8 +1,9 @@
 #pragma once
+
 #include "Entity.h"
 
-class Player : public Entity{
-public:
-	Player();
-	void doAnimate();
+class Player : public Entity {
+    public:
+        Player();
+        void doAnimate();
 };

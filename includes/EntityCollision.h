@@ -4,7 +4,7 @@
 
 class Entity;
 
-class EntityCollision{
+class EntityCollision {
     public:
         static std::vector<EntityCollision> listEntityCollisions;
 

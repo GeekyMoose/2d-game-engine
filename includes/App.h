@@ -1,9 +1,5 @@
 #pragma once
 
-#include <iostream>
-#include <ostream>
-#include <SDL2/SDL.h>
-
 #include "EventManager.h"
 #include "Surface.h"
 #include "Entity.h"
@@ -12,79 +8,83 @@
 #include "Camera.h"
 #include "Player.h"
 
+#include <iostream>
+#include <ostream>
+#include <SDL2/SDL.h>
+
 
 /**
- * \brief	Define an SDL application
- *
- * \date	Nov 14, 2016
- * \note	Based on SDL Tutorial (http://www.sdltutorials.com/sdl-tutorial-basics)
+ * Define an SDL application.
  */
-class App : public EventManager{
-private:
-	//--------------------------------------------------------------------------
-	// Constants - Attributes
-	//--------------------------------------------------------------------------
-	bool isRunning;
-	SDL_Window* window; //SDL main windows
-	SDL_Surface* screen; //Surface from the windows
-	
-	//Create 2 players
-	Player player1;
-	Player player2;
+class App : public EventManager {
 
-public:
-	//--------------------------------------------------------------------------
-	// Constructors - Destructor
-	//--------------------------------------------------------------------------
-	App();
-	~App();
+    //--------------------------------------------------------------------------
+    // Constants - Attributes
+    //--------------------------------------------------------------------------
+    private:
+        bool isRunning;
+        SDL_Window* window; //SDL main windows
+        SDL_Surface* screen; //Surface from the windows
 
-public:
-	//--------------------------------------------------------------------------
-	// Body function (Initialization - Stop)
-	//--------------------------------------------------------------------------
+        //Create 2 players
+        Player player1;
+        Player player2;
 
-	/**
-	 * \brief			Start running the application.
-	 * \details			Must be not running already.
-	 *					This function will block till SDL exit.
-	 *					Call init, then loop till end, then call cleanup.
-	 * 
-	 * \return			-1 if error, otherwise, return 0.
-	 */
-	int executeApp();
+    //--------------------------------------------------------------------------
+    // Constructors - Destructor
+    //--------------------------------------------------------------------------
+    public:
+        App();
+        ~App();
 
-private:
-	/**
-	 * \brief			Initialize SDL and all elements for the application.
-	 * \details			Do nothing if already running and return false.
-	 *					Load SDL module, return false if unable.
-	 *
-	 * \return			True if successfully init, otherwise, return false.
-	 */
-	bool initApp();
+    //--------------------------------------------------------------------------
+    // Body function (Initialization - Stop)
+    //--------------------------------------------------------------------------
+    public:
 
-	/**
-	 * \brief			Clean up all loaded memory and quit SDL.
-	 *
-	 */
-	void doCleanup();
+        /**
+         * Start running the application.
+         * Must be not running already.
+         * This function will block till SDL exit.
+         * Call init, then loop till end, then call cleanup.
+         *
+         * \return -1 if error, otherwise, return 0.
+         */
+        int executeApp();
 
-	//--------------------------------------------------------------------------
-	// Body function (Execution)
-	//--------------------------------------------------------------------------
-	void doEvent(SDL_Event* sdlevent);
-	void doLoop();
-	void doRender();
+    private:
 
-public:
-	//--------------------------------------------------------------------------
-	// Override function (EventManager)
-	//--------------------------------------------------------------------------
-	void onKeyDown(SDL_Keysym);
-	void onKeyUp(SDL_Keysym);
-	void onExit();
-    void onKeyRight(SDL_Keysym keysym);
-    void onKeyLeft(SDL_Keysym keysym);
-    void onSpace(SDL_Keysym keysym);
+        /**
+         * Initialize SDL and all elements for the application.
+         * Do nothing if already running and return false.
+         * Load SDL module, return false if unable.
+         *
+         * \return True if successfully init, otherwise, return false.
+         */
+        bool initApp();
+
+        /**
+         * Clean up all loaded memory and quit SDL.
+         */
+        void doCleanup();
+
+    //--------------------------------------------------------------------------
+    // Body function (Execution)
+    //--------------------------------------------------------------------------
+    private:
+        void doEvent(SDL_Event* sdlevent);
+        void doLoop();
+        void doRender();
+
+    public:
+
+        //--------------------------------------------------------------------------
+        // Override function (EventManager)
+        //--------------------------------------------------------------------------
+        void onKeyDown(SDL_Keysym);
+        void onKeyUp(SDL_Keysym);
+        void onExit();
+        void onKeyRight(SDL_Keysym keysym);
+        void onKeyLeft(SDL_Keysym keysym);
+        void onSpace(SDL_Keysym keysym);
 };

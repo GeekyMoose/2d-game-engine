@@ -1,13 +1,11 @@
 #pragma once
 #include <SDL2/SDL.h>
 
+
 /**
- * \brief   Class for SDL events management
- *
- * \date    Nov 14, 2016
- * \note    Based on SDL Tutorial (http://www.sdltutorials.com/sdl-events)
+ * Class for SDL events management.
  */
-class EventManager{
+class EventManager {
     public:
         // -------------------------------------------------------------------------
         // Body functions

@@ -1,64 +1,74 @@
 #pragma once
-#include <SDL2/SDL.h>
 
 #include "constants.h"
 
+#include <SDL2/SDL.h>
 
-enum{
-	TARGET_MODE_NORMAL = 0, //Position to the top left of the target
-	TARGET_MODE_CENTER //Center camera to the target
+enum {
+    TARGET_MODE_NORMAL = 0, //Position to the top left of the target
+    TARGET_MODE_CENTER      //Center camera to the target
 };
 
 
-class Camera{
-	//--------------------------------------------------------------------------
-	// Attributes
-	//--------------------------------------------------------------------------
-public:
-	static Camera cameraControl; //To access camera from anywhere
-private:
-	float	x; //Camera position (in pixel) Note: is actually the upperLeftCorner
-	float	y; //Upper Left Corner Y
-	float*	targetX; //To target an element (Null if not target)
-	float*	targetY;
-public:
-	int targetMode;
+class Camera {
+    //--------------------------------------------------------------------------
+    // Attributes
+    //--------------------------------------------------------------------------
+    public:
+        static Camera cameraControl; //To access camera from anywhere
 
-public:
-	//--------------------------------------------------------------------------
-	// Constructors
-	//--------------------------------------------------------------------------
-	Camera();
+    private:
+        /** Camera position (in pixel). Note: is actually the upperLeftCorner. */
+        float   x;
 
-	//--------------------------------------------------------------------------
-	// Body functions
-	//--------------------------------------------------------------------------
+        /** Camera position (in pixel). Upper Left Corner Y. */
+        float   y;
 
-	/**
-	 * \brief	Move the camera
-	 * 
-	 * \param	moveX X coordinate translation
-	 * \param	moveY Y coordinate translation
-	 */
-	void moveCamera(int moveX, int moveY);
+        /** Targeted element or null if no target). */
+        float*  targetX;
+        float*  targetY;
 
-	/**
-	 * \brief	Return X camera position
-	 * \details The returned value depend if a target is set and use the camera mode.
-	 *
-	 * \return	Current X coordinate
-	 */
-	int getX();
+    public:
+        int targetMode;
 
-	/**
-	* \brief	Return Y camera position
-	* \details	The returned value depend if a target is set and use the camera mode.
-	*
-	* \return	Current Y coordinate
-	*/
-	int getY();
 
-	void setPosition(float posX, float posY);
-	void setTarget(float* posX, float* posY);
+    //--------------------------------------------------------------------------
+    // Initialization
+    //--------------------------------------------------------------------------
+    public:
+        Camera();
+
+
+    //--------------------------------------------------------------------------
+    // Body functions
+    //--------------------------------------------------------------------------
+    public:
+
+        /**
+         * \brief   Move the camera
+         * 
+         * \param   moveX X coordinate translation
+         * \param   moveY Y coordinate translation
+         */
+        void moveCamera(int moveX, int moveY);
+
+        /**
+         * \brief   Return X camera position
+         * \details The returned value depend if a target is set and use the camera mode.
+         *
+         * \return  Current X coordinate
+         */
+        int getX();
+
+        /**
+        * \brief    Return Y camera position
+        * \details  The returned value depend if a target is set and use the camera mode.
+        *
+        * \return   Current Y coordinate
+        */
+        int getY();
+
+        void setPosition(float posX, float posY);
+        void setTarget(float* posX, float* posY);
 };
 

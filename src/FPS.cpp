@@ -2,7 +2,7 @@
 
 FPS FPS::FPSControl;
 
-FPS::FPS(){
+FPS::FPS() {
     oldTime     = 0;
     lastTime    = 0;
     speedFactor = 0;
@@ -10,9 +10,9 @@ FPS::FPS(){
     fpsCounter  = 0;
 }
 
-void FPS::onLoop(){
+void FPS::onLoop() {
     //If one second since last refresh, update fps data
-    if(oldTime+1000<SDL_GetTicks()){
+    if(oldTime+1000<SDL_GetTicks()) {
         oldTime     = SDL_GetTicks();
         nbFrames    = fpsCounter;
         fpsCounter  = 0;
@@ -24,10 +24,10 @@ void FPS::onLoop(){
     fpsCounter++;
 }
 
-int FPS::getFPS(){
+int FPS::getFPS() {
     return nbFrames;
 }
 
-float FPS::getSpeedFactor(){
+float FPS::getSpeedFactor() {
     return speedFactor;
 }
