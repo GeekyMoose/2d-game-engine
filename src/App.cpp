@@ -189,3 +189,7 @@ void App::onKeyDown(SDL_Keysym keysym){
 		default: break;
 	}
 }
+
+void App::onKeyRight(SDL_Keysym keysym){}
+void App::onKeyLeft(SDL_Keysym keysym) {}
+void App::onSpace(SDL_Keysym keysym) {}

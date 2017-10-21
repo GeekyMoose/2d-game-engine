@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <ostream>
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 #include "EventManager.h"
 #include "Surface.h"
@@ -84,4 +84,7 @@ public:
 	void onKeyDown(SDL_Keysym);
 	void onKeyUp(SDL_Keysym);
 	void onExit();
+    void onKeyRight(SDL_Keysym keysym);
+    void onKeyLeft(SDL_Keysym keysym);
+    void onSpace(SDL_Keysym keysym);
 };
