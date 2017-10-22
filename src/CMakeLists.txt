@@ -1,4 +1,4 @@
-include_directories("${CMAKE_SOURCE_DIR}/includes")
+include_directories("${CMAKE_SOURCE_DIR}/include")
 
 file(GLOB_RECURSE srcFiles *.cpp)
 

@@ -1,0 +1,16 @@
+#pragma once
+
+// Main Game configurations
+
+
+// SDL window configuration
+
+enum {
+    WINDOW_DEFAULT_WIDTH        = 640,
+    WINDOW_DEFAULT_HEIGHT       = 640,
+    WINDOW_DEFAULT_POS_LEFT     = SDL_WINDOWPOS_UNDEFINED,
+    WINDOW_DEFAULT_POS_RIGHT    = SDL_WINDOWPOS_UNDEFINED
+};
+
+#define GAME_CONFIG_WINDOW_TITLE "2d game"
+#define GAME_CONFIG_WINDOW_DEFAULT_MODE SDL_WINDOW_HIDDEN

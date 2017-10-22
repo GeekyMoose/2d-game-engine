@@ -9,10 +9,6 @@ App::App() {
     isRunning = false;
 }
 
-App::~App() {
-    LOG_INFO("Destroy application.");
-}
-
 
 //------------------------------------------------------------------------------
 // Body function (Initialization - Stop)
@@ -53,24 +49,7 @@ bool App::initApp() {
         return false;
     }
 
-    //Create SDL window for screen
-    window = SDL_CreateWindow(
-        WINDOWS_TITLE,
-        SDL_WINDOWPOS_UNDEFINED,
-        SDL_WINDOWPOS_UNDEFINED,
-        SCREEN_WIDTH,
-        SCREEN_HEIGHT,
-        SDL_WINDOW_SHOWN
-    );
-    if(window==NULL) {
-        LOG_ERROR(SDL_GetError());
-        return false;
-    }
-
-    //Load SDL_Surface from the window
-    screen = SDL_GetWindowSurface(window);
-    SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0xFF, 0xFF, 0xFF));
-    SDL_UpdateWindowSurface(window);
+    this->m_window.initialize();
 
     //Create and load players
     LOG_INFO("Load players");
@@ -99,12 +78,9 @@ void App::doCleanup() {
         if(!Entity::listEntities[i]) { continue; }
         Entity::listEntities[i]->doCleanup();
     }
+
     Entity::listEntities.clear();
-    //Cleanup area
     Area::areaControl.cleanupArea();
-    //Cleanup App
-    SDL_FreeSurface(screen);
-    SDL_DestroyWindow(window);
     SDL_Quit();
 }
 
@@ -141,22 +117,21 @@ void App::doLoop() {
     //FPS management
     FPS::FPSControl.onLoop();
     char buffer[255];
-    sprintf(buffer, "%d", FPS::FPSControl.getFPS());
-    SDL_SetWindowTitle(window, buffer); //Display FPS on title
 }
 
 void App::doRender() {
     //Refresh background to white
-    SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
+    SDL_Surface* surface = this->m_window.getSurface();
+    SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, 0x00, 0x00, 0x00));
     //Render Map
-    Area::areaControl.renderArea(screen, -Camera::cameraControl.getX(), -Camera::cameraControl.getY());
+    Area::areaControl.renderArea(surface, -Camera::cameraControl.getX(), -Camera::cameraControl.getY());
     //Render each Entity
     for(int i = 0; i<Entity::listEntities.size(); i++) {
         if(!Entity::listEntities[i]) { continue; }
-        Entity::listEntities[i]->doRender(screen);
+        Entity::listEntities[i]->doRender(surface);
     }
     //General refresh
-    SDL_UpdateWindowSurface(window);
+    SDL_UpdateWindowSurface(this->m_window.getRoot());
 }
 
 

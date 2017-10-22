@@ -8,6 +8,7 @@
 #include "Camera.h"
 #include "Player.h"
 #include "helper/Logger.h"
+#include "sdl/AppWindowSDL2.h"
 
 #include <iostream>
 #include <ostream>
@@ -24,8 +25,7 @@ class App : public EventManager {
     //--------------------------------------------------------------------------
     private:
         bool isRunning;
-        SDL_Window* window; //SDL main windows
-        SDL_Surface* screen; //Surface from the windows
+        AppWindowSDL2 m_window;
 
         Player player1;
 
@@ -35,7 +35,6 @@ class App : public EventManager {
     //--------------------------------------------------------------------------
     public:
         App();
-        ~App();
 
 
     //--------------------------------------------------------------------------
