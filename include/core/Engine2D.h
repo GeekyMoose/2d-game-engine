@@ -1,8 +1,7 @@
 #pragma once
 
 #include "helper/Singleton.h"
-
-#include <chrono>
+#include "core/TimeManager.h"
 
 
 /**
@@ -14,17 +13,20 @@ class Engine2D : private Singleton<Engine2D> {
     // -------------------------------------------------------------------------
     private:
         friend Singleton<Engine2D>; // For singleton use
-        bool isRunning;
-
     public:
         using Singleton<Engine2D>::getInstance;
+
+    private:
+        bool m_isRunning;
+        TimeManager& timeManager;
 
 
     // -------------------------------------------------------------------------
     // Init
     // -------------------------------------------------------------------------
     private:
-        Engine2D() = default;
+        Engine2D();
+        ~Engine2D();
 
     public:
         void startUp() override;

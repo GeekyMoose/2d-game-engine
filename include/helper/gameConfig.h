@@ -18,7 +18,8 @@ enum {
 };
 
 enum {
-    FPS_FIXED_TIME              = 60
+    TIME_FIXED_UPDATE_FPS       = 50 // 20 milliseconds
+
 };
 
 #define GAME_CONFIG_WINDOW_TITLE "2d game"
