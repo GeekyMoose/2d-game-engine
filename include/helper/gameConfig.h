@@ -17,5 +17,9 @@ enum {
     TILE_SIZE                   = 16
 };
 
+enum {
+    FPS_FIXED_TIME              = 60
+};
+
 #define GAME_CONFIG_WINDOW_TITLE "2d game"
 #define GAME_CONFIG_WINDOW_DEFAULT_MODE SDL_WINDOW_HIDDEN

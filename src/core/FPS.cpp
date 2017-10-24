@@ -12,14 +12,15 @@ FPS::FPS() {
 
 void FPS::onLoop() {
     //If one second since last refresh, update fps data
-    if(oldTime+1000<SDL_GetTicks()) {
+    if((oldTime + 1000) < SDL_GetTicks()) {
         oldTime     = SDL_GetTicks();
         nbFrames    = fpsCounter;
         fpsCounter  = 0;
     }
+
     //Update speedFactor and frames.
     //32 represents the nb of pixel to move in 1 second (Default general speed)
-    speedFactor = ((SDL_GetTicks()-lastTime)/1000.0f)*32.0f;
+    speedFactor = ((SDL_GetTicks() - lastTime) / 1000.0f) * 32.0f;
     lastTime    = SDL_GetTicks();
     fpsCounter++;
 }
