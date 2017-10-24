@@ -1,6 +1,10 @@
 #include "Area.h"
 
+#include "helper/Logger.h"
+#include "helper/gameConfig.h"
+
 Area Area::areaControl;
+
 
 Area::Area() {
     areaSize = 0;
@@ -19,7 +23,7 @@ bool Area::loadArea(const char* file) {
     //Recover the tilesSpriteFile (sprite-sheet)
     char tilesSpriteFile[255];
     fscanf(filehandler, "%s\n", tilesSpriteFile);
-    tilesSprites = Surface::doLoad(tilesSpriteFile);
+    tilesSprites = Surface::loadFromFile(tilesSpriteFile);
 
     if(tilesSprites==NULL) {
         LOG_ERROR("Unable to load the sprite sheet");
@@ -37,13 +41,13 @@ bool Area::loadArea(const char* file) {
             fscanf(filehandler, "%s ", mapFile);
             Map tmpMap;
 
-            if(tmpMap.loadMap(mapFile)==false) {
+            if(tmpMap.loadMapFromFile(mapFile)==false) {
                 LOG_ERROR("Unable to load the map");
                 fclose(filehandler);
                 return false;
             }
 
-            tmpMap.tilesSprites = tilesSprites;
+            tmpMap.m_tilesSprites = tilesSprites;
             listMap.push_back(tmpMap);
         }
         fscanf(filehandler, "\n");
@@ -56,8 +60,8 @@ void Area::renderArea(SDL_Surface * dest, int cameraX, int cameraY) {
     if(dest==NULL) { return; }
 
     //Actual map size in window (In pixels) (Update: Can be calculated before)
-    int mapW = MAP_WIDTH * TILE_SIZE;
-    int mapH = MAP_HEIGHT * TILE_SIZE;
+    int mapW = MAP_NB_TILES_WIDTH * TILE_SIZE;
+    int mapH = MAP_NB_TILES_HEIGHT * TILE_SIZE;
 
     //Get the ID of the first map to display (Don't draw map outside the camera)
     int firstID = -cameraX/mapW;
@@ -84,8 +88,8 @@ void Area::cleanupArea() {
 }
 
 Map* Area::getMap(int posX, int posY) {
-    int mapPixelWidth = TILE_SIZE * MAP_WIDTH;
-    int mapPixelHeigh = TILE_SIZE * MAP_HEIGHT;
+    int mapPixelWidth = TILE_SIZE * MAP_NB_TILES_WIDTH;
+    int mapPixelHeigh = TILE_SIZE * MAP_NB_TILES_HEIGHT;
     int id = (posX/mapPixelWidth) + (areaSize*(posY/mapPixelHeigh));
 
     if(id<0 || id>= listMap.size()) {
@@ -96,8 +100,8 @@ Map* Area::getMap(int posX, int posY) {
 }
 
 Tile* Area::getTile(int posX, int posY) {
-    int mapPixelWidth = TILE_SIZE * MAP_WIDTH;
-    int mapPixelHeigh = TILE_SIZE * MAP_HEIGHT;
+    int mapPixelWidth = TILE_SIZE * MAP_NB_TILES_WIDTH;
+    int mapPixelHeigh = TILE_SIZE * MAP_NB_TILES_HEIGHT;
     Map* map = getMap(posX, posY);
 
     if(map==nullptr) {

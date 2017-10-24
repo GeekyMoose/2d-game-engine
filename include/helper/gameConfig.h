@@ -1,15 +1,20 @@
 #pragma once
 
-// Main Game configurations
 
+#include <SDL2/SDL.h>
 
-// SDL window configuration
 
 enum {
     WINDOW_DEFAULT_WIDTH        = 640,
     WINDOW_DEFAULT_HEIGHT       = 640,
     WINDOW_DEFAULT_POS_LEFT     = SDL_WINDOWPOS_UNDEFINED,
     WINDOW_DEFAULT_POS_RIGHT    = SDL_WINDOWPOS_UNDEFINED
+};
+
+enum {
+    MAP_NB_TILES_WIDTH          = 40,
+    MAP_NB_TILES_HEIGHT         = 40,
+    TILE_SIZE                   = 16
 };
 
 #define GAME_CONFIG_WINDOW_TITLE "2d game"

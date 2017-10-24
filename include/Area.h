@@ -1,9 +1,9 @@
 #pragma once
 
 #include "Map.h"
-#include "helper/Logger.h"
+#include "sdl/Surface.h"
 
-#include <iostream>
+#include <vector>
 
 
 /**

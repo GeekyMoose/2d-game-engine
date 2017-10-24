@@ -1,8 +1,6 @@
 #pragma once
 
-#include "constants.h"
-
-#include <SDL2/SDL.h>
+#include "helper/gameConfig.h"
 
 enum {
     TARGET_MODE_NORMAL = 0, //Position to the top left of the target

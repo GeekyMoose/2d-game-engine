@@ -1,22 +1,22 @@
 #pragma once
 
 #include "EventManager.h"
-#include "Surface.h"
 #include "Entity.h"
-#include "constants.h"
 #include "Area.h"
 #include "Camera.h"
 #include "Player.h"
 #include "helper/Logger.h"
 #include "sdl/AppWindowSDL2.h"
+#include "sdl/Surface.h"
 
 #include <iostream>
 #include <ostream>
+
 #include <SDL2/SDL.h>
 
 
 /**
- * Define an SDL application.
+ * SDL application.
  */
 class App : public EventManager {
 

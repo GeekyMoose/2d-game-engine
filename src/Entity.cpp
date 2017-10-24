@@ -30,11 +30,14 @@ Entity::Entity() {
 }
 
 bool Entity::loadEntity(const char* file, int w, int h, int nbFrames) {
-    surfaceEntity = Surface::doLoad(file);
-    if(surfaceEntity==NULL) { return false; }
-    Surface::transparent(surfaceEntity, 255, 0, 255);
-    width = w;
-    height = h;
+    surfaceEntity = Surface::loadFromFile(file);
+    if(surfaceEntity == NULL) {
+        return false;
+    }
+
+    Surface::applyTransparency(surfaceEntity, 255, 0, 255);
+    width   = w;
+    height  = h;
     animEntity.setNbFrames(nbFrames);
     return true;
 }
@@ -68,14 +71,14 @@ void Entity::doLoop() {
 void Entity::doRender(SDL_Surface * dest) {
     if(dest==NULL || surfaceEntity == NULL) { return;}
     //Work only with sprite sheet with one column
-    Surface::doDraw(surfaceEntity, 
-                    currentFrameCol*width, 
-                    (currentFrameRow+animEntity.getCurrentFrame())*height, 
-                    width, 
-                    height, 
-                    dest, 
-                    x-Camera::cameraControl.getX(), //Use upper left corner
-                    y-Camera::cameraControl.getY());
+    Surface::drawInSurface(surfaceEntity,
+                            currentFrameCol*width,
+                            (currentFrameRow+animEntity.getCurrentFrame())*height,
+                            width,
+                            height,
+                            dest,
+                            x-Camera::cameraControl.getX(), //Use upper left corner
+                            y-Camera::cameraControl.getY());
 }
 
 void Entity::doCleanup() {

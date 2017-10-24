@@ -14,7 +14,7 @@ class AppWindowSDL2 {
     //--------------------------------------------------------------------------
     // Constants - Attributes
     //--------------------------------------------------------------------------
-    public:
+    private:
         SDL_Window*     m_SDLwindow;    // The famous SDL window
         SDL_Surface*    m_SDLsurface;   // Surface from the window
 

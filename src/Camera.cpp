@@ -2,11 +2,12 @@
 
 Camera Camera::cameraControl;
 
+
 Camera::Camera() {
     x           = 0;
     y           = 0;
-    targetX     = NULL;
-    targetY     = NULL;
+    targetX     = nullptr;
+    targetY     = nullptr;
     targetMode  = TARGET_MODE_NORMAL;
 }
 
@@ -17,24 +18,24 @@ void Camera::moveCamera(int moveX, int moveY) {
 
 int Camera::getX() {
     //If no target, return current position
-    if(targetX==NULL) {
+    if(targetX == nullptr) {
         return x;
     }
     //Here, means target set, return position according to camera mode
-    if(targetMode==TARGET_MODE_CENTER) {
-        return *targetX-(SCREEN_WIDTH/2);
+    if(targetMode == TARGET_MODE_CENTER) {
+        return *targetX - (WINDOW_DEFAULT_WIDTH / 2);
     }
     return *targetX;
 }
 
 int Camera::getY() {
     //If no target, return current position
-    if(targetY==NULL) {
+    if(targetY == nullptr) {
         return y;
     }
     //Here, means target set, return position according to camera mode
-    if(targetMode==TARGET_MODE_CENTER) {
-        return *targetY-(SCREEN_HEIGHT/2);
+    if(targetMode == TARGET_MODE_CENTER) {
+        return *targetY - (WINDOW_DEFAULT_HEIGHT / 2);
     }
     return *targetY;
 }
