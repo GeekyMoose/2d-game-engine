@@ -1,4 +1,4 @@
-#include "Area.h"
+#include "core/Area.h"
 
 #include "helper/Logger.h"
 #include "helper/gameConfig.h"

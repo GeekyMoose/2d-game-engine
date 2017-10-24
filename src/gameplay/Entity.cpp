@@ -1,4 +1,4 @@
-#include "Entity.h"
+#include "gameplay/Entity.h"
 
 //Singleton variable
 std::vector<Entity*> Entity::listEntities;

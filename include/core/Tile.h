@@ -1,6 +1,7 @@
 #pragma once
 
-//Type of the tile
+
+// Type of the tile
 enum {
     TILE_TYPE_NONE = 0,
     TILE_TYPE_NORMAL,

@@ -1,4 +1,4 @@
-#include "FPS.h"
+#include "core/FPS.h"
 
 FPS FPS::FPSControl;
 

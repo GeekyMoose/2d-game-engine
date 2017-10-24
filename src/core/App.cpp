@@ -1,5 +1,7 @@
-#include "App.h"
+#include "core/App.h"
 
+#include <iostream>
+#include <ostream>
 
 //------------------------------------------------------------------------------
 // Constructors - Destructor

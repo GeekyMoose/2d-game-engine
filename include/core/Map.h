@@ -1,8 +1,7 @@
 #pragma once
 
-#include "Tile.h"
+#include "core/Tile.h"
 
-#include "helper/gameConfig.h"
 #include "helper/Logger.h"
 #include "helper/gameConfig.h"
 
@@ -10,7 +9,6 @@
 
 #include <SDL2/SDL.h>
 #include <vector>
-#include <iostream>
 
 
 /**

@@ -1,6 +1,9 @@
 #include "sdl/AppWindowSDL2.h"
+
 #include "helper/gameConfig.h"
 #include "helper/Logger.h"
+
+#include <iostream>
 
 
 //------------------------------------------------------------------------------

@@ -1,11 +1,13 @@
 #pragma once
 
-#include "Animation.h"
-#include "Tile.h"
-#include "EntityCollision.h"
-#include "FPS.h"
-#include "Camera.h"
-#include "Area.h"
+#include "core/Animation.h"
+#include "core/Tile.h"
+#include "core/FPS.h"
+#include "core/Camera.h"
+#include "core/Area.h"
+
+#include "physics/EntityCollision.h"
+
 #include "sdl/Surface.h"
 
 #include <SDL2/SDL.h>

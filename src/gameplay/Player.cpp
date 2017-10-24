@@ -1,4 +1,4 @@
-#include "Player.h"
+#include "gameplay/Player.h"
 
 // -----------------------------------------------------------------------------
 // Entity functions override

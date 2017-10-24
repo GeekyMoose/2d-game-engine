@@ -1,16 +1,16 @@
 #pragma once
 
-#include "EventManager.h"
-#include "Entity.h"
-#include "Area.h"
-#include "Camera.h"
-#include "Player.h"
+#include "core/EventManager.h"
+#include "core/Area.h"
+#include "core/Camera.h"
+
+#include "gameplay/Entity.h"
+#include "gameplay/Player.h"
+
 #include "helper/Logger.h"
+
 #include "sdl/AppWindowSDL2.h"
 #include "sdl/Surface.h"
-
-#include <iostream>
-#include <ostream>
 
 #include <SDL2/SDL.h>
 

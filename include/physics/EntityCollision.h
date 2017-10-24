@@ -1,6 +1,8 @@
 #pragma once
+
+#include "gameplay/Entity.h"
+
 #include <vector>
-#include "Entity.h"
 
 class Entity;
 

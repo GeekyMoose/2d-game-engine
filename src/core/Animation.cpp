@@ -1,4 +1,4 @@
-#include "Animation.h"
+#include "core/Animation.h"
 
 Animation::Animation() {
     currentFrame= 0;

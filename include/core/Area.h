@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Map.h"
+#include "core/Map.h"
+
 #include "sdl/Surface.h"
 
 #include <vector>

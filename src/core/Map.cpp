@@ -1,4 +1,6 @@
-#include "Map.h"
+#include "core/Map.h"
+
+#include <iostream>
 
 bool Map::loadMapFromFile(const char* file) {
     this->m_listTiles.clear();
