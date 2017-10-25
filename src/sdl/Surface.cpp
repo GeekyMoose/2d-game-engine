@@ -2,8 +2,6 @@
 
 #include "helper/Logger.h"
 
-#include <SDL2/SDL_image.h>
-
 
 SDL_Surface* Surface::loadFromFile(const char* file) {
     auto toto = IMG_Load(file);

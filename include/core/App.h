@@ -12,7 +12,7 @@
 #include "sdl/AppWindowSDL2.h"
 #include "sdl/Surface.h"
 
-#include <SDL2/SDL.h>
+#include "helper/Platform.h"
 
 
 /**

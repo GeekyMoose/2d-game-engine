@@ -10,7 +10,8 @@
 
 #include "sdl/Surface.h"
 
-#include <SDL2/SDL.h>
+#include "helper/Platform.h"
+
 #include <vector>
 
 
