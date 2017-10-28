@@ -7,14 +7,7 @@ if("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
 endif()
 
 # Dependencies
-set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/CMake")
-find_package(SDL2 REQUIRED)
-find_package(SDL2_image REQUIRED)
-
-# Compiler Flags
-add_definitions(-D _DEBUG)
-add_definitions(-g -Wall)
-add_definitions(-Winline)
+include(CMake/Dependencies.cmake)
+include(CMake/CompilerFlags.cmake)
 
 add_subdirectory(src)
-
