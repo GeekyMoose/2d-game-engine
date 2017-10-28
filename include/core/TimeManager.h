@@ -1,5 +1,6 @@
 #pragma once
 
+#include "helper/Platform.h"
 #include "helper/Singleton.h"
 
 #include <chrono>
@@ -69,6 +70,18 @@ class TimeManager : private Singleton<TimeManager> {
         bool hasNextFixedFrame();
 
     public:
+
+        /**
+         * Get the DeltaTime value which is in seconds.
+         *
+         * \return DeltaTime in seconds.
+         */
         float getDeltaTime() const;
+
+        /**
+         * Get the FixedDeltaTime value.
+         *
+         * \return FixedDeltaTime in seconds.
+         */
         float getFixedDeltaTime() const;
 };

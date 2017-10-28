@@ -1,16 +1,13 @@
 #pragma once
 
+#include "helper/Platform.h"
 #include "core/Animation.h"
 #include "core/Tile.h"
 #include "core/FPS.h"
 #include "core/Camera.h"
 #include "core/Area.h"
-
 #include "physics/EntityCollision.h"
-
 #include "sdl/Surface.h"
-
-#include "helper/Platform.h"
 
 #include <vector>
 

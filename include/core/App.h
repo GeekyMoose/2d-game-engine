@@ -1,18 +1,15 @@
 #pragma once
 
+#include "helper/Platform.h"
+
 #include "core/EventManager.h"
 #include "core/Area.h"
 #include "core/Camera.h"
-
 #include "gameplay/Entity.h"
 #include "gameplay/Player.h"
-
 #include "helper/Logger.h"
-
 #include "sdl/AppWindowSDL2.h"
 #include "sdl/Surface.h"
-
-#include "helper/Platform.h"
 
 
 /**

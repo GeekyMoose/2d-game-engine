@@ -1,15 +1,18 @@
 #pragma once
 
-#include "core/Tile.h"
-
+#include "helper/Platform.h"
 #include "helper/Logger.h"
 #include "helper/gameConfig.h"
-
+#include "core/Tile.h"
 #include "sdl/Surface.h"
 
-#include "helper/Platform.h"
-
 #include <vector>
+
+#if PLATFORM_WINDOWS
+#   include <SDL.h>
+#elif PLATFORM_LINUX
+#   include <SDL2/SDL.h>
+#endif
 
 
 /**

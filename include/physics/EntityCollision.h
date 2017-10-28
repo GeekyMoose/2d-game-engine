@@ -1,8 +1,10 @@
 #pragma once
 
+#include "helper/Platform.h"
 #include "gameplay/Entity.h"
 
 #include <vector>
+
 
 class Entity;
 

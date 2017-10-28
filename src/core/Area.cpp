@@ -3,6 +3,12 @@
 #include "helper/Logger.h"
 #include "helper/gameConfig.h"
 
+#if PLATFORM_WINDOWS
+#   include <SDL.h>
+#elif PLATFORM_LINUX
+#   include <SDL2/SDL.h>
+#endif
+
 Area Area::areaControl;
 
 

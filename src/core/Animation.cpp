@@ -1,5 +1,12 @@
 #include "core/Animation.h"
 
+#if PLATFORM_WINDOWS
+#   include <SDL.h>
+#elif PLATFORM_LINUX
+#   include <SDL2/SDL.h>
+#endif
+
+
 Animation::Animation() {
     currentFrame= 0;
     nextFrame = 1;

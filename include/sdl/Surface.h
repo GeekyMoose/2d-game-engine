@@ -2,6 +2,12 @@
 
 #include "helper/Platform.h"
 
+#if PLATFORM_WINDOWS
+#   include <SDL.h>
+#elif PLATFORM_LINUX
+#   include <SDL2/SDL.h>
+#endif
+
 
 /**
  * Asset functions for SDL Surface Drawing.

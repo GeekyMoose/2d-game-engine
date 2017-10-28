@@ -1,5 +1,6 @@
 #pragma once
 
+#include "helper/Platform.h"
 #include "helper/gameConfig.h"
 
 

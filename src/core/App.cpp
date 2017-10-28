@@ -1,7 +1,15 @@
 #include "core/App.h"
 
+#include "core/FPS.h"
+
 #include <iostream>
 #include <ostream>
+
+#if PLATFORM_WINDOWS
+#   include <SDL.h>
+#elif PLATFORM_LINUX
+#   include <SDL2/SDL.h>
+#endif
 
 //------------------------------------------------------------------------------
 // Constructors - Destructor
@@ -117,7 +125,7 @@ void App::doLoop() {
     EntityCollision::listEntityCollisions.clear();
 
     //FPS management
-    FPS::FPSControl.onLoop();
+    FPS::getInstance().update();
     char buffer[255];
 }
 

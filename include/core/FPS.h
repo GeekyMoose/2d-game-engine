@@ -1,24 +1,31 @@
 #pragma once
 
 #include "helper/Platform.h"
+#include "helper/Singleton.h"
 
 
-class FPS {
+/**
+ * Keep trace of the game FPS.
+ */
+class FPS : private Singleton<FPS> {
+    private:
+        friend Singleton<FPS>;
+        FPS() = default;
     public:
-        static FPS FPSControl; //Singleton
+        using Singleton<FPS>::getInstance;
+
+    public:
+        void startUp() override;
+        void shutDown() override;
 
     private:
-        int     oldTime; //To calculate FPS
-        int     lastTime; //To calculate speed factor
-        float   speedFactor; //Current speed factor of the game (Usually inf to 1)
-        int     nbFrames; //Game current FPS
-        int     fpsCounter; //Frame count for FPS
+        float m_elapsedTimeInSec; // Elapsed time since last average counter
+        int m_currentFPS; // Current effective FPS
+        int m_frameCounter; // Current nb of Frame for the average calculation.
 
     public:
-        FPS();
-        void onLoop();
+        void update();
 
     public:
-        int getFPS();
-        float getSpeedFactor();
+        int getFPS() const;
 };

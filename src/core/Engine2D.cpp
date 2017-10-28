@@ -4,6 +4,7 @@
 
 #include <chrono>
 #include <thread>
+
 Engine2D::Engine2D() : timeManager(TimeManager::getInstance()) {
 }
 

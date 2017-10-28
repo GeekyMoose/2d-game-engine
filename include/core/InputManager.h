@@ -1,5 +1,7 @@
 #pragma once
 
+#include "helper/Platform.h"
+
 
 class InputManager : private Singleton<InputManager> {
     private:

@@ -1,5 +1,7 @@
 #include "gameplay/Entity.h"
 
+// WARNING: Code under changes: NOT WORKING VERSION
+
 //Singleton variable
 std::vector<Entity*> Entity::listEntities;
 
@@ -56,8 +58,8 @@ void Entity::doLoop() {
     if(flags & ENTITY_FLAG_GRAVITY) { accelY = 0.75f; }
     //Change speed (Add acceleration to speed).
     //getSpeedFactor gives the ratio to apply (See FPS class)
-    speedX += accelX*FPS::FPSControl.getSpeedFactor();
-    speedY += accelY*FPS::FPSControl.getSpeedFactor();
+    //speedX += accelX*FPS::FPSControl.getSpeedFactor(); //TODO: TMP REMOVED. To update
+    //speedY += accelY*FPS::FPSControl.getSpeedFactor(); //TODO: TMP REMOVED. To update
     //Speed limiter
     if(speedX>maxSpeedX) {   speedX = maxSpeedX; }
     if(speedX<-maxSpeedX) {  speedX = -maxSpeedX; }
@@ -108,18 +110,26 @@ void Entity::doMove(float moveX, float moveY) {
     double newY = 0;
 
     //Get the actual movement to do (Number of pixel for this movement)
-    moveX *= FPS::FPSControl.getSpeedFactor();
-    moveY *= FPS::FPSControl.getSpeedFactor();
+    //moveX *= FPS::FPSControl.getSpeedFactor(); //TODO: TMP REMOVED. To update
+    //moveY *= FPS::FPSControl.getSpeedFactor(); //TODO: TMP REMOVED. To update
 
     //Define distance between 2 position to check
     //SpeedFactor is always smaller than moveX (and moveY)
     if(moveX != 0) {
-        if(moveX >= 0) { newX =  FPS::FPSControl.getSpeedFactor(); }
-        else{           newX = -FPS::FPSControl.getSpeedFactor(); }
+        if(moveX >= 0) {
+            //newX =  FPS::FPSControl.getSpeedFactor();
+        }
+        else{
+            //newX = -FPS::FPSControl.getSpeedFactor();
+        }
     }
     if(moveY != 0) {
-        if(moveY >= 0) { newY =  FPS::FPSControl.getSpeedFactor(); }
-        else{           newY = -FPS::FPSControl.getSpeedFactor(); }
+        if(moveY >= 0) {
+            //newY = FPS::FPSControl.getSpeedFactor();
+        }
+        else{
+            //newY = -FPS::FPSControl.getSpeedFactor();
+        }
     }
 
     //Test each positions on the way till final position

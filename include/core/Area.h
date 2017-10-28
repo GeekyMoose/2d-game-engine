@@ -1,7 +1,7 @@
 #pragma once
 
+#include "helper/Platform.h"
 #include "core/Map.h"
-
 #include "sdl/Surface.h"
 
 #include <vector>

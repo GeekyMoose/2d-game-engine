@@ -2,6 +2,14 @@
 
 #include "helper/Logger.h"
 
+#if PLATFORM_WINDOWS
+#   include <SDL.h>
+#   include <SDL_image.h>
+#elif PLATFORM_LINUX
+#   include <SDL2/SDL.h>
+#   include <SDL2/SDL_image.h>
+#endif
+
 
 SDL_Surface* Surface::loadFromFile(const char* file) {
     auto toto = IMG_Load(file);

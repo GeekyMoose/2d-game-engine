@@ -1,34 +1,30 @@
 #include "core/FPS.h"
 
-FPS FPS::FPSControl;
+#include "core/TimeManager.h"
 
-FPS::FPS() {
-    oldTime     = 0;
-    lastTime    = 0;
-    speedFactor = 0;
-    nbFrames    = 0;
-    fpsCounter  = 0;
+
+void FPS::startUp() {
+    this->m_elapsedTimeInSec = 0;
+    this->m_currentFPS = 0;
+    this->m_frameCounter = 0;
 }
 
-void FPS::onLoop() {
+void FPS::shutDown() {
+}
+
+void FPS::update() {
+    this->m_elapsedTimeInSec += TimeManager::getInstance().getDeltaTime();
+    this->m_frameCounter++;
+
     //If one second since last refresh, update fps data
-    if((oldTime + 1000) < SDL_GetTicks()) {
-        oldTime     = SDL_GetTicks();
-        nbFrames    = fpsCounter;
-        fpsCounter  = 0;
+    if (this->m_elapsedTimeInSec >= 1000) {
+        // WARNING: Result is not accurate if DeltaTime is high (2sec for instance)
+        this->m_elapsedTimeInSec = 0;
+        this->m_currentFPS = this->m_frameCounter;
+        this->m_frameCounter = 0;
     }
-
-    //Update speedFactor and frames.
-    //32 represents the nb of pixel to move in 1 second (Default general speed)
-    speedFactor = ((SDL_GetTicks() - lastTime) / 1000.0f) * 32.0f;
-    lastTime    = SDL_GetTicks();
-    fpsCounter++;
 }
 
-int FPS::getFPS() {
-    return nbFrames;
-}
-
-float FPS::getSpeedFactor() {
-    return speedFactor;
+int FPS::getFPS() const {
+    return this->m_currentFPS;
 }

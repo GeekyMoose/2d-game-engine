@@ -1,7 +1,12 @@
 #pragma once
 
-
 #include "helper/Platform.h"
+
+#if PLATFORM_WINDOWS
+#   include <SDL.h>
+#elif PLATFORM_LINUX
+#   include <SDL2/SDL.h>
+#endif
 
 
 enum {
@@ -18,7 +23,7 @@ enum {
 };
 
 enum {
-    TIME_FIXED_UPDATE_FPS       = 50 // 20 milliseconds
+    TIME_FIXED_UPDATE_FPS       = 50 // 50 FPS = 20 milliseconds by Frame
 
 };
 
