@@ -7,22 +7,22 @@
 /**
  * Keep trace of the game FPS.
  */
-class FPS : private Singleton<FPS> {
+class FPSManager : private Singleton<FPSManager> {
     private:
-        friend Singleton<FPS>;
-        FPS() = default;
+        friend Singleton<FPSManager>;
+        FPSManager() = default;
 
     public:
-        using Singleton<FPS>::getInstance;
+        using Singleton<FPSManager>::getInstance;
 
     public:
         void startUp() override;
         void shutDown() override;
 
     private:
-        float m_elapsedTimeInSec; // Elapsed time since last average counter
-        int m_currentFPS; // Current effective FPS
-        int m_frameCounter; // Current nb of Frame for the average calculation.
+        float   m_elapsedTimeInSec; // Elapsed time since last average counter
+        int     m_currentFPS;       // Current effective FPS
+        int     m_frameCounter;     // Current nb of Frame for the average calculation.
 
     public:
         /**

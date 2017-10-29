@@ -1,19 +1,19 @@
-#include "core/FPS.h"
+#include "core/FPSManager.h"
 
 #include "core/TimeManager.h"
 
 #include "helper/Logger.h"
 
-void FPS::startUp() {
+void FPSManager::startUp() {
     this->m_elapsedTimeInSec    = 0;
     this->m_currentFPS          = 0;
     this->m_frameCounter        = 0;
 }
 
-void FPS::shutDown() {
+void FPSManager::shutDown() {
 }
 
-void FPS::update() {
+void FPSManager::update() {
     this->m_elapsedTimeInSec += TimeManager::getInstance().getDeltaTime();
     //LOG_DEBUG(this->m_elapsedTimeInSec);
     //LOG_DEBUG(this->m_frameCounter);
@@ -28,6 +28,6 @@ void FPS::update() {
     }
 }
 
-int FPS::getFPS() const {
+int FPSManager::getFPS() const {
     return this->m_currentFPS;
 }

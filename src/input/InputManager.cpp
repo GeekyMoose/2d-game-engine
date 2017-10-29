@@ -29,8 +29,6 @@ void InputManager::shutDown() {
 
 void InputManager::update() {
     SDL_PumpEvents();
-    //SDL_Event e;
-    //while (SDL_PollEvent(&e));
 }
 
 bool InputManager::isKeyDown(const char* keyname) {

@@ -58,14 +58,19 @@ class TimeManager : private Singleton<TimeManager> {
          * Update timer data according to the current time.
          * To call at each frame start.
          */
-        void updateTimer();
+        void update();
+
+        /**
+         * Update 
+         * If has one, update time data so that, this function may be used
+         * in a loop until no fixed frame remain.
+         */
+        void updateFixedFrame();
 
         /**
          * Check whether a fixed frame need to be processed.
-         * If has one, update time data so that, this function may be used
-         * in a loop until no fixed frame remain.
          *
-         * \return True if has one fixed frame to process, otherwise, return false.
+         * \return True if one more fixed frame, otherwise, returns false.
          */
         bool hasNextFixedFrame();
 

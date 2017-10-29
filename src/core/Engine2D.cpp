@@ -8,7 +8,7 @@
 
 Engine2D::Engine2D()
     : m_timeManager(TimeManager::getInstance()),
-      m_fps(FPS::getInstance()),
+      m_fpsManager(FPSManager::getInstance()),
       m_inputManager(InputManager::getInstance()) {
 }
 
@@ -19,7 +19,7 @@ Engine2D::~Engine2D() {
 void Engine2D::startUp() {
     this->m_isRunning = true;
     this->m_timeManager.startUp();
-    this->m_fps.startUp();
+    this->m_fpsManager.startUp();
     this->m_inputManager.startUp();
 
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
@@ -32,13 +32,15 @@ void Engine2D::startUp() {
 void Engine2D::shutDown() {
     this->m_isRunning = false;
     this->m_timeManager.shutDown();
+    this->m_fpsManager.shutDown();
+    this->m_inputManager.shutDown();
     this->m_window.destroy();
 }
 
 void Engine2D::run() {
     while(this->m_isRunning) {
-        this->m_timeManager.updateTimer();
-        this->m_fps.update();
+        this->m_timeManager.update();
+        this->m_fpsManager.update();
         this->m_inputManager.update();
 
         // TODO TEMP DEBUG
@@ -60,6 +62,7 @@ void Engine2D::run() {
         }
 
         while(this->m_timeManager.hasNextFixedFrame()) {
+            this->m_timeManager.updateFixedFrame();
             // TODO Call update
         }
         // TODO Call render

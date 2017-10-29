@@ -13,7 +13,7 @@ void TimeManager::startUp() {
 void TimeManager::shutDown() {
 }
 
-void TimeManager::updateTimer() {
+void TimeManager::update() {
     auto oldStartTime = this->m_currentStartTime;
     this->m_currentStartTime = std::chrono::steady_clock::now();
 
@@ -26,12 +26,12 @@ void TimeManager::updateTimer() {
     this->m_leftOverFixedTime += this->m_deltaTime; // Used by fixedDeltaTime
 }
 
+void TimeManager::updateFixedFrame() {
+    this->m_leftOverFixedTime -= this->m_fixedUpdateTimeInSec;
+}
+
 bool TimeManager::hasNextFixedFrame() {
-    if(this->m_leftOverFixedTime >= this->m_fixedUpdateTimeInSec) {
-        this->m_leftOverFixedTime -= this->m_fixedUpdateTimeInSec;
-        return true;
-    }
-    return false;
+    return this->m_leftOverFixedTime >= this->m_fixedUpdateTimeInSec;
 }
 
 float TimeManager::getDeltaTime() const {

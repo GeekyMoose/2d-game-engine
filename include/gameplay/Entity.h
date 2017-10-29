@@ -3,7 +3,7 @@
 #include "helper/Platform.h"
 #include "core/Animation.h"
 #include "core/Tile.h"
-#include "core/FPS.h"
+#include "core/FPSManager.h"
 #include "core/Camera.h"
 #include "core/Area.h"
 #include "physics/EntityCollision.h"

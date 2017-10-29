@@ -3,7 +3,7 @@
 #include "helper/Platform.h"
 #include "helper/Singleton.h"
 #include "core/TimeManager.h"
-#include "core/FPS.h"
+#include "core/FPSManager.h"
 #include "input/InputManager.h"
 #include "sdl/AppWindowSDL2.h"
 
@@ -23,7 +23,7 @@ class Engine2D : private Singleton<Engine2D> {
     private:
         bool            m_isRunning;
         TimeManager&    m_timeManager;
-        FPS&            m_fps;
+        FPSManager&     m_fpsManager;
         InputManager&   m_inputManager;
         AppWindowSDL2   m_window;
 

@@ -1,6 +1,6 @@
 #include "core/App.h"
 
-#include "core/FPS.h"
+#include "core/FPSManager.h"
 
 #include <iostream>
 #include <ostream>
@@ -125,7 +125,7 @@ void App::doLoop() {
     EntityCollision::listEntityCollisions.clear();
 
     //FPS management
-    FPS::getInstance().update();
+    FPSManager::getInstance().update();
     char buffer[255];
 }
 
