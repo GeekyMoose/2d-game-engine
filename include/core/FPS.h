@@ -11,6 +11,7 @@ class FPS : private Singleton<FPS> {
     private:
         friend Singleton<FPS>;
         FPS() = default;
+
     public:
         using Singleton<FPS>::getInstance;
 
@@ -24,8 +25,18 @@ class FPS : private Singleton<FPS> {
         int m_frameCounter; // Current nb of Frame for the average calculation.
 
     public:
+        /**
+         * Update the FPS value.
+         * To be called at each frame.
+         */
         void update();
 
     public:
+
+        /**
+         * Returns the current FPS value.
+         *
+         * \return Current FPS value.
+         */
         int getFPS() const;
 };

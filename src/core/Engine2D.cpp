@@ -1,11 +1,14 @@
 #include "core/Engine2D.h"
 
 #include "helper/Logger.h"
+#include "core/FPS.h"
 
 #include <chrono>
 #include <thread>
 
-Engine2D::Engine2D() : timeManager(TimeManager::getInstance()) {
+Engine2D::Engine2D()
+    : m_timeManager(TimeManager::getInstance()),
+      m_fps(FPS::getInstance()) {
 }
 
 Engine2D::~Engine2D() {
@@ -14,20 +17,23 @@ Engine2D::~Engine2D() {
 
 void Engine2D::startUp() {
     this->m_isRunning = true;
-    this->timeManager.startUp();
+    this->m_timeManager.startUp();
+    this->m_fps.startUp();
 }
 
 void Engine2D::shutDown() {
     this->m_isRunning = false;
-    this->timeManager.shutDown();
+    this->m_timeManager.shutDown();
 }
 
 void Engine2D::run() {
     while(this->m_isRunning) {
-        this->timeManager.updateTimer();
-        LOG_DEBUG(this->timeManager.getDeltaTime());
+        this->m_timeManager.updateTimer();
+        this->m_fps.update();
 
-        while(this->timeManager.hasNextFixedFrame()) {
+        LOG_DEBUG(this->m_fps.getFPS());
+
+        while(this->m_timeManager.hasNextFixedFrame()) {
             // TODO Call update
         }
         // TODO Call render

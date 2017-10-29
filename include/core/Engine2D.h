@@ -3,6 +3,7 @@
 #include "helper/Platform.h"
 #include "helper/Singleton.h"
 #include "core/TimeManager.h"
+#include "core/FPS.h"
 
 
 /**
@@ -18,8 +19,9 @@ class Engine2D : private Singleton<Engine2D> {
         using Singleton<Engine2D>::getInstance;
 
     private:
-        bool m_isRunning;
-        TimeManager& timeManager;
+        bool            m_isRunning;
+        TimeManager&    m_timeManager;
+        FPS&            m_fps;
 
 
     // -------------------------------------------------------------------------
@@ -38,5 +40,9 @@ class Engine2D : private Singleton<Engine2D> {
     // Core methods
     // -------------------------------------------------------------------------
     public:
+
+        /**
+         * Start the engine.
+         */
         void run();
 };
