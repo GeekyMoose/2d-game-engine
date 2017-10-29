@@ -5,6 +5,7 @@
 #include "core/TimeManager.h"
 #include "core/FPS.h"
 #include "input/InputManager.h"
+#include "sdl/AppWindowSDL2.h"
 
 
 /**
@@ -24,6 +25,7 @@ class Engine2D : private Singleton<Engine2D> {
         TimeManager&    m_timeManager;
         FPS&            m_fps;
         InputManager&   m_inputManager;
+        AppWindowSDL2   m_window;
 
 
     // -------------------------------------------------------------------------

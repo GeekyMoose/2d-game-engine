@@ -6,10 +6,10 @@
 #   include <SDL_keycode.h>
 #   include <SDL_scancode.h>
 #elif PLATFORM_LINUX
-#   include "SDL2/SDL.h"
-#   include "SDL2/SDL_keyboard.h"
-#   include "SDL2/SDL_keycode.h"
-#   include "SDL2/SDL_scancode.h"
+#   include <SDL2/SDL.h>
+#   include <SDL2/SDL_keyboard.h>
+#   include <SDL2/SDL_keycode.h>
+#   include <SDL2/SDL_scancode.h>
 #endif
 
 

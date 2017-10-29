@@ -1,6 +1,9 @@
 #pragma once
 
+#include "helper/Platform.h"
+
 #include <unordered_map>
+#include <string>
 
 #if PLATFORM_WINDOWS
 #   include <SDL.h>
@@ -15,11 +18,11 @@
 #endif
 
 
-class KeyBinding {
+class InputKeyBinder {
     private:
-        std::unordered_map<char*, SDL_Scancode> m_loopUpKeys;
+        std::unordered_map<std::string, SDL_Scancode> m_loopUpKeys;
 
     public:
-        void registerKey(const char* name, const SDL_Scancode* key);
+        void registerKey(const char* name, SDL_Scancode key);
         SDL_Scancode& lookUpKeyName(const char* name);
 };

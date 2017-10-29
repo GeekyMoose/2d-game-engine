@@ -3,7 +3,7 @@
 #include "helper/Platform.h"
 #include "helper/Singleton.h"
 #include "Keyboard.h"
-#include "KeyBinding.h"
+#include "InputKeyBinder.h"
 
 
 /**
@@ -18,7 +18,7 @@ class InputManager : private Singleton<InputManager> {
 
     public:
         Keyboard m_keyboard;
-        KeyBinding m_keybinding;
+        InputKeyBinder m_inputKeybinder;
 
     private:
         InputManager() = default;

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "helper/Platform.h"
+
 #include <cstdint>
 
 
