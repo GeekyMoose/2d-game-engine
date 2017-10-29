@@ -4,6 +4,7 @@
 #include "helper/Singleton.h"
 #include "core/TimeManager.h"
 #include "core/FPS.h"
+#include "input/InputManager.h"
 
 
 /**
@@ -22,6 +23,7 @@ class Engine2D : private Singleton<Engine2D> {
         bool            m_isRunning;
         TimeManager&    m_timeManager;
         FPS&            m_fps;
+        InputManager&   m_inputManager;
 
 
     // -------------------------------------------------------------------------

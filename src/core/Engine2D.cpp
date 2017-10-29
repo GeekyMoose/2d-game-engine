@@ -8,7 +8,8 @@
 
 Engine2D::Engine2D()
     : m_timeManager(TimeManager::getInstance()),
-      m_fps(FPS::getInstance()) {
+      m_fps(FPS::getInstance()),
+      m_inputManager(InputManager::getInstance()) {
 }
 
 Engine2D::~Engine2D() {
@@ -19,6 +20,7 @@ void Engine2D::startUp() {
     this->m_isRunning = true;
     this->m_timeManager.startUp();
     this->m_fps.startUp();
+    this->m_inputManager.startUp();
 }
 
 void Engine2D::shutDown() {
