@@ -99,7 +99,7 @@ void App::doCleanup() {
 // Body function (Execution)
 //------------------------------------------------------------------------------
 void App::doEvent(SDL_Event* sdlevent) {
-    EventManager::onEvent(sdlevent);
+    //EventManager::onEvent(sdlevent);
 }
 
 void App::doLoop() {
@@ -143,34 +143,3 @@ void App::doRender() {
     //General refresh
     SDL_UpdateWindowSurface(this->m_window.getRoot());
 }
-
-
-//------------------------------------------------------------------------------
-// Override function (EventManager)
-//------------------------------------------------------------------------------
-void App::onExit() {
-    isRunning = false;
-}
-
-void App::onKeyUp(SDL_Keysym keysym) {
-    switch(keysym.sym) {
-        //Arrow keys
-        case SDLK_LEFT: player1.moveLeft = false;
-        case SDLK_RIGHT: player1.moveRight = false;
-        case SDLK_SPACE: player1.jump();
-        default: break;
-    }
-}
-
-void App::onKeyDown(SDL_Keysym keysym) {
-    switch(keysym.sym) {
-        //Arrow keys
-        case SDLK_LEFT: player1.moveLeft = true;
-        case SDLK_RIGHT: player1.moveRight = true;
-        default: break;
-    }
-}
-
-void App::onKeyRight(SDL_Keysym keysym) {}
-void App::onKeyLeft(SDL_Keysym keysym) {}
-void App::onSpace(SDL_Keysym keysym) {}

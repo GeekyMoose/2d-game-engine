@@ -2,7 +2,6 @@
 
 #include "helper/Platform.h"
 
-#include "core/EventManager.h"
 #include "core/Area.h"
 #include "core/Camera.h"
 #include "gameplay/Entity.h"
@@ -14,8 +13,11 @@
 
 /**
  * SDL application.
+ *
+ * \warning
+ * Deprecated
  */
-class App : public EventManager {
+class App {
 
     //--------------------------------------------------------------------------
     // Constants - Attributes
@@ -72,16 +74,4 @@ class App : public EventManager {
         void doEvent(SDL_Event* sdlevent);
         void doLoop();
         void doRender();
-
-    public:
-
-        //--------------------------------------------------------------------------
-        // Override function (EventManager)
-        //--------------------------------------------------------------------------
-        void onKeyDown(SDL_Keysym);
-        void onKeyUp(SDL_Keysym);
-        void onExit();
-        void onKeyRight(SDL_Keysym keysym);
-        void onKeyLeft(SDL_Keysym keysym);
-        void onSpace(SDL_Keysym keysym);
 };

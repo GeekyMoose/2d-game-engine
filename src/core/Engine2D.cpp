@@ -43,22 +43,10 @@ void Engine2D::run() {
         this->m_fpsManager.update();
         this->m_inputManager.update();
 
-        // TODO TEMP DEBUG
         // LOG_DEBUG(this->m_fps.getFPS());
         if (this->m_inputManager.isKeyDown("quit")) {
-            LOG_DEBUG("QUIT PRESSED");
-        }
-        if (this->m_inputManager.isKeyDown("moveUp")) {
-            LOG_DEBUG("moveUp PRESSED");
-        }
-        if (this->m_inputManager.isKeyDown("moveDown")) {
-            LOG_DEBUG("moveDown PRESSED");
-        }
-        if (this->m_inputManager.isKeyDown("moveRight")) {
-            LOG_DEBUG("moveRight PRESSED");
-        }
-        if (this->m_inputManager.isKeyDown("moveLeft")) {
-            LOG_DEBUG("moveLeft PRESSED");
+            this->shutDown();
+            break;
         }
 
         while(this->m_timeManager.hasNextFixedFrame()) {
