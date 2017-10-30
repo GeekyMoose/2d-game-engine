@@ -16,11 +16,11 @@ AppWindowSDL2::~AppWindowSDL2() {
 void AppWindowSDL2::initialize() {
     this->m_SDLwindow = SDL_CreateWindow(
         GAME_CONFIG_WINDOW_TITLE,
-        WINDOW_DEFAULT_POS_LEFT,
-        WINDOW_DEFAULT_POS_RIGHT,
+        SDL_WINDOWPOS_UNDEFINED,
+        SDL_WINDOWPOS_UNDEFINED,
         WINDOW_DEFAULT_WIDTH,
         WINDOW_DEFAULT_HEIGHT,
-        GAME_CONFIG_WINDOW_DEFAULT_MODE
+        SDL_WINDOW_HIDDEN
     );
 
     if(this->m_SDLwindow == NULL) {
