@@ -15,8 +15,6 @@ void FPSManager::shutDown() {
 
 void FPSManager::update() {
     this->m_elapsedTimeInSec += TimeManager::getInstance().getDeltaTime();
-    //LOG_DEBUG(this->m_elapsedTimeInSec);
-    //LOG_DEBUG(this->m_frameCounter);
     this->m_frameCounter++;
 
     //If one second since last refresh, update fps data

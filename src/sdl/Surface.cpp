@@ -36,13 +36,13 @@ bool Surface::drawInSurface(SDL_Surface* src,
 }
 
 bool Surface::drawInSurface(SDL_Surface* src,
-                     const int src_x,
-                     const int src_y,
-                     const int src_width,
-                     const int src_height,
-                     SDL_Surface* dest,
-                     const int x,
-                     const int y) {
+                            const int src_x,
+                            const int src_y,
+                            const int src_width,
+                            const int src_height,
+                            SDL_Surface* dest,
+                            const int x,
+                            const int y) {
     if(src == NULL || dest == NULL) {
         return false;
     }

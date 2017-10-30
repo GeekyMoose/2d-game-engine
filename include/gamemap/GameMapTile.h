@@ -19,6 +19,7 @@ class GameMapTile {
         /** Y Coordinate of the Tile in MapArea's coordinates. */
         const int m_coordinateY;
 
+        /** Type of tile. From enum. */
         const GameMapTileType m_tileType;
 
     public:

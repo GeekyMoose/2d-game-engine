@@ -1,5 +1,3 @@
-#pragma once
-
 #include "gamemap/GameMapArea.h"
 
 GameMapArea::GameMapArea(const int x, const int y)
