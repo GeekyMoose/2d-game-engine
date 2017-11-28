@@ -1,6 +1,6 @@
 include_directories("${CMAKE_SOURCE_DIR}/include")
 
-file(GLOB_RECURSE srcFiles *.cpp)
+file(GLOB_RECURSE srcFiles src/*.cpp)
 
 add_executable(game ${srcFiles})
 add_custom_target(run game)
