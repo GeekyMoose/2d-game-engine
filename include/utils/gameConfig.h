@@ -16,6 +16,8 @@ enum {
 };
 
 enum GameMapData {
+    MAP_SIZE_ROW                = 3,    // Nb area in on map row
+    MAP_SIZE_COL                = 2,    // Nb area in on map column
     AREA_NB_TILES_ROW           = 40,   // Nb Tiles in one row
     AREA_NB_TILES_COL           = 40,   // Nb Tiles in one column
     TILE_SIZE_IN_PIXEL          = 20    // Size of a tile in pixel

@@ -11,11 +11,12 @@ bool MapArea::loadFromFile(const char* filepath) {
         return false;
     }
 
+    // Recover tiles (Number, then space and \n each row)
     for(int y = 0; y < AREA_NB_TILES_COL; ++y) {
         for(int x = 0; x < AREA_NB_TILES_ROW; ++x) {
-            int tileType;
-            fscanf(file, "%d ", tileType);
-            this->m_tiles[x][y] = new Tile(x, y, tileType);
+            int tileType = 0;
+            fscanf(file, "%d ", &tileType);
+            this->m_tiles[y][x] = new Tile(x, y, tileType);
         }
         fscanf(file, "\n");
     }
@@ -32,11 +33,11 @@ void MapArea::render(SDL_Surface* dest, const int destX, const int destY) {
 //------------------------------------------------------------------------------
 // Getters - Setters
 //------------------------------------------------------------------------------
-Tile* MapArea::getTile(const int posX, const int posY) {
+Tile* MapArea::getTileAt(const int posX, const int posY) {
     const int x = posX / TILE_SIZE_IN_PIXEL;
     const int y = posY / TILE_SIZE_IN_PIXEL;
     if(x >= 0 && x < AREA_NB_TILES_ROW && y >= 0 && y < AREA_NB_TILES_COL) {
-        return this->m_tiles[x][y];
+        return this->m_tiles[y][x];
     }
     return nullptr;
 }

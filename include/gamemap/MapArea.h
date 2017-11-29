@@ -24,7 +24,7 @@ class MapArea {
         const int m_coordinateY;
 
         /** Matrix of tiles. */
-        Tile* m_tiles[GameMapData::AREA_NB_TILES_ROW][GameMapData::AREA_NB_TILES_COL];
+        Tile* m_tiles[AREA_NB_TILES_ROW][AREA_NB_TILES_COL];
 
 
     // -------------------------------------------------------------------------
@@ -41,6 +41,7 @@ class MapArea {
          *
          * \warning
          * Undefined behavior in case of wrong file format.
+         * (May be security issue).
          *
          * \param file  File to use (Whole path + name + extension).
          * \return      True if successfully loaded, otherwise, return false.
@@ -73,5 +74,5 @@ class MapArea {
          * \param posY  Y position in pixel.
          * \return      The tile or nullptr if no tile.
          */
-        Tile* getTile(const int posX, const int posY);
+        Tile* getTileAt(const int posX, const int posY);
 };
