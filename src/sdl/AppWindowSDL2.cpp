@@ -1,7 +1,7 @@
 #include "sdl/AppWindowSDL2.h"
 
-#include "helper/gameConfig.h"
-#include "helper/Logger.h"
+#include "utils/gameConfig.h"
+#include "utils/log.h"
 
 #include <iostream>
 
@@ -24,7 +24,7 @@ void AppWindowSDL2::initialize() {
     );
 
     if(this->m_SDLwindow == NULL) {
-        LOG_ERROR(SDL_GetError());
+        LOG_ERROR("SDL error: %s", SDL_GetError());
         return;
     }
 

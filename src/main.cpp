@@ -1,5 +1,4 @@
 #include "core/Engine2D.h"
-
 #include "utils/log.h"
 
 #include <exception>
@@ -9,7 +8,7 @@ int main(int argc, char **argv) {
     try {
         LOG_TRACE("Start game");
         Engine2D& engine = Engine2D::getInstance();
-        engine.startUp();
+        engine.startup();
         engine.run();
         LOG_TRACE("End game");
     }

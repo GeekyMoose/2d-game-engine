@@ -1,5 +1,4 @@
 #include "core/App.h"
-
 #include "core/FPSManager.h"
 
 #include <iostream>
@@ -15,7 +14,7 @@
 // Constructors - Destructor
 //------------------------------------------------------------------------------
 App::App() {
-    LOG_INFO("Create application.");
+    LOG_TRACE("Create application.");
     isRunning = false;
 }
 
@@ -28,7 +27,7 @@ int App::executeApp() {
     if(isRunning) {
         return false;
     }
-    LOG_INFO("Start running application...");
+    LOG_TRACE("Start running application...");
 
     //Initialize application
     if(initApp() == false) {
@@ -55,14 +54,14 @@ int App::executeApp() {
 bool App::initApp() {
     //Init SDL
     if(SDL_Init(SDL_INIT_EVERYTHING) < 0) {
-        LOG_ERROR(SDL_GetError());
+        LOG_ERROR("SD ERROR: %s", SDL_GetError());
         return false;
     }
 
     this->m_window.initialize();
 
     //Create and load players
-    LOG_INFO("Load players");
+    LOG_TRACE("Load players");
     if(player1.loadEntity("./data/images/yoshi.png", 64, 64, 8)==false) {
         return false;
     }

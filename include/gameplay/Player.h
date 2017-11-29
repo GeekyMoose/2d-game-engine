@@ -1,6 +1,6 @@
 #pragma once
 
-#include "helper/Platform.h"
+#include "utils/Platform.h"
 #include "Entity.h"
 
 class Player : public Entity {

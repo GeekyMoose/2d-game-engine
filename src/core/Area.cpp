@@ -1,7 +1,7 @@
 #include "core/Area.h"
 
-#include "helper/Logger.h"
-#include "helper/gameConfig.h"
+#include "utils/log.h"
+#include "utils/gameConfig.h"
 
 #if PLATFORM_WINDOWS
 #   include <SDL.h>

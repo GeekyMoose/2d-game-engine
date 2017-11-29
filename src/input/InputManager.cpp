@@ -14,7 +14,7 @@
 #   include <SDL2/SDL_scancode.h>
 #endif
 
-void InputManager::startUp() {
+void InputManager::startup() {
     // Bind all keys used for this game
     // TODO: May be extracted in external config file etc.
     this->m_inputKeybinder.registerKey("quit", SDL_SCANCODE_ESCAPE);
@@ -24,7 +24,7 @@ void InputManager::startUp() {
     this->m_inputKeybinder.registerKey("moveLeft", SDL_SCANCODE_A);
 }
 
-void InputManager::shutDown() {
+void InputManager::shutdown() {
 }
 
 void InputManager::update() {

@@ -2,15 +2,14 @@
 
 #include "core/TimeManager.h"
 
-#include "helper/Logger.h"
 
-void FPSManager::startUp() {
+void FPSManager::startup() {
     this->m_elapsedTimeInSec    = 0;
     this->m_currentFPS          = 0;
     this->m_frameCounter        = 0;
 }
 
-void FPSManager::shutDown() {
+void FPSManager::shutdown() {
 }
 
 void FPSManager::update() {

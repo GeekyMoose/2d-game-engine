@@ -1,7 +1,7 @@
 #pragma once
 
 #include "gamemap/Tile.h"
-#include "helper/gameConfig.h"
+#include "utils/gameConfig.h"
 
 
 /**

@@ -2,6 +2,7 @@
 
 #include "Uncopyable.h"
 
+
 /**
  * Singleton class. (Singleton Pattern).
  * Anyone that inherite this class is a singleton.
@@ -30,6 +31,6 @@ class Singleton : virtual private Uncopyable<Singleton<T>> {
 
 
     public:
-        virtual void startUp() = 0;
-        virtual void shutDown() = 0;
+        virtual void startup() = 0;
+        virtual void shutdown() = 0;
 };

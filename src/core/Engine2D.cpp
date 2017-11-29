@@ -13,14 +13,14 @@ Engine2D::Engine2D()
 }
 
 Engine2D::~Engine2D() {
-    this->shutDown();
+    this->shutdown();
 }
 
-void Engine2D::startUp() {
+void Engine2D::startup() {
     this->m_isRunning = true;
-    this->m_timeManager.startUp();
-    this->m_fpsManager.startUp();
-    this->m_inputManager.startUp();
+    this->m_timeManager.startup();
+    this->m_fpsManager.startup();
+    this->m_inputManager.startup();
 
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         LOG_ERROR("SDL Error: %s", SDL_GetError());
@@ -29,11 +29,11 @@ void Engine2D::startUp() {
     this->m_window.show();
 }
 
-void Engine2D::shutDown() {
+void Engine2D::shutdown() {
     this->m_isRunning = false;
-    this->m_timeManager.shutDown();
-    this->m_fpsManager.shutDown();
-    this->m_inputManager.shutDown();
+    this->m_timeManager.shutdown();
+    this->m_fpsManager.shutdown();
+    this->m_inputManager.shutdown();
     this->m_window.destroy();
 }
 

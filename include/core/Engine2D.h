@@ -1,7 +1,7 @@
 #pragma once
 
-#include "helper/Platform.h"
-#include "helper/Singleton.h"
+#include "utils/Platform.h"
+#include "utils/Singleton.h"
 #include "core/TimeManager.h"
 #include "core/FPSManager.h"
 #include "input/InputManager.h"
@@ -36,8 +36,8 @@ class Engine2D : private Singleton<Engine2D> {
         ~Engine2D();
 
     public:
-        void startUp() override;
-        void shutDown() override;
+        void startup() override;
+        void shutdown() override;
 
 
     // -------------------------------------------------------------------------

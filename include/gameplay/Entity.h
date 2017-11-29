@@ -1,6 +1,6 @@
 #pragma once
 
-#include "helper/Platform.h"
+#include "utils/Platform.h"
 #include "core/Animation.h"
 #include "core/Tile.h"
 #include "core/FPSManager.h"

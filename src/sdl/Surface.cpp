@@ -1,6 +1,6 @@
 #include "sdl/Surface.h"
 
-#include "helper/Logger.h"
+#include "utils/log.h"
 
 #if PLATFORM_WINDOWS
 #   include <SDL.h>

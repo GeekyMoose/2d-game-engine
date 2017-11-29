@@ -1,16 +1,15 @@
 #include "core/TimeManager.h"
 
-#include "helper/Logger.h"
-#include "helper/gameConfig.h"
+#include "utils/gameConfig.h"
 
 
-void TimeManager::startUp() {
+void TimeManager::startup() {
     this->m_currentStartTime = std::chrono::steady_clock::now();
     this->m_fixedUpdateTimeInSec = 1.0f / static_cast<float>(TIME_FIXED_UPDATE_FPS);
     this->m_leftOverFixedTime = 0.0f;
 }
 
-void TimeManager::shutDown() {
+void TimeManager::shutdown() {
 }
 
 void TimeManager::update() {

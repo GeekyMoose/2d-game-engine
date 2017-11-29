@@ -1,7 +1,7 @@
 #pragma once
 
-#include "helper/Platform.h"
-#include "helper/Singleton.h"
+#include "utils/Platform.h"
+#include "utils/Singleton.h"
 
 
 /**
@@ -16,8 +16,8 @@ class FPSManager : private Singleton<FPSManager> {
         using Singleton<FPSManager>::getInstance;
 
     public:
-        void startUp() override;
-        void shutDown() override;
+        void startup() override;
+        void shutdown() override;
 
     private:
         float   m_elapsedTimeInSec; // Elapsed time since last average counter

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "helper/Platform.h"
+#include "utils/Platform.h"
 
 
 #define GAME_CONFIG_WINDOW_TITLE "2d game"

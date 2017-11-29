@@ -1,7 +1,7 @@
 #pragma once
 
-#include "helper/Platform.h"
-#include "helper/Singleton.h"
+#include "utils/Platform.h"
+#include "utils/Singleton.h"
 
 #include <chrono>
 
@@ -46,8 +46,8 @@ class TimeManager : private Singleton<TimeManager> {
         ~TimeManager() = default;
 
     public:
-        void startUp() override;
-        void shutDown() override;
+        void startup() override;
+        void shutdown() override;
 
 
     // -------------------------------------------------------------------------
