@@ -12,17 +12,11 @@ enum {
 };
 
 enum {
-    MAP_NB_TILES_WIDTH          = 40,
-    MAP_NB_TILES_HEIGHT         = 40,
-    TILE_SIZE                   = 16
-};
-
-enum {
-    TIME_FIXED_UPDATE_FPS       = 50 // 50 FPS = 20 milliseconds by Frame
+    TIME_FIXED_UPDATE_FPS       = 50    // 50 FPS = 20 milliseconds by Frame
 };
 
 enum GameMapData {
-    AREA_NB_TILES_ROW           = 40, // Nb Tiles in one row
-    AREA_NB_TILES_COL           = 40, // Nb Tiles in one column
-    TILE_SIZE_IN_PIXEL          = 20  // Size of a tile in pixel
+    AREA_NB_TILES_ROW           = 40,   // Nb Tiles in one row
+    AREA_NB_TILES_COL           = 40,   // Nb Tiles in one column
+    TILE_SIZE_IN_PIXEL          = 20    // Size of a tile in pixel
 };

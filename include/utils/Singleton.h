@@ -6,6 +6,9 @@
 /**
  * Singleton class. (Singleton Pattern).
  * Anyone that inherite this class is a singleton.
+ *
+ * \author  Constantin Masson
+ * \date    Oct 2017
  */
 template<class T>
 class Singleton : virtual private Uncopyable<Singleton<T>> {

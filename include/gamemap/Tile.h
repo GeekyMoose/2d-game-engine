@@ -20,7 +20,7 @@ class Tile {
         const int m_coordinateY;
 
         /** Type of tile. From enum. */
-        const TileType m_tileType;
+        const int m_tileType;
 
     public:
         /**
@@ -30,5 +30,5 @@ class Tile {
          * \param y The y coordinate in GameArea.
          * \param type The original tile type
          */
-        Tile(const int x, const int y, const TileType type);
+        Tile(const int x, const int y, const int type);
 };

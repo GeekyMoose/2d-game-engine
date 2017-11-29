@@ -1,6 +1,6 @@
 #pragma once
 
-enum class TileType {
+enum class TileType : int {
     Normal,
     Block
 };
