@@ -6,6 +6,9 @@
 
 /**
  * Keep trace of the game FPS.
+ *
+ * \author  Constantin Masson
+ * \date    Oct 2017
  */
 class FPSManager : private Singleton<FPSManager> {
     private:

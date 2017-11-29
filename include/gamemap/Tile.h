@@ -9,7 +9,7 @@
  * It's position is relative to its parent MapArea.
  *
  * \author  Constantin Masson
- * \date    Nov 2017
+ * \date    Oct 2017
  */
 class Tile {
     private:

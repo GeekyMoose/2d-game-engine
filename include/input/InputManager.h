@@ -8,6 +8,9 @@
 
 /**
  * General Game input manager.
+ *
+ * \author  Constantin Masson
+ * \date    Oct 2017
  */
 class InputManager : private Singleton<InputManager> {
     private:

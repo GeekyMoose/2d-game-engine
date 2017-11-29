@@ -12,7 +12,8 @@
 /**
  * Render a Window using SDL2 
  *
- * \author Constantin Masson
+ * \author  Constantin Masson
+ * \date    Oct 2017
  */
 class AppWindowSDL2 {
 

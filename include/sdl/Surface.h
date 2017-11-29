@@ -13,6 +13,9 @@
  * Asset functions for SDL Surface Drawing.
  *
  * Abstract class (static functions only).
+ *
+ * \author  Constantin Masson
+ * \date    Oct 2017
  */
 class Surface final {
 

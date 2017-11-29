@@ -10,6 +10,9 @@
 
 /**
  * The main 2D engine component.
+ *
+ * \author  Constantin Masson
+ * \date    Nov 2017
  */
 class Engine2D : private Singleton<Engine2D> {
     // -------------------------------------------------------------------------

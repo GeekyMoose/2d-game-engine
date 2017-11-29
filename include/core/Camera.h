@@ -10,6 +10,12 @@ enum {
 };
 
 
+/**
+ * Main campera component.
+ *
+ * \author  Constantin Masson
+ * \date    Oct 2017
+ */
 class Camera {
     //--------------------------------------------------------------------------
     // Attributes

@@ -1,0 +1,7 @@
+./data/gamemap/area1.txt
+./data/gamemap/area1.txt
+./data/gamemap/area1.txt
+
+./data/gamemap/area1.txt
+./data/gamemap/area1.txt
+./data/gamemap/area1.txt

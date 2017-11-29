@@ -9,9 +9,9 @@ bool GameMap::loadFromFile(const char* filepath) {
         return false;
     }
 
-    //Recover each area (One line each in file)
-    for(int x = 0; x < MAP_SIZE_ROW; ++x){
-        for(int y = 0; y < MAP_SIZE_COL; ++y){
+    //Recover each area row (One line each in file)
+    for(int y = 0; y < MAP_SIZE_COL; ++y){
+        for(int x = 0; x < MAP_SIZE_ROW; ++x){
             char buffer[256];
             fscanf(file, "%s", buffer);
             if(this->m_listAreas[y][x].loadFromFile(buffer) == true){

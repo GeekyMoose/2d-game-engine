@@ -12,6 +12,9 @@
  *
  * Use a fixed DeltaTime for the update (For physic engine etc),
  * and a variable delta time for the Render engine.
+ *
+ * \author  Constantin Masson
+ * \date    Oct 2017
  */
 class TimeManager : private Singleton<TimeManager> {
     // -------------------------------------------------------------------------

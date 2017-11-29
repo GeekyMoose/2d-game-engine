@@ -5,6 +5,11 @@
 #include <cstdint>
 
 
+/**
+ *
+ * \author  Constantin Masson
+ * \date    Oct 2017
+ */
 class Keyboard {
     private:
         const std::uint8_t *m_state;

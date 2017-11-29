@@ -5,6 +5,9 @@
 
 /**
  * Define an animation.
+ *
+ * \author  Constantin Masson
+ * \date    Oct 2017
  */
 class Animation {
     private:

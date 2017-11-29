@@ -18,6 +18,11 @@
 #endif
 
 
+/**
+ *
+ * \author  Constantin Masson
+ * \date    Oct 2017
+ */
 class InputKeyBinder {
     private:
         std::unordered_map<std::string, SDL_Scancode> m_loopUpKeys;
