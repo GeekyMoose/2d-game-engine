@@ -6,15 +6,17 @@
 
 /**
  * SubComponent of a GameMap.
- *
  * GameMapArea is made of Tiles.
+ *
+ * \date    Nov 2017
+ * \author  Constantin Masson
  */
 class GameMapArea {
     private:
-        /** X Position of the Area inside it's GameMap parent. */
+        /** X Position of the Area inside its GameMap parent. */
         const int m_coordinateX;
 
-        /** Y Position of the Area inside it's GameMap parent. */
+        /** Y Position of the Area inside its GameMap parent. */
         const int m_coordinateY;
 
         /** Matrix of tiles. */

@@ -1,6 +1,6 @@
 #include "core/Engine2D.h"
 
-#include "helper/Logger.h"
+#include "utils/log.h"
 
 #include <chrono>
 #include <thread>
@@ -23,7 +23,7 @@ void Engine2D::startUp() {
     this->m_inputManager.startUp();
 
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-        LOG_ERROR(SDL_GetError());
+        LOG_ERROR("SDL Error: %s", SDL_GetError());
     }
     this->m_window.initialize();
     this->m_window.show();
@@ -43,9 +43,8 @@ void Engine2D::run() {
         this->m_fpsManager.update();
         this->m_inputManager.update();
 
-        // LOG_DEBUG(this->m_fps.getFPS());
+        LOG_DEBUG("FPS: %d", this->m_fpsManager.getFPS());
         if (this->m_inputManager.isKeyDown("quit")) {
-            this->shutDown();
             break;
         }
 
