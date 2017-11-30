@@ -1,17 +1,22 @@
 #pragma once
 
 #include "utils/Platform.h"
-#include "utils/gameConfig.h"
 
 
-enum {
-    TARGET_MODE_NORMAL = 0, //Position to the top left of the target
-    TARGET_MODE_CENTER      //Center camera to the target
+enum : int {
+    CAMERA_MODE_NORMAL,         // Use camera's position as target.
+    CAMERA_MODE_TARGET          // Use target's position as target.
 };
 
 
 /**
- * Main campera component.
+ * Camera component.
+ * This is a 2D camera, it's position is also where camera is looking at.
+ *
+ * \note
+ * Camera may be in one of the following modes
+ * - Normal mode: camera targets its actual position (x,y)
+ * - Target mode: camera use the set target position as its position.
  *
  * \author  Constantin Masson
  * \date    Oct 2017
@@ -21,18 +26,26 @@ class Camera {
     // Attributes
     //--------------------------------------------------------------------------
     private:
-        /** Camera position (in pixel). Note: is actually the upperLeftCorner. */
-        float x;
+        /** Camera position (in pixel). */
+        float m_x;
 
-        /** Camera position (in pixel). Upper Left Corner Y. */
-        float y;
+        /** Camera position (in pixel). */
+        float m_y;
 
-        /** Targeted element or null if no target). */
-        float*  targetX;
-        float*  targetY;
+        /** X position of the camera target (In pixels). (Target mode). */
+        const float* m_targetX;
 
-    public:
-        int targetMode;
+        /** Y position of the camera target (In pixels). (Target mode). */
+        const float* m_targetY;
+
+        /** The width size of the camera vision. */
+        float m_width;
+
+        /** The height size of the camera vision. */
+        float m_height;
+
+    private:
+        int m_targetMode;
 
 
     //--------------------------------------------------------------------------
@@ -40,39 +53,34 @@ class Camera {
     //--------------------------------------------------------------------------
     public:
         Camera();
-        ~Camera();
+        ~Camera() = default;
 
 
     //--------------------------------------------------------------------------
-    // Body functions
+    // Getters - Setters
     //--------------------------------------------------------------------------
     public:
 
         /**
-         * \brief   Move the camera
-         * 
-         * \param   moveX X coordinate translation
-         * \param   moveY Y coordinate translation
-         */
-        void moveCamera(int moveX, int moveY);
-
-        /**
-         * \brief   Return X camera position
-         * \details The returned value depend if a target is set and use the camera mode.
+         * Returns X camera position (In pixels).
+         * Depending on camera mode, returns camera or target coordinates.
          *
-         * \return  Current X coordinate
+         * \return X coordinate.
          */
-        int getX();
+        float getX() const;
 
         /**
-        * \brief    Return Y camera position
-        * \details  The returned value depend if a target is set and use the camera mode.
-        *
-        * \return   Current Y coordinate
-        */
-        int getY();
+         * Returns Y camera position (In pixels).
+         * Depending on camera mode, returns camera or target coordinates.
+         *
+         * \return Y coordinate.
+         */
+        float getY() const;
 
-        void setPosition(float posX, float posY);
-        void setTarget(float* posX, float* posY);
+        void setPosition(const float posX, const float posY);
+        void setTarget(const float* posX, const float* posY);
+
+        float getWidth();
+        float getHeight();
 };
 

@@ -1,48 +1,44 @@
 #include "core/Camera.h"
+#include "utils/gameConfig.h"
 
 Camera::Camera() {
-    x           = 0;
-    y           = 0;
-    targetX     = nullptr;
-    targetY     = nullptr;
-    targetMode  = TARGET_MODE_NORMAL;
+    this->m_x           = 0;
+    this->m_y           = 0;
+    this->m_targetX     = nullptr;
+    this->m_targetY     = nullptr;
+    this->m_targetMode  = CAMERA_MODE_NORMAL;
+    this->m_width       = CAMERA_DEFAULT_WIDTH;
+    this->m_height      = CAMERA_DEFAULT_HEIGHT;
 }
 
-void Camera::moveCamera(int moveX, int moveY) {
-    x += moveX;
-    y += moveY;
-}
-
-int Camera::getX() {
-    //If no target, return current position
-    if(targetX == nullptr) {
-        return x;
+float Camera::getX() const {
+    if(this->m_targetMode == CAMERA_MODE_TARGET) {
+        return *m_targetX;
     }
-    //Here, means target set, return position according to camera mode
-    if(targetMode == TARGET_MODE_CENTER) {
-        return *targetX - (WINDOW_DEFAULT_WIDTH / 2);
-    }
-    return *targetX;
+    return this->m_x;
 }
 
-int Camera::getY() {
-    //If no target, return current position
-    if(targetY == nullptr) {
-        return y;
+float Camera::getY() const {
+    if(this->m_targetMode == CAMERA_MODE_TARGET) {
+        return *m_targetY;
     }
-    //Here, means target set, return position according to camera mode
-    if(targetMode == TARGET_MODE_CENTER) {
-        return *targetY - (WINDOW_DEFAULT_HEIGHT / 2);
-    }
-    return *targetY;
+    return this->m_y;
 }
 
-void Camera::setPosition(float posX, float posY) {
-    x = posX;
-    y = posY;
+void Camera::setPosition(const float x, const float y) {
+    this->m_x = x;
+    this->m_y = y;
 }
 
-void Camera::setTarget(float *posX, float* posY) {
-    targetX = posX;
-    targetY = posY;
+void Camera::setTarget(const float* targetX, const float* targetY) {
+    this->m_targetX = targetX;
+    this->m_targetY = targetY;
+}
+
+float Camera::getWidth() {
+    return this->m_width;
+}
+
+float Camera::getHeight() {
+    return this->m_height;
 }
