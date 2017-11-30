@@ -11,3 +11,5 @@ target_link_libraries(game
     ${SDL2_IMAGE_LIBRARY}
     )
 
+# Copy resource file in build
+file(COPY resources DESTINATION "${CMAKE_BINARY_DIR}")
