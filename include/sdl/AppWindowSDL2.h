@@ -54,25 +54,9 @@ class AppWindowSDL2 {
         void maximize();
         void minimize();
 
-
-    //--------------------------------------------------------------------------
-    // Getter / Setters
-    //--------------------------------------------------------------------------
     public:
+        void update();
+        void clear();
 
-        /**
-         * Returns the pointer to the current window's SDL surface.
-         *
-         * \return The surface used by this window.
-         */
-        SDL_Surface* getSurface() const;
-
-        /**
-         * Returns the Root element of this window.
-         * In this case, root element is a SDLWindow object.
-         *
-         * \return The SDLWindow object pointer.
-         */
-        SDL_Window* getRoot() const;
 };
 

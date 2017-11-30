@@ -35,10 +35,10 @@ void Camera::setTarget(const float* targetX, const float* targetY) {
     this->m_targetY = targetY;
 }
 
-float Camera::getWidth() {
+float Camera::getWidth() const {
     return this->m_width;
 }
 
-float Camera::getHeight() {
+float Camera::getHeight() const {
     return this->m_height;
 }

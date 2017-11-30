@@ -80,7 +80,7 @@ class Camera {
         void setPosition(const float posX, const float posY);
         void setTarget(const float* posX, const float* posY);
 
-        float getWidth();
-        float getHeight();
+        float getWidth() const;
+        float getHeight() const;
 };
 

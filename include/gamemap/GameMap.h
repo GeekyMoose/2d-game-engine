@@ -18,7 +18,7 @@
 class GameMap {
     private:
         /** All area in this map. */
-        MapArea m_listAreas[MAP_SIZE_ROW][MAP_SIZE_COL];
+        MapArea m_areas[MAP_SIZE_ROW][MAP_SIZE_COL];
 
 
     // -------------------------------------------------------------------------

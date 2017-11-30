@@ -60,15 +60,12 @@ void AppWindowSDL2::minimize() {
     SDL_MinimizeWindow(this->m_SDLwindow);
 }
 
-
-//------------------------------------------------------------------------------
-// Getter / Setters
-//------------------------------------------------------------------------------
-
-SDL_Surface* AppWindowSDL2::getSurface() const {
-    return this->m_SDLsurface;
+void AppWindowSDL2::update() {
+    SDL_UpdateWindowSurface(this->m_SDLwindow);
 }
 
-SDL_Window* AppWindowSDL2::getRoot() const {
-    return this->m_SDLwindow;
+void AppWindowSDL2::clear() {
+    SDL_FillRect(this->m_SDLsurface, NULL,
+            SDL_MapRGB(
+                this->m_SDLsurface->format, 0x00, 0x00, 0x00));
 }

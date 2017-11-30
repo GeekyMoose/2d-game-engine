@@ -51,6 +51,7 @@ class MapArea {
         /**
          * Render this area on a surface.
          * Area must have been loaded successfully otherwise, do nothing.
+         * Coordinates are the upper-left-corner of the area.
          *
          * \param dest  Surface destination where to render map.
          * \param mapX  X coordinate where to draw area on the dest.

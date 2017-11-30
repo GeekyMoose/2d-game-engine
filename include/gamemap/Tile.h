@@ -1,6 +1,7 @@
 #pragma once
 
 #include "TileType.h"
+#include "sdl/Surface.h"
 
 
 /**
@@ -31,4 +32,16 @@ class Tile {
          * \param type The original tile type
          */
         Tile(const int x, const int y, const int type);
+
+        /**
+         * Render a tile on a surface.
+         * Coordinates are upper-left-corner of the tile in the destination.
+         *
+         * \param dest Surface where to render.
+         * \param destX Coordinate X of upper-left-corner in dest.
+         * \param destY Coordinate Y of upper-left-corner in dest.
+         */
+        void render(SDL_Surface* dest, const int destX, const int destY);
 };
+
+

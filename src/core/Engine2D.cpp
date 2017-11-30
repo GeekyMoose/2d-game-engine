@@ -46,6 +46,7 @@ void Engine2D::run() {
         this->m_timeManager.update();
         this->m_fpsManager.update();
         this->m_inputManager.update();
+        this->m_window.clear();
 
         LOG_DEBUG("FPS: %d", this->m_fpsManager.getFPS());
         if (this->m_inputManager.isKeyDown("quit")) {
@@ -57,5 +58,7 @@ void Engine2D::run() {
             // TODO Call update (FixedUpdate)
         }
         // TODO Call render (Update)
+
+        this->m_window.update();
     }
 }

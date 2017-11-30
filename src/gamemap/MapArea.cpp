@@ -26,7 +26,13 @@ bool MapArea::loadFromFile(const char* filepath) {
 }
 
 void MapArea::render(SDL_Surface* dest, const int destX, const int destY) {
-    // TODO
+    for(int col = 0; col < AREA_NB_TILES_COL; ++col) {
+        for(int row = 0; row < AREA_NB_TILES_ROW; ++row) {
+            int x = destX + TILE_SIZE_IN_PIXEL * row;
+            int y = destY + TILE_SIZE_IN_PIXEL * col;
+            this->m_tiles[col][row]->render(dest, x, y);
+        }
+    }
 }
 
 
