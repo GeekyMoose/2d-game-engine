@@ -1,5 +1,6 @@
 #pragma once
 
+#include "core/Camera.h"
 #include "utils/Platform.h"
 #include "utils/Singleton.h"
 #include "utils/gameConfig.h"
@@ -17,6 +18,7 @@ class GameManager : private Singleton<GameManager> {
 
     private:
         GameMap m_gameMap;
+        Camera  m_camera;
 
 
     // -------------------------------------------------------------------------

@@ -19,13 +19,18 @@ bool GameMap::loadFromFile(const char* filepath) {
                 fclose(file);
                 return false;
             }
-            //tmpMap.tilesSprites = tilesSprites;
             fscanf(file, "\n");
         }
         fscanf(file, "\n");
     }
     fclose(file);
     return true;
+}
+
+void GameMap::render(SDL_Surface* dest, const Camera& cctv) {
+    if(dest == NULL){
+        return;
+    }
 }
 
 MapArea* GameMap::getAreaAt(const int posX, const int posY) {

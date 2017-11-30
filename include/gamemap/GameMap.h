@@ -1,8 +1,10 @@
 #pragma once
 
+#include "core/Camera.h"
 #include "utils/Platform.h"
 #include "utils/gameConfig.h"
 #include "MapArea.h"
+#include "sdl/Surface.h"
 
 
 /**
@@ -45,7 +47,18 @@ class GameMap {
     // Core
     // -------------------------------------------------------------------------
     public:
-        void render();
+
+        /**
+         * Render this map on the given surface.
+         * Only part under Camera view is to draw.
+         *
+         * \warning
+         * Do nothing if dest is null.
+         *
+         * \param dest Surface where to draw.
+         * \param cctv Camera view.
+         */
+        void render(SDL_Surface* dest, const Camera& cctv);
 
 
     // -------------------------------------------------------------------------
