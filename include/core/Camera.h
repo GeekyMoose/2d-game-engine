@@ -20,15 +20,12 @@ class Camera {
     //--------------------------------------------------------------------------
     // Attributes
     //--------------------------------------------------------------------------
-    public:
-        static Camera cameraControl; //To access camera from anywhere
-
     private:
         /** Camera position (in pixel). Note: is actually the upperLeftCorner. */
-        float   x;
+        float x;
 
         /** Camera position (in pixel). Upper Left Corner Y. */
-        float   y;
+        float y;
 
         /** Targeted element or null if no target). */
         float*  targetX;
@@ -43,6 +40,7 @@ class Camera {
     //--------------------------------------------------------------------------
     public:
         Camera();
+        ~Camera();
 
 
     //--------------------------------------------------------------------------

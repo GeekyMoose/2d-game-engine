@@ -4,6 +4,7 @@
 
 
 #define GAME_CONFIG_WINDOW_TITLE "2d game"
+#define GAME_CONFIG_DEFAULT_GAME_MAP_PATH "./resources/gamemap/gamemap1.txt"
 
 
 enum {

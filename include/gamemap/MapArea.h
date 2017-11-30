@@ -18,10 +18,10 @@ class MapArea {
     // -------------------------------------------------------------------------
     private:
         /** X Position of the Area inside its GameMap parent. */
-        const int m_coordinateX;
+        int m_coordinateX;
 
         /** Y Position of the Area inside its GameMap parent. */
-        const int m_coordinateY;
+        int m_coordinateY;
 
         /** Matrix of tiles. */
         Tile* m_tiles[AREA_NB_TILES_ROW][AREA_NB_TILES_COL];

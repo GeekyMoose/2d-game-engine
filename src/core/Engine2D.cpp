@@ -9,7 +9,8 @@
 Engine2D::Engine2D()
     : m_timeManager(TimeManager::getInstance()),
       m_fpsManager(FPSManager::getInstance()),
-      m_inputManager(InputManager::getInstance()) {
+      m_inputManager(InputManager::getInstance()),
+      m_gameManager(GameManager::getInstance()) {
 }
 
 Engine2D::~Engine2D() {
@@ -21,6 +22,7 @@ void Engine2D::startup() {
     this->m_timeManager.startup();
     this->m_fpsManager.startup();
     this->m_inputManager.startup();
+    this->m_gameManager.startup();
 
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         LOG_ERROR("SDL Error: %s", SDL_GetError());
@@ -34,9 +36,11 @@ void Engine2D::shutdown() {
     this->m_timeManager.shutdown();
     this->m_fpsManager.shutdown();
     this->m_inputManager.shutdown();
+    this->m_gameManager.shutdown();
     this->m_window.destroy();
 }
 
+// The actual main game loop!
 void Engine2D::run() {
     while(this->m_isRunning) {
         this->m_timeManager.update();
@@ -50,8 +54,8 @@ void Engine2D::run() {
 
         while(this->m_timeManager.hasNextFixedFrame()) {
             this->m_timeManager.updateFixedFrame();
-            // TODO Call update
+            // TODO Call update (FixedUpdate)
         }
-        // TODO Call render
+        // TODO Call render (Update)
     }
 }

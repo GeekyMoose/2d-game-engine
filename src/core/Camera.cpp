@@ -1,8 +1,5 @@
 #include "core/Camera.h"
 
-Camera Camera::cameraControl;
-
-
 Camera::Camera() {
     x           = 0;
     y           = 0;

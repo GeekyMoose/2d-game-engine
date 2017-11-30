@@ -1,8 +1,8 @@
 #pragma once
 
-#include "MapArea.h"
 #include "utils/Platform.h"
 #include "utils/gameConfig.h"
+#include "MapArea.h"
 
 
 /**
@@ -18,6 +18,10 @@ class GameMap {
         /** All area in this map. */
         MapArea m_listAreas[MAP_SIZE_ROW][MAP_SIZE_COL];
 
+
+    // -------------------------------------------------------------------------
+    // Init
+    // -------------------------------------------------------------------------
     public:
         GameMap() = default;
         ~GameMap() = default;
@@ -35,6 +39,19 @@ class GameMap {
          * \return      True if successfully loaded, otherwise, return false.
          */
         bool loadFromFile(const char* file);
+
+
+    // -------------------------------------------------------------------------
+    // Core
+    // -------------------------------------------------------------------------
+    public:
+        void render();
+
+
+    // -------------------------------------------------------------------------
+    // Getters - Setters
+    // -------------------------------------------------------------------------
+    public:
 
         /**
          * Returns the MapArea that is under given position.
