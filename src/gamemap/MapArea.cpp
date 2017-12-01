@@ -7,7 +7,7 @@
 bool MapArea::loadFromFile(const char* filepath) {
     FILE* file = fopen(filepath, "r");
     if(file == NULL) {
-        LOG_ERROR("Unable to open file: %s", file);
+        LOG_ERROR("Unable load area from file: %s", filepath);
         return false;
     }
 

@@ -4,7 +4,7 @@
 #include "utils/Singleton.h"
 #include "core/TimeManager.h"
 #include "core/FPSManager.h"
-#include "core/GameManager.h"
+#include "core/SceneManager.h"
 #include "input/InputManager.h"
 #include "sdl/AppWindowSDL2.h"
 
@@ -29,7 +29,7 @@ class Engine2D : private Singleton<Engine2D> {
         TimeManager&    m_timeManager;
         FPSManager&     m_fpsManager;
         InputManager&   m_inputManager;
-        GameManager&    m_gameManager;
+        SceneManager&   m_sceneManager;
         AppWindowSDL2   m_window;
 
 

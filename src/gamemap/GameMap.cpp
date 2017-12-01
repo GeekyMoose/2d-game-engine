@@ -1,7 +1,6 @@
 #include "gamemap/GameMap.h"
 #include "utils/log.h"
 
-
 bool GameMap::loadFromFile(const char* filepath) {
     FILE* file = fopen(filepath, "r");
     if(file == NULL) {
@@ -14,7 +13,7 @@ bool GameMap::loadFromFile(const char* filepath) {
         for(int x = 0; x < MAP_SIZE_ROW; ++x){
             char buffer[256];
             fscanf(file, "%s", buffer);
-            if(this->m_areas[y][x].loadFromFile(buffer) == true){
+            if(this->m_areas[y][x].loadFromFile(buffer) == false) {
                 LOG_ERROR("Unable to load GameMap area %s", buffer);
                 fclose(file);
                 return false;

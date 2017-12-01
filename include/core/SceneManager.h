@@ -7,14 +7,14 @@
 #include "gamemap/GameMap.h"
 
 
-class GameManager : private Singleton<GameManager> {
+class SceneManager : private Singleton<SceneManager> {
     // -------------------------------------------------------------------------
     // Attributes
     // -------------------------------------------------------------------------
     private:
-        friend Singleton<GameManager>;
+        friend Singleton<SceneManager>;
     public:
-        using Singleton<GameManager>::getInstance;
+        using Singleton<SceneManager>::getInstance;
 
     private:
         GameMap m_gameMap;
@@ -25,8 +25,8 @@ class GameManager : private Singleton<GameManager> {
     // Init
     // -------------------------------------------------------------------------
     private:
-        GameManager() = default;
-        ~GameManager() = default;
+        SceneManager() = default;
+        ~SceneManager() = default;
 
     public:
         void startup() override;

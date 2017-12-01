@@ -10,7 +10,7 @@ Engine2D::Engine2D()
     : m_timeManager(TimeManager::getInstance()),
       m_fpsManager(FPSManager::getInstance()),
       m_inputManager(InputManager::getInstance()),
-      m_gameManager(GameManager::getInstance()) {
+      m_sceneManager(SceneManager::getInstance()) {
 }
 
 Engine2D::~Engine2D() {
@@ -22,7 +22,7 @@ void Engine2D::startup() {
     this->m_timeManager.startup();
     this->m_fpsManager.startup();
     this->m_inputManager.startup();
-    this->m_gameManager.startup();
+    this->m_sceneManager.startup();
 
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         LOG_ERROR("SDL Error: %s", SDL_GetError());
@@ -36,7 +36,7 @@ void Engine2D::shutdown() {
     this->m_timeManager.shutdown();
     this->m_fpsManager.shutdown();
     this->m_inputManager.shutdown();
-    this->m_gameManager.shutdown();
+    this->m_sceneManager.shutdown();
     this->m_window.destroy();
 }
 
@@ -48,7 +48,7 @@ void Engine2D::run() {
         this->m_inputManager.update();
         this->m_window.clear();
 
-        LOG_DEBUG("FPS: %d", this->m_fpsManager.getFPS());
+        //LOG_DEBUG("FPS: %d", this->m_fpsManager.getFPS());
         if (this->m_inputManager.isKeyDown("quit")) {
             break;
         }
@@ -58,6 +58,7 @@ void Engine2D::run() {
             // TODO Call update (FixedUpdate)
         }
         // TODO Call render (Update)
+        this->m_sceneManager.render();
 
         this->m_window.update();
     }
