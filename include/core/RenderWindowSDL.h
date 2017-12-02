@@ -10,7 +10,7 @@
 
 
 /**
- * Render a Window using SDL2 
+ * Implements a SDL window.
  *
  * \author  Constantin Masson
  * \date    Oct 2017
@@ -21,28 +21,16 @@ class RenderWindowSDL {
     // Constants - Attributes
     //--------------------------------------------------------------------------
     private:
-        SDL_Window*     m_SDLwindow;    // The famous SDL window
-        SDL_Surface*    m_SDLsurface;   // Surface from the window
+        SDL_Window*     m_window;   // The famous SDL window
+        SDL_Surface*    m_surface;  // Surface from the window
 
 
     //--------------------------------------------------------------------------
     // Initialization
     //--------------------------------------------------------------------------
     public:
-        RenderWindowSDL() = default;
+        RenderWindowSDL();
         ~RenderWindowSDL();
-
-        /**
-         * Initialize all data for this window.
-         * Window is ready to be displayed.
-         */
-        void initialize();
-
-        /**
-         * Destroy this window.
-         * Free all resources and delete the window.
-         */
-        void destroy();
 
 
     //--------------------------------------------------------------------------
@@ -58,5 +46,12 @@ class RenderWindowSDL {
         void update();
         void clear();
 
+
+    //--------------------------------------------------------------------------
+    // SDL Specific methods
+    //--------------------------------------------------------------------------
+    public:
+        SDL_Surface* getSurface();
 };
+
 

@@ -1,12 +1,13 @@
 #pragma once
 
-#include "utils/Platform.h"
-#include "utils/Singleton.h"
 #include "core/TimeManager.h"
 #include "core/FPSManager.h"
 #include "core/SceneManager.h"
-#include "input/InputManager.h"
+#include "core/RenderEngine.h"
 #include "core/RenderWindowSDL.h"
+#include "input/InputManager.h"
+#include "utils/Platform.h"
+#include "utils/Singleton.h"
 
 
 /**
@@ -30,7 +31,8 @@ class Engine2D : private Singleton<Engine2D> {
         FPSManager&         m_fpsManager;
         InputManager&       m_inputManager;
         SceneManager&       m_sceneManager;
-        RenderWindowSDL     m_window;
+        RenderEngine&       m_renderEngine;
+        RenderWindowSDL*    m_window;
 
 
     // -------------------------------------------------------------------------
@@ -42,7 +44,6 @@ class Engine2D : private Singleton<Engine2D> {
 
     public:
         /**
-         * override from Singleton.
          * Startup the engine.
          * This only initialize the engine but does not start running it.
          * All subcomponents area initialized.
@@ -53,7 +54,6 @@ class Engine2D : private Singleton<Engine2D> {
         void startup() override;
 
         /**
-         * override from Singleton.
          * Shutdown the engine.
          * All subcomponents area stopped and freed.
          */
@@ -67,7 +67,7 @@ class Engine2D : private Singleton<Engine2D> {
 
         /**
          * Start the engine.
-         * Do nothing if engine is not startup.
+         * Do nothing if engine is not already startup.
          *
          * \warning
          * Not thread safe, do not call it twice. (Undefined behavior).

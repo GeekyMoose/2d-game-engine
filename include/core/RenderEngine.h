@@ -1,14 +1,15 @@
 #pragma once
 
+#include "core/RenderSystemSDL.h"
 #include "utils/Singleton.h"
 
 
 class RenderWindowSDL;
-class RenderSystemSDL;
 
 
 /**
  * Render Engine component.
+ * This use a Rendering system with specific implementation (Ex: SDL).
  *
  * \author  Constantin Masson
  * \date    Dec 2017
@@ -16,7 +17,7 @@ class RenderSystemSDL;
 class RenderEngine : private Singleton<RenderEngine> {
     private:
         friend Singleton<RenderEngine>;
-        RenderSystemSDL* renderSystem;
+        RenderSystemSDL m_renderSystem;
 
     public:
         using Singleton<RenderEngine>::getInstance;
@@ -26,10 +27,11 @@ class RenderEngine : private Singleton<RenderEngine> {
         ~RenderEngine() = default;
 
     public:
-        RenderWindowSDL* initialize();
         void startup() override;
         void shutdown() override;
 
     public:
         void update();
+
+        RenderSystemSDL* getRenderSystem();
 };

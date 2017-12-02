@@ -3,18 +3,15 @@
 #include "utils/gameConfig.h"
 #include "utils/log.h"
 
-#include <iostream>
+#include <stdexcept>
 
 
 //------------------------------------------------------------------------------
 // Initialization
 //------------------------------------------------------------------------------
-RenderWindowSDL::~RenderWindowSDL() {
-    this->destroy();
-}
 
-void RenderWindowSDL::initialize() {
-    this->m_SDLwindow = SDL_CreateWindow(
+RenderWindowSDL::RenderWindowSDL() {
+    this->m_window = SDL_CreateWindow(
         GAME_CONFIG_WINDOW_TITLE,
         SDL_WINDOWPOS_UNDEFINED,
         SDL_WINDOWPOS_UNDEFINED,
@@ -23,20 +20,24 @@ void RenderWindowSDL::initialize() {
         SDL_WINDOW_HIDDEN
     );
 
-    if(this->m_SDLwindow == NULL) {
-        LOG_ERROR("SDL error: %s", SDL_GetError());
-        return;
+    if(this->m_window == NULL) {
+        LOG_ERROR("Unable to create SDL Window: %s", SDL_GetError());
+        throw std::runtime_error(SDL_GetError());
     }
 
     //Load SDL_Surface from the window
-    this->m_SDLsurface = SDL_GetWindowSurface(this->m_SDLwindow);
-    SDL_FillRect(this->m_SDLsurface, NULL, SDL_MapRGB(this->m_SDLsurface->format, 0xFF, 0xFF, 0xFF));
-    SDL_UpdateWindowSurface(this->m_SDLwindow);
+    this->m_surface = SDL_GetWindowSurface(this->m_window);
+    if(this->m_surface == NULL) {
+        LOG_ERROR("Unable to create SDL Surface: %s", SDL_GetError());
+        throw std::runtime_error(SDL_GetError());
+    }
+    this->clear();
+    this->update();
 }
 
-void RenderWindowSDL::destroy() {
-    SDL_FreeSurface(this->m_SDLsurface);
-    SDL_DestroyWindow(this->m_SDLwindow);
+RenderWindowSDL::~RenderWindowSDL() {
+    SDL_FreeSurface(this->m_surface);
+    SDL_DestroyWindow(this->m_window);
 }
 
 
@@ -45,27 +46,34 @@ void RenderWindowSDL::destroy() {
 //------------------------------------------------------------------------------
 
 void RenderWindowSDL::show() {
-    SDL_ShowWindow(this->m_SDLwindow);
+    SDL_ShowWindow(this->m_window);
 }
 
 void RenderWindowSDL::hide() {
-    SDL_HideWindow(this->m_SDLwindow);
+    SDL_HideWindow(this->m_window);
 }
 
 void RenderWindowSDL::maximize() {
-    SDL_MaximizeWindow(this->m_SDLwindow);
+    SDL_MaximizeWindow(this->m_window);
 }
 
 void RenderWindowSDL::minimize() {
-    SDL_MinimizeWindow(this->m_SDLwindow);
+    SDL_MinimizeWindow(this->m_window);
 }
 
 void RenderWindowSDL::update() {
-    SDL_UpdateWindowSurface(this->m_SDLwindow);
+    SDL_UpdateWindowSurface(this->m_window);
 }
 
 void RenderWindowSDL::clear() {
-    SDL_FillRect(this->m_SDLsurface, NULL,
-            SDL_MapRGB(
-                this->m_SDLsurface->format, 0x00, 0x00, 0x00));
+    SDL_FillRect(this->m_surface, NULL, SDL_MapRGB(this->m_surface->format, 0x00, 0x00, 0x00));
 }
+
+
+//------------------------------------------------------------------------------
+// SDL Specific methods
+//------------------------------------------------------------------------------
+SDL_Surface* RenderWindowSDL::getSurface() {
+    return this->m_surface;
+}
+
