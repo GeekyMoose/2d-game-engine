@@ -7,7 +7,7 @@
 
 
 /**
- * Manager all textures.
+ * Manager for all textures.
  *
  * \date    Dec 2017
  * \author  Constantin Masson
@@ -20,7 +20,7 @@ class TextureManager : private Singleton<TextureManager> {
 
     private:
         /** All loaded Textures. */
-        std::unordered_map<char*, Texture> m_textures;
+        std::unordered_map<const char*, Texture> m_textures;
 
     private:
         TextureManager() = default;
@@ -31,9 +31,23 @@ class TextureManager : private Singleton<TextureManager> {
         void shutdown() override;
 
     private:
-        //TODO
-        //Texture& createTexture(const char* path);
-        void createTexture(const char* name, const char* path);
-        //Texture* getTextureByName(const char* name);
+        /**
+         * Create a new texture and register it in this manager.
+         * if already a texture exists with this name,
+         * old texture is reloaded with this new data.
+         *
+         * \param name Unique name of the texture.
+         * \param path Path to the resource to load for this texture.
+         * \return Pointer to the texture or nullptr if error.
+         */
+        Texture* createTexture(const char* name, const char* path);
+
+        /**
+         * Recover the texture registered at this name or nullptr if no texture.
+         *
+         * \param name The name of the texture to get.
+         * \return Pointer to the texture or nullptr if none.
+         */
+        Texture* getTextureByName(const char* name);
 };
 
