@@ -15,7 +15,7 @@
  * \author  Constantin Masson
  * \date    Oct 2017
  */
-class AppWindowSDL2 {
+class RenderWindowSDL {
 
     //--------------------------------------------------------------------------
     // Constants - Attributes
@@ -29,8 +29,8 @@ class AppWindowSDL2 {
     // Initialization
     //--------------------------------------------------------------------------
     public:
-        AppWindowSDL2() = default;
-        ~AppWindowSDL2();
+        RenderWindowSDL() = default;
+        ~RenderWindowSDL();
 
         /**
          * Initialize all data for this window.

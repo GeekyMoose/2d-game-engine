@@ -2,7 +2,7 @@
 
 #include "gamemap/Tile.h"
 #include "utils/gameConfig.h"
-#include "sdl/Surface.h"
+#include "utils/SDLHelper.h"
 
 
 /**

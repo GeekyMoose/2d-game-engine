@@ -1,7 +1,7 @@
 #pragma once
 
 #include "TileType.h"
-#include "sdl/Surface.h"
+#include "utils/SDLHelper.h"
 
 
 /**

@@ -1,4 +1,4 @@
-#include "sdl/Surface.h"
+#include "utils/SDLHelper.h"
 
 #include "utils/log.h"
 
@@ -11,7 +11,7 @@
 #endif
 
 
-SDL_Surface* Surface::loadFromFile(const char* file) {
+SDL_Surface* SDLHelper::loadFromFile(const char* file) {
     auto toto = IMG_Load(file);
     if(toto == NULL){
         LOG_ERROR("Unable to load Surface from file");
@@ -20,7 +20,7 @@ SDL_Surface* Surface::loadFromFile(const char* file) {
     return toto;
 }
 
-bool Surface::drawInSurface(SDL_Surface* src,
+bool SDLHelper::drawInSurface(SDL_Surface* src,
                             SDL_Surface* dest,
                             const int x,
                             const int y) {
@@ -35,7 +35,7 @@ bool Surface::drawInSurface(SDL_Surface* src,
     return true;
 }
 
-bool Surface::drawInSurface(SDL_Surface* src,
+bool SDLHelper::drawInSurface(SDL_Surface* src,
                             const int src_x,
                             const int src_y,
                             const int src_width,
@@ -61,7 +61,7 @@ bool Surface::drawInSurface(SDL_Surface* src,
     return true;;
 }
 
-bool Surface::applyTransparency(SDL_Surface * dest, int r, int g, int b) {
+bool SDLHelper::applyTransparency(SDL_Surface * dest, int r, int g, int b) {
     if(dest == NULL){
         return false;
     }

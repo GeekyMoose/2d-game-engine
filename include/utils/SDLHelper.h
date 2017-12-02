@@ -17,11 +17,11 @@
  * \author  Constantin Masson
  * \date    Oct 2017
  */
-class Surface final {
+class SDLHelper final {
 
     private:
-        Surface() = delete;
-        ~Surface() = delete;
+        SDLHelper() = delete;
+        ~SDLHelper() = delete;
 
 
     public:

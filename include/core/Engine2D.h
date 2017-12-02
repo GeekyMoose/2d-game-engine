@@ -6,7 +6,7 @@
 #include "core/FPSManager.h"
 #include "core/SceneManager.h"
 #include "input/InputManager.h"
-#include "sdl/AppWindowSDL2.h"
+#include "core/RenderWindowSDL.h"
 
 
 /**
@@ -25,12 +25,12 @@ class Engine2D : private Singleton<Engine2D> {
         using Singleton<Engine2D>::getInstance;
 
     private:
-        bool            m_isRunning;
-        TimeManager&    m_timeManager;
-        FPSManager&     m_fpsManager;
-        InputManager&   m_inputManager;
-        SceneManager&   m_sceneManager;
-        AppWindowSDL2   m_window;
+        bool                m_isRunning;
+        TimeManager&        m_timeManager;
+        FPSManager&         m_fpsManager;
+        InputManager&       m_inputManager;
+        SceneManager&       m_sceneManager;
+        RenderWindowSDL     m_window;
 
 
     // -------------------------------------------------------------------------

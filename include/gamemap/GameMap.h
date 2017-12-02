@@ -1,10 +1,10 @@
 #pragma once
 
+#include "MapArea.h"
 #include "core/Camera.h"
 #include "utils/Platform.h"
 #include "utils/gameConfig.h"
-#include "MapArea.h"
-#include "sdl/Surface.h"
+#include "utils/SDLHelper.h"
 
 
 /**
