@@ -1,5 +1,9 @@
 #include "gamemap/Tile.h"
 
+#include "core/SpriteManager.h"
+#include "core/Sprite.h"
+
+
 Tile::Tile(const int x, const int y, const int type)
     : m_coordinateX(x),
       m_coordinateY(y),

@@ -9,7 +9,3 @@ void SceneManager::startup() {
 
 void SceneManager::shutdown() {
 }
-
-void SceneManager::render() {
-    //this->m_gameMap.render();
-}

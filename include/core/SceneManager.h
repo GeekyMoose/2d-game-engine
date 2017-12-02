@@ -7,6 +7,12 @@
 #include "gamemap/GameMap.h"
 
 
+/**
+ * Manager for all components on the scene.
+ *
+ * \date    Nov 2017
+ * \author  Constantin Masson
+ */
 class SceneManager : private Singleton<SceneManager> {
     // -------------------------------------------------------------------------
     // Attributes
@@ -37,5 +43,4 @@ class SceneManager : private Singleton<SceneManager> {
     // Core methods
     // -------------------------------------------------------------------------
     public:
-        void render();
 };

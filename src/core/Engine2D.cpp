@@ -11,6 +11,8 @@ Engine2D::Engine2D()
     : m_timeManager(TimeManager::getInstance()),
       m_fpsManager(FPSManager::getInstance()),
       m_inputManager(InputManager::getInstance()),
+      m_textureManager(TextureManager::getInstance()),
+      m_spriteManager(SpriteManager::getInstance()),
       m_sceneManager(SceneManager::getInstance()),
       m_renderEngine(RenderEngine::getInstance()) {
 }
@@ -25,6 +27,8 @@ void Engine2D::startup() {
     this->m_timeManager.startup();
     this->m_fpsManager.startup();
     this->m_inputManager.startup();
+    this->m_textureManager.startup();
+    this->m_spriteManager.startup();
     this->m_sceneManager.startup();
     this->m_renderEngine.startup();
 
@@ -45,6 +49,8 @@ void Engine2D::shutdown() {
     this->m_timeManager.shutdown();
     this->m_fpsManager.shutdown();
     this->m_inputManager.shutdown();
+    this->m_textureManager.shutdown();
+    this->m_spriteManager.shutdown();
     this->m_sceneManager.shutdown();
     this->m_renderEngine.shutdown();
     delete this->m_window;

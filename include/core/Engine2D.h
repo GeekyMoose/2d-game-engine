@@ -5,6 +5,8 @@
 #include "core/SceneManager.h"
 #include "core/RenderEngine.h"
 #include "core/RenderWindowSDL.h"
+#include "core/TextureManager.h"
+#include "core/SpriteManager.h"
 #include "input/InputManager.h"
 #include "utils/Platform.h"
 #include "utils/Singleton.h"
@@ -30,6 +32,8 @@ class Engine2D : private Singleton<Engine2D> {
         TimeManager&        m_timeManager;
         FPSManager&         m_fpsManager;
         InputManager&       m_inputManager;
+        TextureManager&     m_textureManager;
+        SpriteManager&      m_spriteManager;
         SceneManager&       m_sceneManager;
         RenderEngine&       m_renderEngine;
         RenderWindowSDL*    m_window;

@@ -23,6 +23,9 @@ class Tile {
         /** Type of tile. From enum. */
         const int m_tileType;
 
+        /** Name of the resource for this tile. (Resource is the Sprite). */
+        const char* resource;
+
     public:
         /**
          * Create a new Tile at specific position (x,y) in GameArea.

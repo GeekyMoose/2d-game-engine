@@ -8,6 +8,10 @@
 
 
 enum {
+    TEXTURE_NAME_MAX_SIZE       = 42    // Max length of texture name
+};
+
+enum {
     WINDOW_DEFAULT_WIDTH        = 640,  // Default screen width in pixels.
     WINDOW_DEFAULT_HEIGHT       = 640,  // Default screen height in pixels.
 
