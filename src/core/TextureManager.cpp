@@ -15,6 +15,7 @@ void TextureManager::shutdown() {
 Texture* TextureManager::createTexture(const char* name, const char* path) {
     auto elt = this->m_textures.emplace(std::make_pair(name, name));
     Texture* texture = &(elt.first->second);
+    texture->loadFromFile(path);
     return texture;
 }
 

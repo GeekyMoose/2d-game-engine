@@ -43,13 +43,4 @@ class Texture {
          * \return True if successfully loaded, otherwise, return false.
          */
         bool loadFromFile(const char* path);
-
-    public:
-
-        /**
-         * Get the name of this texture.
-         *
-         * \return Texture name.
-         */
-        const char* getName() const;
 };

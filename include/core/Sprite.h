@@ -16,4 +16,8 @@ class Sprite {
     private:
         int m_frameWidth;
         int m_frameHeight;
+
+    public:
+        Sprite(const char* name);
+        ~Sprite() = default;
 };

@@ -35,8 +35,3 @@ bool Texture::loadFromFile(const char* path) {
     }
     return true;
 }
-
-
-const char* Texture::getName() const {
-    return this->m_name;
-}

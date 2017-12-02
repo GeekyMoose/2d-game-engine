@@ -15,12 +15,12 @@
 class SpriteManager : private Singleton<SpriteManager> {
     private:
         friend Singleton<SpriteManager>;
-
-        /** All loaded sprites. */
-        std::unordered_map<char*, Sprite> m_sprites;
-
     public:
         using Singleton<SpriteManager>::getInstance;
+
+    private:
+        /** All loaded sprites. */
+        std::unordered_map<const char*, Sprite> m_sprites;
 
     private:
         SpriteManager() = default;
@@ -31,9 +31,24 @@ class SpriteManager : private Singleton<SpriteManager> {
         void shutdown() override;
 
     private:
-        /*
-         TODO
-        Sprite& createSprite(const char* path);
-        getSpriteByName(const char* name);
-        */
+        /**
+         * Create a new sprite and register it in this manager.
+         * if already a sprite exists with this name,
+         * old sprite is reloaded with this new data.
+         *
+         * \param name Unique name of the sprite.
+         * \return Pointer to the sprite or nullptr if error.
+         */
+        Sprite* createSprite(const char* name);
+
+        /**
+         * Recover the sprite registered at this name or nullptr if no sprite.
+         *
+         * \param name The name of the sprite to get.
+         * \return Pointer to the sprite or nullptr if none.
+         */
+        Sprite* getSpriteByName(const char* name);
 };
+
+
+
