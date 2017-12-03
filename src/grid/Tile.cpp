@@ -4,12 +4,14 @@
 #include "core/Sprite.h"
 
 
-Tile::Tile(const int x, const int y, const int type)
-    : m_coordinateX(x),
-      m_coordinateY(y),
-      m_tileType(type) {
-}
-
 void Tile::render(SDL_Surface* dest, const int destX, const int destY) {
     // TODO
+}
+
+void Tile::setType(const int type) {
+    this->m_tileType = type;
+}
+
+int Tile::getType() const {
+    return this->m_tileType;
 }

@@ -1,9 +1,12 @@
 #include "grid/GridManager.h"
 
 #include "utils/log.h"
+#include "utils/gameConfig.h"
 
 void GridManager::startup() {
     LOG_TRACE("Startup GridManager");
+    this->m_XgridUnitSizeInPixels   = GRID_DEFAULT_X_UNIT_SIZE;
+    this->m_YgridUnitySizeInPixels  = GRID_DEFAULT_Y_UNIT_SIZE;
 }
 
 void GridManager::shutdown() {

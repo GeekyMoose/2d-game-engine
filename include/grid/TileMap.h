@@ -1,31 +1,33 @@
 #pragma once
 
 #include "utils/platform.h"
+#include "Tile.h"
+#include "utils/gameConfig.h"
 
 
 /**
  * Defines a tilemap.
+ * TileMap is a two dimensions array of Tiles.
  *
  * \date    Dec 2017
  * \author  Constantin Masson
  */
 class TileMap {
     private:
-        const int m_width;
-        const int m_heigh;
-
-        Tile m_tiles[m_width][m_heigh];
+        const int m_tilesPerRow     = TILEMAP_SIZE_COL;
+        const int m_tilesPerColumn  = TILEMAP_SIZE_ROW;
+        Tile m_tiles[TILEMAP_SIZE_COL][TILEMAP_SIZE_ROW];
 
     public:
-        TileMap(const int w, const int heigh);
+        TileMap() = default;
         ~TileMap() = default;
 
     public:
         /**
+         * Load TileMap content from file.
          *
          * \warning
-         * Undefined behavior in case of wrong file format.
-         * May be security issue.
+         * Undefined behavior in case of wrong file format or invalid data.
          *
          * \param file  File to use (Whole path + name + extension).
          * \return      True if successfully loaded, otherwise, return false.

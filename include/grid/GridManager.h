@@ -5,7 +5,10 @@
 
 
 /**
- * Main GridManager.
+ * GridManager.
+ * This engine works with a grid system.
+ * The smallest world unit is a grid unit.
+ * This works closely with TileMap where a tile has the size of a GridUnit.
  *
  * \date    Dec 2017
  * \author  Constantin Masson

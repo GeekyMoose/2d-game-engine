@@ -15,27 +15,15 @@
  */
 class Tile {
     private:
-        /** X Coordinate of the Tile in MapArea coordinates. */
-        const int m_coordinateX;
-
-        /** Y Coordinate of the Tile in MapArea coordinates. */
-        const int m_coordinateY;
-
         /** Type of tile. From enum. */
-        const int m_tileType;
+        int m_tileType = 0;
 
         /** Name of the resource for this tile. (Resource is the Sprite). */
         const char* resource;
 
     public:
-        /**
-         * Create a new Tile at specific position (x,y) in GameArea.
-         *
-         * \param x The x coordinate in GameArea.
-         * \param y The y coordinate in GameArea.
-         * \param type The original tile type
-         */
-        Tile(const int x, const int y, const int type);
+        Tile() = default;
+        ~Tile() = default;
 
         /**
          * Render a tile on a surface.
@@ -46,6 +34,14 @@ class Tile {
          * \param destY Coordinate Y of upper-left-corner in dest.
          */
         void render(SDL_Surface* dest, const int destX, const int destY);
+
+
+    // -------------------------------------------------------------------------
+    // Getters - Setters
+    // -------------------------------------------------------------------------
+    public:
+        void setType(const int type);
+        int getType() const;
 };
 
 
