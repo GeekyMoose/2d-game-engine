@@ -31,7 +31,7 @@ class SpriteManager : private Singleton<SpriteManager> {
         void startup() override;
         void shutdown() override;
 
-    private:
+    public:
         /**
          * Create a new empty sprite and register it in this manager.
          * if already a sprite exists with this name, do nothing.

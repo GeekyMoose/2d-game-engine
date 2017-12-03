@@ -1,7 +1,0 @@
-./resources/gamemap/area1.txt
-./resources/gamemap/area1.txt
-./resources/gamemap/area1.txt
-
-./resources/gamemap/area1.txt
-./resources/gamemap/area1.txt
-./resources/gamemap/area1.txt

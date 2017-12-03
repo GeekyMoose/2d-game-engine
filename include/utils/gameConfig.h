@@ -4,10 +4,11 @@
 
 
 #define GAME_CONFIG_WINDOW_TITLE "2d game"
-#define GAME_CONFIG_DEFAULT_GAME_MAP_PATH "./resources/gamemap/gamemap1.txt"
+#define GAME_CONFIG_DEFAULT_TILEMAP_PATH "./resources/grid/tilemap_test.txt"
 
-#define TEXTURE_TILE_NAME "texture_tile"
-#define TEXTURE_TILE_PATH "./resources/textures/tiles_map1.png"
+#define SPRITE_TILE_NAME        "sprite_tile"
+#define TEXTURE_TILE_NAME       "texture_tile"
+#define TEXTURE_TILE_PATH       "./resources/textures/tiles_map1.png"
 
 
 enum {
@@ -33,6 +34,6 @@ enum GridConfig {
     TILEMAP_SIZE_ROW            = 40,   // Nb tiles in one map row
     TILEMAP_SIZE_COL            = 40,   // Nb tiles in one map column
 
-    GRID_DEFAULT_X_UNIT_SIZE    = 20,   // Nb pixels in one grid unit (width)
-    GRID_DEFAULT_Y_UNIT_SIZE    = 20    // Nb pixels in one grid unit (height)
+    GRID_DEFAULT_X_UNIT_SIZE    = 32,   // Nb pixels in one grid unit (width)
+    GRID_DEFAULT_Y_UNIT_SIZE    = 32    // Nb pixels in one grid unit (height)
 };

@@ -17,3 +17,7 @@ void Tile::setType(const int type) {
 int Tile::getType() const {
     return this->m_tileType;
 }
+
+void Tile::setSprite(Sprite* sprite) {
+    this->m_sprite = sprite;
+}

@@ -1,8 +1,8 @@
 #pragma once
 
 #include "utils/platform.h"
-#include "Tile.h"
 #include "utils/gameConfig.h"
+#include "Tile.h"
 
 
 /**

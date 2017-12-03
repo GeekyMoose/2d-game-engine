@@ -3,6 +3,7 @@
 #include "utils/platform.h"
 #include "utils/Singleton.h"
 #include "core/Camera.h"
+#include "grid/TileMap.h"
 
 #include <stdexcept>
 
@@ -24,6 +25,7 @@ class SceneManager : private Singleton<SceneManager> {
 
     private:
         Camera  m_camera;
+        TileMap m_tilemap;
 
 
     // -------------------------------------------------------------------------

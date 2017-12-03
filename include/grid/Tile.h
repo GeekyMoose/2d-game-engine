@@ -46,6 +46,7 @@ class Tile {
     public:
         void setType(const int type);
         int getType() const;
+        void setSprite(Sprite* sprite);
 };
 
 
