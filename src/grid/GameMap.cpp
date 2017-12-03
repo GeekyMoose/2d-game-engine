@@ -1,4 +1,4 @@
-#include "gamemap/GameMap.h"
+#include "grid/GameMap.h"
 #include "utils/log.h"
 
 bool GameMap::loadFromFile(const char* filepath) {

@@ -3,7 +3,6 @@
 #include "utils/platform.h"
 #include "utils/Singleton.h"
 #include "core/Camera.h"
-#include "gamemap/GameMap.h"
 
 #include <stdexcept>
 
@@ -24,7 +23,6 @@ class SceneManager : private Singleton<SceneManager> {
         using Singleton<SceneManager>::getInstance;
 
     private:
-        GameMap m_gameMap;
         Camera  m_camera;
 
 

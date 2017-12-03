@@ -1,8 +1,9 @@
 #pragma once
 
-#include "gamemap/Tile.h"
+#include "utils/platform.h"
 #include "utils/gameConfig.h"
 #include "utils/SDLHelper.h"
+#include "Tile.h"
 
 
 /**

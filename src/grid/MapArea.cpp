@@ -1,4 +1,4 @@
-#include "gamemap/MapArea.h"
+#include "grid/MapArea.h"
 #include "utils/log.h"
 
 #include <stdio.h>

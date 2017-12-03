@@ -3,8 +3,8 @@
 #include "utils/platform.h"
 #include "utils/gameConfig.h"
 #include "utils/SDLHelper.h"
-#include "MapArea.h"
 #include "core/Camera.h"
+#include "MapArea.h"
 
 
 /**

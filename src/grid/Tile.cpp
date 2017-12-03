@@ -1,4 +1,4 @@
-#include "gamemap/Tile.h"
+#include "grid/Tile.h"
 
 #include "core/SpriteManager.h"
 #include "core/Sprite.h"
