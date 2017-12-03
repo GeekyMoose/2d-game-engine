@@ -9,6 +9,7 @@
 #include "core/RenderWindowSDL.h"
 #include "core/TextureManager.h"
 #include "core/SpriteManager.h"
+#include "grid/GridManager.h"
 #include "input/InputManager.h"
 
 
@@ -36,6 +37,7 @@ class Engine2D : private Singleton<Engine2D> {
         SpriteManager&      m_spriteManager;
         SceneManager&       m_sceneManager;
         RenderEngine&       m_renderEngine;
+        GridManager&        m_gridManager;
         RenderWindowSDL*    m_window;
 
 

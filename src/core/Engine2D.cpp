@@ -14,7 +14,8 @@ Engine2D::Engine2D()
       m_textureManager(TextureManager::getInstance()),
       m_spriteManager(SpriteManager::getInstance()),
       m_sceneManager(SceneManager::getInstance()),
-      m_renderEngine(RenderEngine::getInstance()) {
+      m_renderEngine(RenderEngine::getInstance()),
+      m_gridManager(GridManager::getInstance()) {
 }
 
 Engine2D::~Engine2D() {
@@ -33,6 +34,7 @@ void Engine2D::startup() {
     this->m_spriteManager.startup();
     this->m_sceneManager.startup();
     this->m_renderEngine.startup();
+    this->m_gridManager.startup();
 
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         LOG_ERROR("Unable to start SDL: %s", SDL_GetError());
@@ -57,6 +59,7 @@ void Engine2D::shutdown() {
     this->m_spriteManager.shutdown();
     this->m_sceneManager.shutdown();
     this->m_renderEngine.shutdown();
+    this->m_gridManager.shutdown();
 
     delete this->m_window;
 }
