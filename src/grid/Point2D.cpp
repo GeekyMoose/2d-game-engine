@@ -19,13 +19,13 @@ Point2D& Point2D::translate(const int x, const int y) {
     return *this;
 }
 
-float Point2D::squareDistance(const Point2D& other) {
+float Point2D::squareDistance(const Point2D& other) const {
     const float a = (other.getX() - this->m_x);
     const float b = (other.getY() - this->m_y);
     return (a*a) + (b*b);
 }
 
-float Point2D::distance(const Point2D& other) {
+float Point2D::distance(const Point2D& other) const {
     return std::sqrt(this->squareDistance(other));
 }
 

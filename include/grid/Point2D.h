@@ -22,8 +22,8 @@ class Point2D {
 
     public:
         Point2D& translate(const int x, const int y);
-        float squareDistance(const Point2D& other);
-        float distance(const Point2D& other);
+        float squareDistance(const Point2D& other) const;
+        float distance(const Point2D& other) const;
 
 
     // -------------------------------------------------------------------------

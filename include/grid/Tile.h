@@ -4,11 +4,14 @@
 #include "utils/SDLHelper.h"
 #include "TileType.h"
 
+class SDL_Surface;
+class Sprite;
+
 
 /**
  * Defines a Tile component.
- * A tile is inside a GameMapArea at a specific position (x,y).
- * It's position is relative to its parent MapArea.
+ * A tile is the smallest unit of a TileMap.
+ * It is placed in a specific TileMap coordinates.
  *
  * \author  Constantin Masson
  * \date    Oct 2017
@@ -18,8 +21,8 @@ class Tile {
         /** Type of tile. From enum. */
         int m_tileType = 0;
 
-        /** Name of the resource for this tile. (Resource is the Sprite). */
-        const char* resource;
+        /** Sprite this tile use for rendering. */
+        Sprite* m_sprite = nullptr;
 
     public:
         Tile() = default;
@@ -27,11 +30,12 @@ class Tile {
 
         /**
          * Render a tile on a surface.
-         * Coordinates are upper-left-corner of the tile in the destination.
+         * Draw the Tile on the surface at given destination coordinates.
+         * Coordinates are the Tile upper-left-corner.
          *
          * \param dest Surface where to render.
-         * \param destX Coordinate X of upper-left-corner in dest.
-         * \param destY Coordinate Y of upper-left-corner in dest.
+         * \param destX Tile X coordinate on the surface.
+         * \param destY Tile Y coordinate on the surface.
          */
         void render(SDL_Surface* dest, const int destX, const int destY);
 

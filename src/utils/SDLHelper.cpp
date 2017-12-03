@@ -11,19 +11,19 @@
 #endif
 
 
-SDL_Surface* SDLHelper::loadFromFile(const char* file) {
+SDL_Surface* SDLHelper::loadSurfaceFromFile(const char* file) {
     auto toto = IMG_Load(file);
     if(toto == NULL){
-        LOG_ERROR("Unable to load Surface from file");
+        LOG_ERROR("Unable to load Surface from file: %s", file);
         return nullptr;
     }
     return toto;
 }
 
-bool SDLHelper::drawInSurface(SDL_Surface* src,
-                            SDL_Surface* dest,
-                            const int x,
-                            const int y) {
+bool SDLHelper::drawOnSurface(SDL_Surface* src,
+                              SDL_Surface* dest,
+                              const int x,
+                              const int y) {
     if(dest == NULL || src == NULL) {
         return false;
     }
@@ -35,14 +35,14 @@ bool SDLHelper::drawInSurface(SDL_Surface* src,
     return true;
 }
 
-bool SDLHelper::drawInSurface(SDL_Surface* src,
-                            const int src_x,
-                            const int src_y,
-                            const int src_width,
-                            const int src_height,
-                            SDL_Surface* dest,
-                            const int x,
-                            const int y) {
+bool SDLHelper::drawOnSurface(SDL_Surface* src,
+                              const int src_x,
+                              const int src_y,
+                              const int src_width,
+                              const int src_height,
+                              SDL_Surface* dest,
+                              const int x,
+                              const int y) {
     if(src == NULL || dest == NULL) {
         return false;
     }
@@ -61,11 +61,14 @@ bool SDLHelper::drawInSurface(SDL_Surface* src,
     return true;;
 }
 
-bool SDLHelper::applyTransparency(SDL_Surface * dest, int r, int g, int b) {
+bool SDLHelper::applyTransparencyOnSurface(SDL_Surface* dest,
+                                           const int red,
+                                           const int green,
+                                           const int blue) {
     if(dest == NULL){
         return false;
     }
 
-    int val = SDL_SetColorKey(dest, SDL_TRUE, SDL_MapRGB(dest->format, r, g, b));
-    return (val == 0) ? true : false; //Note: Returning val could be better
+    int val = SDL_SetColorKey(dest, SDL_TRUE, SDL_MapRGB(dest->format, red, green, blue));
+    return (val == 0) ? true : false; //TODO: Returning val may be better?
 }

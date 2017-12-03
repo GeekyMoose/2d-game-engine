@@ -5,7 +5,10 @@
 
 
 void Tile::render(SDL_Surface* dest, const int destX, const int destY) {
-    // TODO
+    if(this->m_sprite != nullptr) {
+        // TODO
+        //SDLHelper::draw
+    }
 }
 
 void Tile::setType(const int type) {
