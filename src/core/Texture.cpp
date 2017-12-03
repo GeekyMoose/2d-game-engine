@@ -21,10 +21,15 @@ bool Texture::loadFromFile(const char* path) {
         SDL_FreeSurface(this->m_surface);
         this->m_surface = nullptr;
     }
+
     this->m_surface = SDLHelper::loadSurfaceFromFile(path);
     if(this->m_surface == nullptr) {
         LOG_ERROR("Unable to load the texture: %s", path);
         return false;
     }
     return true;
+}
+
+SDL_Surface* Texture::getSurface() const {
+    return this->m_surface;
 }

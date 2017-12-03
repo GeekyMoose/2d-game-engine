@@ -30,4 +30,14 @@ class Texture {
          * \return True if successfully loaded, otherwise, return false.
          */
         bool loadFromFile(const char* path);
+
+        /**
+         * Get the surface used by the texture.
+         *
+         * \todo
+         * SDL Specific. Maybe to update.
+         *
+         * \return Pointer to the surface.
+         */
+        SDL_Surface* getSurface() const;
 };

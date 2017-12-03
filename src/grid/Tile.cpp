@@ -6,8 +6,7 @@
 
 void Tile::render(SDL_Surface* dest, const int destX, const int destY) {
     if(this->m_sprite != nullptr) {
-        // TODO
-        //SDLHelper::draw
+        this->m_sprite->render(dest, destX, destY);
     }
 }
 
