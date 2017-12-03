@@ -4,6 +4,9 @@
 #include "utils/gameConfig.h"
 #include "Tile.h"
 
+class Camera;
+class SDL_Surface;
+
 
 /**
  * Defines a tilemap.
@@ -33,4 +36,6 @@ class TileMap {
          * \return      True if successfully loaded, otherwise, return false.
          */
         bool loadFromFile(const char* file);
+
+        void render(SDL_Surface* dest, Camera* cctv);
 };

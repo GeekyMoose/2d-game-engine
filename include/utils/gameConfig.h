@@ -20,8 +20,8 @@ enum {
     WINDOW_DEFAULT_WIDTH        = 640,  // Default screen width in pixels.
     WINDOW_DEFAULT_HEIGHT       = 640,  // Default screen height in pixels.
 
-    CAMERA_DEFAULT_WIDTH        = 100,  // Camera vision in pixels (x).
-    CAMERA_DEFAULT_HEIGHT       = 100   // Camera vision in pixels (y).
+    CAMERA_DEFAULT_WIDTH        = 600,  // Camera vision in pixels (x).
+    CAMERA_DEFAULT_HEIGHT       = 600   // Camera vision in pixels (y).
 };
 
 

@@ -24,3 +24,11 @@ Point2D GridManager::convertGridToPixel(const int x, const int y) const {
     const int pY = y * this->m_YgridUnitySizeInPixels;
     return Point2D(pX, pY);
 }
+
+int GridManager::getUnitX() const {
+    return this->m_XgridUnitSizeInPixels;
+}
+
+int GridManager::getUnitY() const {
+    return this->m_YgridUnitySizeInPixels;
+}

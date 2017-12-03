@@ -7,6 +7,8 @@
 
 #include <stdexcept>
 
+class SDL_Surface;
+
 
 /**
  * Manager for all components on the scene.
@@ -24,7 +26,7 @@ class SceneManager : private Singleton<SceneManager> {
         using Singleton<SceneManager>::getInstance;
 
     private:
-        Camera  m_camera;
+        Camera m_camera;
         TileMap m_tilemap;
 
 
@@ -44,4 +46,5 @@ class SceneManager : private Singleton<SceneManager> {
     // Core methods
     // -------------------------------------------------------------------------
     public:
+        void renderScene(SDL_Surface* dest);
 };

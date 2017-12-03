@@ -84,7 +84,8 @@ void Engine2D::run() {
 
         // Render update
         this->m_window->clear();
-        this->m_renderEngine.update();
+        //this->m_renderEngine.update();
+        this->m_sceneManager.renderScene(this->m_window->getSurface());
         this->m_window->update();
     }
 }

@@ -34,4 +34,6 @@ class GridManager : private Singleton<GridManager> {
     public:
         Point2D convertPixelToGrid(const int x, const int y) const;
         Point2D convertGridToPixel(const int x, const int y) const;
+        int getUnitX() const;
+        int getUnitY() const;
 };

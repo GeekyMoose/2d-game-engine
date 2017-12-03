@@ -33,3 +33,7 @@ void SceneManager::startup() {
 void SceneManager::shutdown() {
     LOG_TRACE("Shutdown SceneManager");
 }
+
+void SceneManager::renderScene(SDL_Surface* dest) {
+    this->m_tilemap.render(dest, &this->m_camera);
+}
