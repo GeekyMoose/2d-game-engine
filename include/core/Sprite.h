@@ -3,6 +3,9 @@
 #include <string>
 
 
+class Texture;
+
+
 /**
  * Sprite component.
  *
@@ -11,13 +14,18 @@
  */
 class Sprite {
     private:
-        std::string m_path;
-
-    private:
+        Texture* m_texture;
         int m_frameWidth;
         int m_frameHeight;
+        int m_posX;
+        int m_posY;
 
     public:
-        Sprite(const char* name);
+        Sprite() = default;
         ~Sprite() = default;
+
+    public:
+        void setFrameDimension(const int frameWidth, const int frameHeight);
+        void setFramePosition(const int x, const int y);
+        void setTexture(Texture* texture);
 };

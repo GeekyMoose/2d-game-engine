@@ -14,7 +14,7 @@ void SpriteManager::shutdown() {
 
 
 Sprite* SpriteManager::createSprite(const char* name) {
-    auto elt = this->m_sprites.emplace(std::make_pair(name, name));
+    auto elt = this->m_sprites.emplace(std::make_pair(name, Sprite{}));
     Sprite* sprite = &(elt.first->second);
     return sprite;
 }

@@ -3,18 +3,11 @@
 #include "utils/log.h"
 #include "utils/SDLHelper.h"
 
-#include <string.h>
-
 #if PLATFORM_WINDOWS
 #   include <SDL.h>
 #elif PLATFORM_LINUX
 #   include <SDL2/SDL.h>
 #endif
-
-
-Texture::Texture(const char* name) {
-    memcpy(this->m_name, name, strlen(name));
-}
 
 
 Texture::~Texture() {

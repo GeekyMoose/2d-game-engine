@@ -16,22 +16,8 @@ class Texture {
         /** The actual texture data. */
         SDL_Surface* m_surface = nullptr;
 
-        /** Unique name of the texture. */
-        char m_name[TEXTURE_NAME_MAX_SIZE];
-
     public:
-        /**
-         * Create a new texture with specific name.
-         * Name is truncated if length superior to max size (See config).
-         * Name should be unique (No check done).
-         *
-         * \param name The identifier of this texture.
-         */
-        Texture(const char* name);
-
-        /**
-         * Destroys and release texture resources.
-         */
+        Texture() = default;
         ~Texture();
 
     public:

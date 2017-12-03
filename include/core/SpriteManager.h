@@ -32,9 +32,8 @@ class SpriteManager : private Singleton<SpriteManager> {
 
     private:
         /**
-         * Create a new sprite and register it in this manager.
-         * if already a sprite exists with this name,
-         * old sprite is reloaded with this new data.
+         * Create a new empty sprite and register it in this manager.
+         * if already a sprite exists with this name, do nothing.
          *
          * \param name Unique name of the sprite.
          * \return Pointer to the sprite or nullptr if error.
