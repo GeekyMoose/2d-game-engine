@@ -22,6 +22,8 @@ Engine2D::~Engine2D() {
 }
 
 void Engine2D::startup() {
+    LOG_TRACE("Startup 2D Engine");
+
     this->m_isRunning = true;
 
     this->m_timeManager.startup();
@@ -44,6 +46,8 @@ void Engine2D::startup() {
 }
 
 void Engine2D::shutdown() {
+    LOG_TRACE("Shutdown 2D Engine");
+
     this->m_window->hide();
     this->m_isRunning = false;
     this->m_timeManager.shutdown();
@@ -53,6 +57,7 @@ void Engine2D::shutdown() {
     this->m_spriteManager.shutdown();
     this->m_sceneManager.shutdown();
     this->m_renderEngine.shutdown();
+
     delete this->m_window;
 }
 

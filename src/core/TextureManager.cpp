@@ -1,14 +1,18 @@
 #include "core/TextureManager.h"
 
+#include "utils/log.h"
+
 #include <utility>
 #include <iterator>
 
 
 void TextureManager::startup() {
+    LOG_TRACE("Startup TextureManager");
     this->m_textures.clear();
 }
 
 void TextureManager::shutdown() {
+    LOG_TRACE("Shutdown TextureManager");
     this->m_textures.clear();
 }
 

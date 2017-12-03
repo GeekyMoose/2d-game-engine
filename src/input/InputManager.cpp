@@ -1,5 +1,7 @@
 #include "input/InputManager.h"
 
+#include "utils/log.h"
+
 #include <cstdint>
 
 #if PLATFORM_WINDOWS
@@ -15,6 +17,8 @@
 #endif
 
 void InputManager::startup() {
+    LOG_TRACE("Startup InputManager");
+
     // Bind all keys used for this game
     // TODO: May be extracted in external config file etc.
     this->m_inputKeybinder.registerKey("quit", SDL_SCANCODE_ESCAPE);
@@ -25,6 +29,7 @@ void InputManager::startup() {
 }
 
 void InputManager::shutdown() {
+    LOG_TRACE("Shutdown InputManager");
 }
 
 void InputManager::update() {

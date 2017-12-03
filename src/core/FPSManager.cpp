@@ -1,15 +1,19 @@
 #include "core/FPSManager.h"
 
+#include "utils/log.h"
 #include "core/TimeManager.h"
 
 
 void FPSManager::startup() {
+    LOG_TRACE("Startup FPSManager");
+
     this->m_elapsedTimeInSec    = 0;
     this->m_currentFPS          = 0;
     this->m_frameCounter        = 0;
 }
 
 void FPSManager::shutdown() {
+    LOG_TRACE("Shutdown FPSManager");
 }
 
 void FPSManager::update() {

@@ -1,14 +1,18 @@
 #include "core/SpriteManager.h"
 
+#include "utils/log.h"
+
 #include <utility>
 #include <iterator>
 
 
 void SpriteManager::startup() {
+    LOG_TRACE("Startup SpriteManager");
     this->m_sprites.clear();
 }
 
 void SpriteManager::shutdown() {
+    LOG_TRACE("Shutdown SpriteManager");
     this->m_sprites.clear();
 }
 
