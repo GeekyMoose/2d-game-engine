@@ -1,10 +1,11 @@
 #pragma once
 
-#include "core/Camera.h"
-#include "utils/Platform.h"
+#include "utils/platform.h"
 #include "utils/Singleton.h"
-#include "utils/gameConfig.h"
+#include "core/Camera.h"
 #include "gamemap/GameMap.h"
+
+#include <stdexcept>
 
 
 /**

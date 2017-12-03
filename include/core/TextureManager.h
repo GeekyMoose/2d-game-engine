@@ -1,7 +1,8 @@
 #pragma once
 
-#include "core/Texture.h"
+#include "utils/platform.h"
 #include "utils/Singleton.h"
+#include "core/Texture.h"
 
 #include <unordered_map>
 
@@ -30,7 +31,7 @@ class TextureManager : private Singleton<TextureManager> {
         void startup() override;
         void shutdown() override;
 
-    private:
+    public:
         /**
          * Create a new texture and register it in this manager.
          * if already a texture exists with this name,

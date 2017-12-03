@@ -1,6 +1,6 @@
 #pragma once
 
-#include "utils/Platform.h"
+#include "utils/platform.h"
 
 #if PLATFORM_WINDOWS
 #   include <SDL.h>

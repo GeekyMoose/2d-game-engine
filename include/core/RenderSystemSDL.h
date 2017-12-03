@@ -1,5 +1,6 @@
 #pragma once
 
+#include "utils/platform.h"
 
 class SDL_Surface;
 class RenderWindowSDL;

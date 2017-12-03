@@ -10,7 +10,7 @@
 
 // Include platform specific elements.
 #if PLATFORM_WINDOWS
-#   include "PlatformWindows.h"
+#   include "platformWindows.h"
 #elif PLATFORM_LINUX
-#   include "PlatformLinux.h"
+#   include "platformLinux.h"
 #endif

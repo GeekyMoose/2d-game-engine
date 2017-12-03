@@ -1,10 +1,13 @@
 #pragma once
 
-#include "utils/Platform.h"
+#include "utils/platform.h"
 
 
 #define GAME_CONFIG_WINDOW_TITLE "2d game"
 #define GAME_CONFIG_DEFAULT_GAME_MAP_PATH "./resources/gamemap/gamemap1.txt"
+
+#define TEXTURE_TILE_NAME "texture_tile"
+#define TEXTURE_TILE_PATH "./resources/textures/tiles_map1.png"
 
 
 enum {

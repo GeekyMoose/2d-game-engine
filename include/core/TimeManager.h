@@ -1,6 +1,6 @@
 #pragma once
 
-#include "utils/Platform.h"
+#include "utils/platform.h"
 #include "utils/Singleton.h"
 
 #include <chrono>

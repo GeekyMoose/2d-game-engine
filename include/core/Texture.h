@@ -1,5 +1,6 @@
 #pragma once
 
+#include "utils/platform.h"
 #include "utils/gameConfig.h"
 
 class SDL_Surface;

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "utils/platform.h"
 #include "utils/Singleton.h"
 #include "core/Sprite.h"
 

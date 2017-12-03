@@ -1,5 +1,7 @@
 #pragma once
 
+#include "utils/platform.h"
+#include "utils/Singleton.h"
 #include "core/TimeManager.h"
 #include "core/FPSManager.h"
 #include "core/SceneManager.h"
@@ -8,8 +10,6 @@
 #include "core/TextureManager.h"
 #include "core/SpriteManager.h"
 #include "input/InputManager.h"
-#include "utils/Platform.h"
-#include "utils/Singleton.h"
 
 
 /**

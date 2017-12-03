@@ -1,7 +1,8 @@
 #pragma once
 
-#include <string>
+#include "utils/platform.h"
 
+#include <string>
 
 class Texture;
 

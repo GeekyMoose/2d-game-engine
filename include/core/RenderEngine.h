@@ -1,7 +1,8 @@
 #pragma once
 
-#include "core/RenderSystemSDL.h"
+#include "utils/platform.h"
 #include "utils/Singleton.h"
+#include "core/RenderSystemSDL.h"
 
 
 class RenderWindowSDL;
