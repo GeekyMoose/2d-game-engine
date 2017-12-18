@@ -1,6 +1,6 @@
 #pragma once
 
-// Detecte used platform
+// Detect used platform
 #if defined(_WIN32) || defined(_WIN64)
 #   define PLATFORM_WINDOWS 1
 #else

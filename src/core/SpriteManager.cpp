@@ -1,9 +1,11 @@
 #include "core/SpriteManager.h"
 
 #include "utils/log.h"
+#include "utils/assertion.h"
 
 #include <utility>
 #include <iterator>
+#include <signal.h>
 
 
 void SpriteManager::startup() {
@@ -25,10 +27,11 @@ Sprite* SpriteManager::createSprite(const char* name) {
 
 Sprite* SpriteManager::getSpriteByName(const char* name) {
     try {
-        Sprite& sprite = this->m_sprites.at(name);
-        return &sprite;
+        return &(this->m_sprites.at(name));
     }
     catch (std::out_of_range& exception) {
+        LOG_DEBUG("Sprite '%s' doesn't exists in SpriteManager", name);
+        ASSERT_QUIT("Requested sprite doesn't exists in SpriteManager");
         return nullptr;
     }
 }

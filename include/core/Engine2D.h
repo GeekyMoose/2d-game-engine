@@ -23,13 +23,10 @@ class Engine2D : private Singleton<Engine2D> {
     // -------------------------------------------------------------------------
     // Attributes
     // -------------------------------------------------------------------------
-    private:
-        friend Singleton<Engine2D>; // For singleton use
-    public:
-        using Singleton<Engine2D>::getInstance;
 
     private:
         bool                m_isRunning;
+
         TimeManager&        m_timeManager;
         FPSManager&         m_fpsManager;
         InputManager&       m_inputManager;
@@ -38,7 +35,15 @@ class Engine2D : private Singleton<Engine2D> {
         SceneManager&       m_sceneManager;
         RenderEngine&       m_renderEngine;
         GridManager&        m_gridManager;
+
         RenderWindowSDL*    m_window;
+
+
+    // Things for singleton
+    private:
+        friend Singleton<Engine2D>;
+    public:
+        using Singleton<Engine2D>::getInstance;
 
 
     // -------------------------------------------------------------------------

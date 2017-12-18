@@ -14,15 +14,26 @@
  * \author  Constantin Masson
  */
 class GridManager : private Singleton<GridManager> {
+
+
+    // -------------------------------------------------------------------------
+    // Attributes
+    // -------------------------------------------------------------------------
+    private:
+        int m_XgridUnitSizeInPixels;
+        int m_YgridUnitySizeInPixels;
+
+
+    // Things for singleton
     private:
         friend Singleton<GridManager>;
     public:
         using Singleton<GridManager>::getInstance;
 
-    private:
-        int m_XgridUnitSizeInPixels;
-        int m_YgridUnitySizeInPixels;
 
+    // -------------------------------------------------------------------------
+    // Initialize / Destroy
+    // -------------------------------------------------------------------------
     private:
         GridManager() = default;
         ~GridManager() = default;
@@ -31,6 +42,10 @@ class GridManager : private Singleton<GridManager> {
         void startup() override;
         void shutdown() override;
 
+
+    // -------------------------------------------------------------------------
+    // Core Methods
+    // -------------------------------------------------------------------------
     public:
         Point2D convertPixelToGrid(const int x, const int y) const;
         Point2D convertGridToPixel(const int x, const int y) const;

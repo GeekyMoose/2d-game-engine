@@ -1,6 +1,7 @@
 #include "core/TextureManager.h"
 
 #include "utils/log.h"
+#include "utils/assertion.h"
 
 #include <utility>
 #include <iterator>
@@ -25,10 +26,11 @@ Texture* TextureManager::createTexture(const char* name, const char* path) {
 
 Texture* TextureManager::getTextureByName(const char* name) {
     try {
-        Texture& texture = this->m_textures.at(name);
-        return &texture;
+        return &(this->m_textures.at(name));
     }
     catch (std::out_of_range& exception) {
+        LOG_DEBUG("Texture '%s' doesn't exists in TextureManager", name);
+        ASSERT_QUIT("Requested texture doesn't exists in TextureManager");
         return nullptr;
     }
 }

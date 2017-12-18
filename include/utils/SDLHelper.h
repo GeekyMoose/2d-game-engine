@@ -81,9 +81,9 @@ class SDLHelper final {
          * Set a color of a Surface as transparent.
          *
          * \param dest  Surface where to apply transparency.
-         * \param r     Red value.
-         * \param g     Green value.
-         * \param b     Blue value.
+         * \param red   Red value.
+         * \param green Green value.
+         * \param blue  Blue value.
          * \return      True if successfully applied, otherwise, return false.
          */
         static bool applyTransparencyOnSurface(SDL_Surface* dest,
