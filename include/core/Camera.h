@@ -27,32 +27,29 @@ class Camera {
     //--------------------------------------------------------------------------
     private:
         /** Camera position (in pixel). */
-        float m_x;
+        float m_x = 0;
 
         /** Camera position (in pixel). */
-        float m_y;
+        float m_y = 0;
 
         /** X position of the camera target (In pixels). (Target mode). */
-        const float* m_targetX;
+        const float* m_targetX = nullptr;
 
         /** Y position of the camera target (In pixels). (Target mode). */
-        const float* m_targetY;
+        const float* m_targetY = nullptr;
 
-        /** The width size of the camera vision. */
-        float m_width;
-
-        /** The height size of the camera vision. */
-        float m_height;
+        /** Zoom factor. */
+        float m_zoomFactor = 1;
 
     private:
-        int m_targetMode;
+        int m_targetMode = CAMERA_MODE_NORMAL;
 
 
     //--------------------------------------------------------------------------
     // Initialization
     //--------------------------------------------------------------------------
     public:
-        Camera();
+        Camera() = default;
         ~Camera() = default;
 
 
@@ -62,7 +59,7 @@ class Camera {
     public:
 
         /**
-         * Returns X camera position (In pixels).
+         * Get X camera position.
          * Depending on camera mode, returns camera or target coordinates.
          *
          * \return X coordinate.
@@ -70,7 +67,7 @@ class Camera {
         float getX() const;
 
         /**
-         * Returns Y camera position (In pixels).
+         * Get Y camera position.
          * Depending on camera mode, returns camera or target coordinates.
          *
          * \return Y coordinate.
@@ -80,7 +77,13 @@ class Camera {
         void setPosition(const float posX, const float posY);
         void setTarget(const float* posX, const float* posY);
 
-        float getWidth() const;
-        float getHeight() const;
+        /**
+         * Changes zoom factor.
+         * Factor must be > 0 (Otherwise, do nothing).
+         *
+         * \param factor Zoom factor to apply.
+         */
+        void setZoomFactor(const float factor);
+        float getZoomFactor() const;
 };
 

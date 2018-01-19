@@ -37,5 +37,5 @@ class TileMap {
          */
         bool loadFromFile(const char* file);
 
-        void render(SDL_Surface* dest, Camera* cctv);
+        void render(SDL_Surface* dest, const Camera* cctv, const int width, const int height);
 };

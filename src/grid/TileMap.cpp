@@ -32,10 +32,10 @@ bool TileMap::loadFromFile(const char* filepath) {
     return true;
 }
 
-void TileMap::render(SDL_Surface* dest, Camera* cctv) {
+void TileMap::render(SDL_Surface* dest, const Camera* cctv, const int width, const int height) {
     // TODO: Draw only part under camera vision
-    const int xshift = cctv->getX() - (cctv->getWidth() / 2);
-    const int yshift = cctv->getY() - (cctv->getHeight() / 2);
+    const int xshift = cctv->getX() - ((width / 2)  * cctv->getZoomFactor());
+    const int yshift = cctv->getY() - ((height / 2) * cctv->getZoomFactor());
 
     for(int col = 0; col < this->m_tilesPerColumn; ++col) {
         for(int row = 0; row < this->m_tilesPerRow; ++row) {

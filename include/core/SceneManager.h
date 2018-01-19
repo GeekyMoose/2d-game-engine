@@ -46,5 +46,5 @@ class SceneManager : private Singleton<SceneManager> {
     // Core methods
     // -------------------------------------------------------------------------
     public:
-        void renderScene(SDL_Surface* dest);
+        void renderScene(SDL_Surface* dest, const int width, const int heigth);
 };

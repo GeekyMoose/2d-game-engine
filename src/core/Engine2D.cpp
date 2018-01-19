@@ -43,6 +43,10 @@ void Engine2D::startup() {
 
     // Create the window used for display (new)
     this->m_window = this->m_renderEngine.getRenderSystem()->newRenderWindow();
+    if(this->m_window == nullptr) {
+        LOG_ERROR("Unable to create the window");
+        throw std::runtime_error("Unable to create the window");
+    }
     this->m_renderEngine.getRenderSystem()->setRenderWindow(*m_window);
     this->m_window->show();
 }
@@ -85,7 +89,9 @@ void Engine2D::run() {
         // Render update
         this->m_window->clear();
         //this->m_renderEngine.update();
-        this->m_sceneManager.renderScene(this->m_window->getSurface());
+
+        this->m_sceneManager.renderScene(this->m_window->getSurface(), WINDOW_DEFAULT_WIDTH, WINDOW_DEFAULT_HEIGHT);
+
         this->m_window->update();
     }
 }

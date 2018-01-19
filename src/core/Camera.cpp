@@ -1,18 +1,12 @@
 #include "core/Camera.h"
 #include "utils/gameConfig.h"
 
-Camera::Camera() {
-    this->m_x           = 0;
-    this->m_y           = 0;
-    this->m_targetX     = nullptr;
-    this->m_targetY     = nullptr;
-    this->m_targetMode  = CAMERA_MODE_NORMAL;
-    this->m_width       = CAMERA_DEFAULT_WIDTH;
-    this->m_height      = CAMERA_DEFAULT_HEIGHT;
-}
+#include <cassert>
+
 
 float Camera::getX() const {
     if(this->m_targetMode == CAMERA_MODE_TARGET) {
+        assert(this->m_targetX != nullptr);
         return *m_targetX;
     }
     return this->m_x;
@@ -20,6 +14,7 @@ float Camera::getX() const {
 
 float Camera::getY() const {
     if(this->m_targetMode == CAMERA_MODE_TARGET) {
+        assert(this->m_targetY != nullptr);
         return *m_targetY;
     }
     return this->m_y;
@@ -35,10 +30,13 @@ void Camera::setTarget(const float* targetX, const float* targetY) {
     this->m_targetY = targetY;
 }
 
-float Camera::getWidth() const {
-    return this->m_width;
+float Camera::getZoomFactor() const {
+    return this->m_zoomFactor;
 }
 
-float Camera::getHeight() const {
-    return this->m_height;
+void Camera::setZoomFactor(const float factor) {
+    assert(factor > 0);
+    if(factor > 0) {
+        this->m_zoomFactor = factor;
+    }
 }
