@@ -17,11 +17,13 @@
 
 // ASSERT_TRUE Macro
 #define ASSERT_TRUE(expression) \
-if (expression) {} \
-else { \
-    reportAssertFailure(expression, __FILE__, __LINE__); \
-    debugBreak(); \
-}
+do { \
+    if (expression) {} \
+    else { \
+        reportAssertFailure(expression, __FILE__, __LINE__); \
+        debugBreak(); \
+    } \
+} while(0)
 
 #define ASSERT_QUIT(msg) \
     fprintf(stderr, "[ASSERT] %s:%d: Quit with message: "#msg"\n", __FILE__, __LINE__); \
