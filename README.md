@@ -1,26 +1,24 @@
-# 2D Game / 2D Engine
-> A 2D game using SDL.
-
-
-# Description
-This is a simple 2D game under construction.
+# 2D tilemap engine
+This is a simple 2D engine using SDL2. It is not finished and not functional. I used this project to learn about SDL (special thanks to [sdltutorials.com](http://www.sdltutorials.com/)) as well as some game engine basics.
 
 
 # Dependencies
-- [CMake](https://cmake.org/) (Build system)
-- [SDL2](https://www.libsdl.org/)
+- [CMake](https://cmake.org/)
+- [SDL2](https://www.libsdl.org/) (must be installed system-wide)
+- SDL2_image (must be installed system-wide)
 
 
-# Build / Run (Linux Only)
-> Requires C++11. Compiled and tested with g++ 6.3.0
-> (Requires "pragma once" support)
+# Build and run (Linux only)
+- Requires C++11.
+- Compiled and tested with g++ 6.3.0
+- Requires "pragma once" support
 
-```
+```bash
 mkdir build
 cd build
-camke ..
-make -j4
-make rungame
+cmake -DCMAKE_BUILD_TYPE=Release .. # Debug has an issue, use Release instead
+make
+make run # Use ESC to exit
 ```
 
 
@@ -38,4 +36,4 @@ make rungame
 
 
 # Author
-Constantin Masson ([constantinmasson.com](http://constantinmasson.com/))
+Constantin Masson (geekymoose)
